@@ -11,16 +11,6 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "prepare": "husky install"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": [ "lint" ],
-    "*.vue": [ "lint" ],
-    "**/*": "prettier --write --ignore-unknown"
-  },
   "dependencies": {
     "husky": "^8.0.1",
     "pinia": "^2.0.14",

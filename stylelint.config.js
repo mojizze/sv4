@@ -1,38 +1,38 @@
-{
-  "extends": [
-    'stylelint-config-standard',
-    'stylelint-config-prettier',
-    'stylelint-config-recommended-vue'
+module.exports = {
+  extends: [
+    "stylelint-config-standard",
+    "stylelint-config-prettier",
+    "stylelint-config-recommended-vue",
   ],
   rules: {
-    'selector-id-pattern': '[a-z_]+',
-    'selector-class-pattern': '[a-z\\:-]+',
-    'value-keyword-case': [
-      'lower',
+    "selector-id-pattern": "[a-z_]+",
+    "selector-class-pattern": "[a-z\\:-]+",
+    "value-keyword-case": [
+      "lower",
       {
-        camelCaseSvgKeywords: true
-      }
+        camelCaseSvgKeywords: true,
+      },
     ],
-    'property-no-vendor-prefix': [
+    "property-no-vendor-prefix": [
       true,
       {
-        ignoreProperties: ['appearance']
-      }
+        ignoreProperties: ["appearance"],
+      },
     ],
-    'at-rule-no-unknown': [
+    "at-rule-no-unknown": [
       true,
       {
-        ignoreAtRules: ['tailwind', 'apply', 'responsive', 'screen', 'layer']
-      }
+        ignoreAtRules: ["tailwind", "apply", "responsive", "screen", "layer"],
+      },
     ],
-    'declaration-block-trailing-semicolon': null,
-    'selector-pseudo-class-no-unknown': null,
-    'no-descending-specificity': null
+    "declaration-block-trailing-semicolon": null,
+    "selector-pseudo-class-no-unknown": null,
+    "no-descending-specificity": null,
   },
   overrides: [
     {
-      files: ['**/*.vue'],
-      customSyntax: 'postcss-html'
-    }
-  ]
-}
+      files: ["**/*.vue"],
+      customSyntax: "postcss-html",
+    },
+  ],
+};
