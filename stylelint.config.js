@@ -28,6 +28,7 @@ module.exports = {
     "declaration-block-trailing-semicolon": null,
     "selector-pseudo-class-no-unknown": null,
     "no-descending-specificity": null,
+    "declaration-empty-line-before": "never",
   },
   overrides: [
     {
