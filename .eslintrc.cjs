@@ -8,6 +8,7 @@ module.exports = {
     "eslint:recommended",
     "@vue/eslint-config-prettier",
     "plugin:tailwindcss/recommended",
+    "plugin:storybook/recommended",
   ],
   env: {
     "vue/setup-compiler-macros": true,
@@ -15,6 +16,7 @@ module.exports = {
     node: true,
   },
   plugins: ["tailwindcss"],
+  "ignorePatterns": ["!.storybook"],
   overrides: [
     {
       files: ["cypress/integration/**.spec.{js,ts,jsx,tsx}"],
