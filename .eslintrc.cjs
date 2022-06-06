@@ -19,7 +19,10 @@ module.exports = {
   "ignorePatterns": ["!.storybook"],
   overrides: [
     {
-      files: ["cypress/integration/**.spec.{js,ts,jsx,tsx}"],
+      files: ["cypress/integration/**.spec.{js,ts,jsx,tsx}", "src/modules/**/*.vue"],
+      rules: {
+        'vue/multi-word-component-names': 'off'
+      },
       extends: ["plugin:cypress/recommended"],
     },
   ],
