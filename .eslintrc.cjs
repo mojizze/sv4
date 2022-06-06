@@ -6,9 +6,9 @@ module.exports = {
   extends: [
     "plugin:vue/vue3-essential",
     "eslint:recommended",
-    "@vue/eslint-config-prettier",
     "plugin:tailwindcss/recommended",
     "plugin:storybook/recommended",
+    "@vue/eslint-config-prettier",
   ],
   env: {
     "vue/setup-compiler-macros": true,
@@ -17,6 +17,19 @@ module.exports = {
   },
   plugins: ["tailwindcss"],
   "ignorePatterns": ["!.storybook"],
+  rules: {
+    'vue/multi-word-component-names': [
+      'error',
+      {
+        ignores: [
+          'Button',
+          'Icon',
+          'Tab',
+        ]
+      }
+    ],
+    "tailwindcss/classnames-order": "off",
+  },
   overrides: [
     {
       files: ["cypress/integration/**.spec.{js,ts,jsx,tsx}", "src/modules/**/*.vue"],

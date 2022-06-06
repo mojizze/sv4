@@ -1,54 +1,132 @@
 <template>
-  <button type="button" :class="classes" @click="onClick" :style="style">
-    {{ label }}
+  <button
+    type="button"
+    class="rounded-lg font-bold"
+    :class="[sizeClasses, typeClasses, shapeClasses]"
+    :label="label"
+    :disabled="state === 'disabled'"
+    @click.prevent="$emit('btn:clicked')"
+  >
+    <div class="flex items-center">
+      <div class="mx-auto h-4.5 w-4.5" :class="{ 'mr-4.5': shape !== 'round' }">
+        <slot name="icon" />
+      </div>
+      <span>{{ label }}</span>
+    </div>
   </button>
 </template>
 
-<script>
-import "./button.css";
-import { reactive, computed } from "vue";
+<script setup>
+import { defineProps, computed } from "vue";
 
-export default {
-  name: "my-button",
+defineEmits(["btn:clicked"]);
 
-  props: {
-    label: {
-      type: String,
-      required: true,
-    },
-    primary: {
-      type: Boolean,
-      default: false,
-    },
-    size: {
-      type: String,
-      validator: function (value) {
-        return ["small", "medium", "large"].indexOf(value) !== -1;
-      },
-    },
-    backgroundColor: {
-      type: String,
+const props = defineProps({
+  type: {
+    type: String,
+    default: "normal",
+    validator(value) {
+      return ["normal", "outline"].includes(value);
     },
   },
 
-  emits: ["click"],
-
-  setup(props, { emit }) {
-    props = reactive(props);
-    return {
-      classes: computed(() => ({
-        "storybook-button": true,
-        "storybook-button--primary": props.primary,
-        "storybook-button--secondary": !props.primary,
-        [`storybook-button--${props.size || "medium"}`]: true,
-      })),
-      style: computed(() => ({
-        backgroundColor: props.backgroundColor,
-      })),
-      onClick() {
-        emit("click");
-      },
-    };
+  state: {
+    type: String,
+    default: "default",
+    validator(value) {
+      return ["default", "hover", "active", "disabled"].includes(value);
+    },
   },
-};
+
+  size: {
+    type: String,
+    default: "normal",
+    validator(value) {
+      return ["small", "normal", "medium", "large"].includes(value);
+    },
+  },
+
+  label: {
+    type: String,
+    required: false,
+  },
+
+  shape: {
+    type: String,
+    default: "square",
+    validator(value) {
+      return ["round", "square"].includes(value);
+    },
+  },
+});
+
+const sizeClasses = computed(() => {
+  if (props.shape === "round") {
+    return "p-4.5";
+  }
+
+  switch (props.size) {
+    case "small":
+      return "px-7 py-3.5 text-sm";
+    case "normal":
+      return "px-8 py-4";
+    case "medium":
+      return "px-9 py-4.5 text-lg";
+    case "large":
+      return "px-10 py-5 text-xl";
+    default:
+      return "w-full";
+  }
+});
+
+const typeClasses = computed(() => {
+  switch (props.type) {
+    case "outline":
+      return props.state === "disabled"
+        ? "border border-gray4 border-1 text-gray4"
+        : "border border-blue border-2 text-blue btn-outlined btn-outlined";
+    default:
+      return props.state === "disabled"
+        ? "bg-gray4 text-white"
+        : "bg-blue text-white hover:bg-deepblue btn-normal";
+  }
+});
+
+const shapeClasses = computed(() => {
+  switch (props.shape) {
+    case "square":
+      return "rounded-lg";
+    default:
+      return "rounded-full";
+  }
+});
 </script>
+
+<style>
+.btn-outlined:hover {
+  background: linear-gradient(
+      0deg,
+      rgb(255 255 255 / 80%),
+      rgb(255 255 255 / 80%)
+    ),
+    #0085ff;
+}
+
+.btn-outlined:active {
+  background: linear-gradient(
+      0deg,
+      rgb(255 255 255 / 60%),
+      rgba(255 255 255 / 60%)
+    ),
+    #0085ff;
+}
+
+.btn-normal:active {
+  background: linear-gradient(
+      0deg,
+      rgba(255 255 255 / 30%),
+      rgba(255 255 255 / 30%)
+    ),
+    #0085ff;
+}
+</style>

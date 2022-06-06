@@ -1,52 +1,62 @@
-import MyButton from "./Button.vue";
+import Button from "./Button.vue";
+import Icon from "./Icon.vue";
 
-// More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
 export default {
-  title: "Example/Button",
-  component: MyButton,
-  // More on argTypes: https://storybook.js.org/docs/vue/api/argtypes
+  title: "Atoms/Button",
+  component: Button,
+
   argTypes: {
-    backgroundColor: { control: "color" },
-    onClick: {},
+    type: {
+      control: { type: "select" },
+      options: ["normal", "outline"],
+    },
+    state: {
+      control: { type: "select" },
+      options: ["default", "hover", "active", "disabled"],
+    },
     size: {
       control: { type: "select" },
-      options: ["small", "medium", "large"],
+      options: ["small", "normal", "medium", "large"],
+    },
+    shape: {
+      control: { type: "select" },
+      options: ["round", "square"],
     },
   },
 };
 
-// More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
-const Template = (args) => ({
-  // Components used in your story `template` are defined in the `components` object
-  components: { MyButton },
-  // The story's `args` need to be mapped into the template through the `setup()` method
+export const ButtonComponent = (args) => ({
+  components: { Button },
   setup() {
     return { args };
   },
-  // And then the `args` are bound to your component with `v-bind="args"`
-  template: '<my-button v-bind="args" />',
+  template: `<Button v-bind="args" label="Button Sample"/>`,
 });
 
-export const Primary = Template.bind({});
-// More on args: https://storybook.js.org/docs/vue/writing-stories/args
-Primary.args = {
-  primary: true,
-  label: "Button",
-};
+export const ButtonIconText = (args) => ({
+  components: { Button, Icon },
+  setup() {
+    return { args };
+  },
+  template: `
+    <Button v-bind="args" label="Button Sample">
+      <template #icon>
+        <Icon name="add" />
+      </template>
+    </Button>
+  `,
+});
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  label: "Button",
-};
-
-export const Large = Template.bind({});
-Large.args = {
-  size: "large",
-  label: "Button",
-};
-
-export const Small = Template.bind({});
-Small.args = {
-  size: "small",
-  label: "Button",
-};
+export const ButtonIcon = (args) => ({
+  components: { Button, Icon },
+  setup() {
+    return { args };
+  },
+  template: `
+    <Button v-bind="args" shape="round">
+      <template #icon>
+        <Icon name="add" />
+      </template>
+    </Button>
+  `,
+});
