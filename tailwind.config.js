@@ -180,6 +180,9 @@ module.exports = {
       gray3: "#BDBDBD",
       gray4: "#E0E0E0",
       gray5: "#E7ECE8",
+
+      // Green Shades,
+      green1: "#27AEAE",
     },
 
     spacing,
