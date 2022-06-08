@@ -1,0 +1,46 @@
+<template>
+  <div>
+    <MenuItem
+      v-for="menu in navigation"
+      :key="menu.name"
+      :menu="menu"
+      :selected="selected"
+    >
+      <template #icon>
+        <Icon class="mr-2.5 h-5 w-5" :name="menu.icon" />
+      </template>
+      <template #chevron-icon>
+        <Icon
+          name="arrow"
+          @click="setSelectedMenu(menu.name)"
+          v-if="menu.children"
+          class="mr-4"
+          :class="{ 'rotate-[180deg]': selected !== menu.name }"
+        />
+      </template>
+    </MenuItem>
+  </div>
+</template>
+
+<script setup>
+import { defineProps, ref } from "vue";
+import MenuItem from "@/components/atoms/MenuItem.vue";
+import Icon from "../atoms/Icon.vue";
+
+defineProps({
+  navigation: {
+    type: Array,
+    required: true,
+  },
+});
+
+const selected = ref("");
+
+function setSelectedMenu(name) {
+  if (selected.value === name) {
+    selected.value = "";
+  } else {
+    selected.value = name;
+  }
+}
+</script>

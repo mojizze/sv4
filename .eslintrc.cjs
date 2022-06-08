@@ -24,7 +24,7 @@ module.exports = {
         ignores: [
           'Button',
           'Icon',
-          'Tab',
+          'Menu',
         ]
       }
     ],

@@ -4,7 +4,12 @@ export default {
   title: "Atoms/TextField",
   component: TextField,
 
-  argsTypes: {},
+  argTypes: {
+    type: {
+      control: { type: "select" },
+      options: ["text", "number", "password", "text-only"],
+    },
+  },
 };
 
 export const TextFieldComponent = (args) => ({

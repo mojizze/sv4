@@ -4,6 +4,11 @@
     <input
       :type="type"
       :value="modelValue"
+      :min="min"
+      :max="max"
+      :maxlength="maxLength"
+      :minlength="minLength"
+      @keypress="preventInputType"
       @input="$emit('update:modelValue', $event.target.value)"
       class="w-full rounded border py-3.5 pl-4 text-sm text-black1 outline-none placeholder:text-sm placeholder:text-[#C4C4C4]"
       :class="{
@@ -37,7 +42,7 @@
 import { defineProps, ref } from "vue";
 import Icon from "./Icon.vue";
 
-defineProps({
+const props = defineProps({
   modelValue: {
     type: String,
     default: null,
@@ -46,11 +51,34 @@ defineProps({
   type: {
     type: String,
     default: "text",
+    validator(value) {
+      return ["text", "number", "password", "text-only"].includes(value);
+    },
   },
 
   label: {
     type: String,
     default: null,
+  },
+
+  min: {
+    type: Number,
+    required: false,
+  },
+
+  max: {
+    type: Number,
+    required: false,
+  },
+
+  minLength: {
+    type: Number,
+    default: 1,
+  },
+
+  maxLength: {
+    type: Number,
+    required: false,
   },
 
   placeholderText: {
@@ -80,4 +108,23 @@ defineProps({
 });
 defineEmits(["update:modelValue"]);
 const focus = ref(false);
+
+function preventInputType(evt) {
+  // Allow only numbers
+  if (props.type === "number") {
+    const charCode = evt.which ? evt.which : evt.keyCode;
+    return !(charCode > 31 && (charCode < 48 || charCode > 57));
+  }
+
+  // Allow only alphabet
+  if (props.type === "text-only") {
+    var keyCode = evt.keyCode ? evt.keyCode : evt.which;
+    if (keyCode > 47 && keyCode < 58) {
+      evt.preventDefault();
+      return false;
+    }
+  }
+
+  return true;
+}
 </script>

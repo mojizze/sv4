@@ -63,6 +63,7 @@
     "prettier": "^2.5.1",
     "prettier-plugin-tailwindcss": "^0.1.11",
     "start-server-and-test": "^1.14.0",
+    "storybook-vue3-router": "^2.2.1",
     "stylelint": "^14.8.5",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-recommended-vue": "^1.4.0",
