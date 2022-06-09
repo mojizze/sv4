@@ -25,6 +25,7 @@ module.exports = {
           'Button',
           'Icon',
           'Menu',
+          'Avatar',
         ]
       }
     ],

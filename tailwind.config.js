@@ -20,6 +20,7 @@ const spacing = {
   7.5: "1.875rem",
   8: "2rem",
   8.5: "2.125rem",
+  8.75: "2.188rem",
   9: "2.25rem",
   9.5: "2.375rem",
   10: "2.5rem",
@@ -180,9 +181,13 @@ module.exports = {
       gray3: "#BDBDBD",
       gray4: "#E0E0E0",
       gray5: "#E7ECE8",
+      gray6: "#EBF1F4",
 
       // Green Shades,
       green1: "#27AEAE",
+
+      // teal
+      teal1: "#F1F7FA",
     },
 
     spacing,
