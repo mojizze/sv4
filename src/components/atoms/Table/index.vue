@@ -23,9 +23,6 @@
         >
           <TableColumn>
             <slot :name="column.prop" :row="row">
-              <template v-if="column.component">
-                <component :is="column.component" :column="column" :row="row" />
-              </template>
               <div class="truncate">
                 {{ get(row, column.prop) }}
               </div>
