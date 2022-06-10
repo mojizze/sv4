@@ -9,8 +9,8 @@ export const TableComponent = (args) => ({
       { label: "Name", prop: "name" },
       { label: "Title", prop: "title" },
       { label: "Email", prop: "email" },
-      { label: "Role", prop: "role" },
-      { label: "Edit", prop: "edit" },
+      { label: "Role", prop: "role", width: 100 },
+      { label: "Edit", prop: "edit", hideLabel: true, width: 100 },
     ];
 
     const tableData = [
@@ -32,7 +32,7 @@ export const TableComponent = (args) => ({
   },
   template: `<Table :data="tableData" v-bind="args" :columns="columns">
   <template v-slot:edit="{row}">
-      <div>Action New {{ row.role }}</div>
+      <div class="truncate">Action New {{ row.role }}</div>
     </template>
   </Table>`,
 });
