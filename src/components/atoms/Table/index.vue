@@ -1,39 +1,33 @@
 <template>
-  <table class="min-w-full bg-white">
+  <table class="w-full table-fixed bg-white">
     <thead class="border-y border-gray6">
       <tr>
         <th
-          v-for="{ prop, label } in columns"
-          :key="prop"
+          v-for="column in columns"
+          :key="column.prop"
           scope="col"
-          class="border py-4 px-3 text-left text-sm font-semibold sm:pl-6 lg:pl-8"
+          class="p-4 text-left text-sm font-semibold"
+          :style="getStyles(column.width)"
         >
-          {{ label }}
+          <span v-if="column.hideLabel" class="sr-only">Edit</span>
+          <div v-else class="truncate">{{ column.label }}</div>
         </th>
       </tr>
     </thead>
-    <!-- <slot></slot> -->
     <tbody class="">
       <tr v-for="(row, index) in data" :key="index">
         <td
           v-for="(column, index) in columns"
           :key="column.prop || index"
-          v-bind="column"
-          class="whitespace-nowrap border py-4 pl-4 pr-3 text-sm font-medium sm:pl-6 lg:pl-8"
+          class="p-4 text-sm"
         >
           <TableColumn>
             <slot :name="column.prop" :row="row">
               <template v-if="column.component">
-                <component
-                  :is="column.component"
-                  :column="column"
-                  :row="row"
-                ></component>
+                <component :is="column.component" :column="column" :row="row" />
               </template>
               <div class="truncate">
-                <!-- {{ get(row, column.prop) || "- -" }} -->
-
-                {{ column.prop }}
+                {{ get(row, column.prop) }}
               </div>
             </slot>
           </TableColumn>
@@ -45,6 +39,7 @@
 
 <script setup>
 import { defineComponent, defineProps } from "vue";
+import { get } from "lodash";
 
 defineProps({ columns: Array, data: Array });
 
@@ -56,6 +51,15 @@ const TableColumn = defineComponent({
 defineComponent({
   components: { TableColumn },
 });
+
+const getStyles = (width) => {
+  let styles = {};
+  if (width) {
+    styles["width"] = `${width}px`;
+  }
+
+  return styles;
+};
 </script>
 
 <style lang="scss" scoped></style>
