@@ -1,9 +1,14 @@
 import { createRouter, createWebHistory } from "vue-router";
 import DashboardRoutes from "../modules/Dashboard/route";
+import NotFound from "@/components/templates/NotFound.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [...DashboardRoutes],
+  routes: [
+    ...DashboardRoutes,
+    { path: "/404", component: NotFound },
+    { path: "/:catchAll(.*)", name: "NotFound", redirect: "/404" },
+  ],
 });
 
 function nextFactory(context, middleware, index) {
