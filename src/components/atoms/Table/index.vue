@@ -33,15 +33,32 @@
           </TableColumn>
         </td>
       </tr>
+      <tr v-if="loading">
+        <td :colspan="columns.length">
+          <div class="flex justify-center py-20">loading...</div>
+        </td>
+      </tr>
+      <tr v-if="data.length === 0 && !loading">
+        <td :colspan="columns.length">
+          <div class="flex justify-center py-20">
+            <slot name="empty">{{ emptyText }}</slot>
+          </div>
+        </td>
+      </tr>
     </tbody>
   </table>
 </template>
 
 <script setup>
-import { defineComponent, defineProps } from "vue";
+import { defineComponent } from "vue";
 import { get } from "lodash";
 
-defineProps({ columns: Array, data: Array });
+defineProps({
+  columns: { type: Array, required: true },
+  data: { type: Array, required: true },
+  emptyText: { type: String, default: "No data" },
+  loading: { type: Boolean, required: true, default: false },
+});
 
 const TableColumn = defineComponent({
   name: "TableColumn",
