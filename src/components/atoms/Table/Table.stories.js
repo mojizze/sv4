@@ -1,10 +1,11 @@
 import Table from "./index.vue";
 import Button from "../Button/index.vue";
+import TableEmptyState from "../../molecules/TableEmptyState.vue";
 
 export default { title: "Atoms/Table", component: Table };
 
 export const TableComponent = (args) => ({
-  components: { Table, Button },
+  components: { Table, Button, TableEmptyState },
   setup() {
     const columns = [
       { label: "Name", prop: "name" },
@@ -29,11 +30,17 @@ export const TableComponent = (args) => ({
       },
     ];
 
-    return { args, columns, tableData };
+    const logger = () => console.log("logger===>>>");
+
+    return { args, columns, tableData, logger };
   },
-  template: `<Table :data="tableData" v-bind="args" :columns="columns">
+  template: `<Table :data="[]" v-bind="args" :columns="columns" :loading="false">
   <template v-slot:edit="{row}">
       <Button ghost icon="outlineEclipses" />
+    </template>
+
+    <template v-slot:empty>
+      <TableEmptyState @btn:clicked="logger" btnLabel="Hello Button" />
     </template>
   </Table>`,
 });

@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import { defineProps, computed, defineAsyncComponent } from "vue";
+import { computed, defineAsyncComponent } from "vue";
 
 const props = defineProps({
   name: {
