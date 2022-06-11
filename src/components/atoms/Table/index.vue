@@ -48,10 +48,6 @@ const TableColumn = defineComponent({
   template: `<slot></slot>`,
 });
 
-defineComponent({
-  components: { TableColumn },
-});
-
 const getStyles = (width) => {
   let styles = {};
   if (width) {
