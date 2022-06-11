@@ -1,9 +1,10 @@
 import Table from "./index.vue";
+import Button from "../Button/index.vue";
 
 export default { title: "Atoms/Table", component: Table };
 
 export const TableComponent = (args) => ({
-  components: { Table },
+  components: { Table, Button },
   setup() {
     const columns = [
       { label: "Name", prop: "name" },
@@ -32,7 +33,7 @@ export const TableComponent = (args) => ({
   },
   template: `<Table :data="tableData" v-bind="args" :columns="columns">
   <template v-slot:edit="{row}">
-      <div class="truncate">Action New {{ row.role }}</div>
+      <Button ghost icon="outlineEclipses" />
     </template>
   </Table>`,
 });
