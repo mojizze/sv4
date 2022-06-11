@@ -26,6 +26,8 @@ module.exports = {
           'Icon',
           'Menu',
           'Avatar',
+          'Tab',
+          'Backdrop',
         ]
       }
     ],

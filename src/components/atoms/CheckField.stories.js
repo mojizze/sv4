@@ -3,7 +3,7 @@ import { ref } from "vue";
 
 export default {
   title: "Atoms/CheckField",
-  components: CheckField,
+  component: CheckField,
 
   argTypes: {
     type: {

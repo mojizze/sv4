@@ -174,6 +174,7 @@ module.exports = {
       black1: "#092C4C",
       black2: "#244462",
       black3: "#3D5B76",
+      black4: "#033B6F",
 
       // Gray shades.
       gray1: "#757171",
