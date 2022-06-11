@@ -10,13 +10,17 @@
       :minlength="minLength"
       @keypress="preventInputType"
       @input="$emit('update:modelValue', $event.target.value)"
-      class="w-full rounded border py-3.5 pl-4 text-sm text-black1 outline-none placeholder:text-sm placeholder:text-[#C4C4C4]"
-      :class="{
-        'border-blue': focus && !error && !success,
-        'border-[#E7ECE8]': !focus && !error && !success,
-        'border-[#E47A7A]': error,
-        'border-[#27AEAE]': success,
-      }"
+      class="w-full py-3.5 pl-4 text-sm text-black1 outline-none placeholder:text-sm placeholder:text-[#C4C4C4]"
+      :class="[
+        {
+          'border-blue': focus && !error && !success,
+          'border-[#E7ECE8]': !focus && !error && !success,
+          'border-[#E47A7A]': error,
+          'border-[#27AEAE]': success,
+        },
+        borderRadius,
+        border,
+      ]"
       :placeholder="placeholderText"
       @focus="focus = true"
       @blur="focus = false"
@@ -84,6 +88,16 @@ const props = defineProps({
   placeholderText: {
     type: String,
     default: "",
+  },
+
+  borderRadius: {
+    type: String,
+    default: "rounded",
+  },
+
+  border: {
+    type: String,
+    default: "border",
   },
 
   error: {
