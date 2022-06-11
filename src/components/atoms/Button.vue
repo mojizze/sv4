@@ -1,14 +1,18 @@
 <template>
   <button
     type="button"
-    class="rounded-lg font-bold"
+    class="font-bold"
     :class="[sizeClasses, typeClasses, shapeClasses]"
     :label="label"
     :disabled="state === 'disabled'"
     @click.prevent="$emit('btn:clicked')"
   >
     <div class="flex items-center">
-      <div class="mx-auto h-4.5 w-4.5" :class="{ 'mr-4.5': shape !== 'round' }">
+      <div
+        v-if="$slots.icon"
+        class="mx-auto h-4.5 w-4.5"
+        :class="{ 'mr-4.5': shape !== 'round' }"
+      >
         <slot name="icon" />
       </div>
       <span>{{ label }}</span>
