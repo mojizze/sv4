@@ -28,6 +28,7 @@ module.exports = {
           'Avatar',
           'Tab',
           'Backdrop',
+          'Modal',
         ]
       }
     ],
