@@ -10,7 +10,7 @@
       :minlength="minLength"
       @keypress="preventInputType"
       @input="$emit('update:modelValue', $event.target.value)"
-      class="w-full rounded border py-3.5 pl-4 text-sm text-black1 outline-none placeholder:text-sm placeholder:text-[#C4C4C4]"
+      class="rounded w-full border py-3.5 pl-4 text-sm text-black1 outline-none placeholder:text-sm placeholder:text-[#C4C4C4]"
       :class="{
         'border-blue': focus && !error && !success,
         'border-[#E7ECE8]': !focus && !error && !success,
@@ -23,14 +23,14 @@
     />
     <div
       v-if="error"
-      class="mt-1 flex w-full items-center justify-start rounded bg-[#FFD4D4] py-0.5 pl-2 text-xs text-[#DF1818]"
+      class="rounded mt-1 flex w-full items-center justify-start bg-[#FFD4D4] py-0.5 pl-2 text-xs text-[#DF1818]"
     >
       <Icon name="alarm" class="mr-2" />
       <p>{{ errorText }}</p>
     </div>
     <div
       v-if="success"
-      class="mt-1 flex w-full items-center justify-start rounded bg-green1/25 py-0.5 pl-2 text-xs text-green1"
+      class="rounded mt-1 flex w-full items-center justify-start bg-green1/25 py-0.5 pl-2 text-xs text-green1"
     >
       <Icon name="check" class="mr-2" />
       <p>{{ successText }}</p>
@@ -39,7 +39,7 @@
 </template>
 
 <script setup>
-import { defineProps, ref } from "vue";
+import { ref } from "vue";
 import Icon from "./Icon.vue";
 
 const props = defineProps({

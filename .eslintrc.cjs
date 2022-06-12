@@ -22,15 +22,15 @@ module.exports = {
       "error",
       {
         ignores: [
-          'Button',
-          'Icon',
-          'Menu',
-          'Avatar',
-          'Tab',
-          'Backdrop',
+          "Button",
+          "Icon",
+          "Menu",
+          "Avatar",
+          "Tab",
+          "Backdrop",
           "index",
-        ]
-      }
+        ],
+      },
     ],
     "tailwindcss/classnames-order": "off",
   },

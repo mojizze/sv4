@@ -1,10 +1,10 @@
 <template>
   <button
     type="button"
-    class="rounded-lg font-bold"
-    :class="[sizeClasses, typeClasses, shapeClasses]"
+    class="font-bold"
+    :class="[getClasses]"
     :label="label"
-    :disabled="state === 'disabled'"
+    :disabled="disabled"
     @click.prevent="$emit('btn:clicked')"
   >
     <div class="flex items-center justify-center">
@@ -36,13 +36,7 @@ const props = defineProps({
     },
   },
 
-  state: {
-    type: String,
-    default: "default",
-    validator(value) {
-      return ["default", "hover", "active", "disabled"].includes(value);
-    },
-  },
+  disabled: Boolean,
 
   size: {
     type: String,
@@ -69,56 +63,54 @@ const props = defineProps({
     type: String,
     default: "square",
     validator(value) {
-      return ["round", "square"].includes(value);
+      return ["circle", "square"].includes(value);
     },
   },
 });
 
-const sizeClasses = computed(() => {
-  if (props.shape === "round") {
-    return "p-4.5";
-  }
+const getClasses = computed(() => {
+  let classes = "disabled:opacity-40 disabled:cursor-not-allowed";
 
-  if (props.ghost) return "";
+  if (props.ghost) return classes;
 
-  switch (props.size) {
-    case "small":
-      return "px-7 py-3.5 text-sm";
-    case "normal":
-      return "px-8 py-4";
-    case "medium":
-      return "px-9 py-4.5 text-lg";
-    case "large":
-      return "px-10 py-5 text-xl";
-    default:
-      return "w-full";
-  }
-});
-
-const typeClasses = computed(() => {
-  if (props.ghost) return "";
+  if (props.shape !== "circle")
+    switch (props.size) {
+      case "small":
+        classes = `${classes} px-7 py-3.5 text-sm`;
+        break;
+      case "normal":
+        classes = `${classes} px-8 py-4`;
+        break;
+      case "medium":
+        classes = `${classes} px-9 py-4.5 text-lg`;
+        break;
+      case "large":
+        classes = `${classes} px-10 py-5 text-xl`;
+        break;
+      default:
+        classes = `${classes} w-full`;
+        break;
+    }
 
   switch (props.type) {
     case "outline":
-      return props.state === "disabled"
-        ? "border border-gray4 border-1 text-gray4"
-        : "border border-blue border-2 text-blue btn-outlined btn-outlined";
+      classes = `${classes} border border-blue border-2 text-blue btn-outlined btn-outlined`;
+      break;
     default:
-      return props.state === "disabled"
-        ? "bg-gray4 text-white"
-        : "bg-blue text-white hover:bg-deepblue btn-normal";
+      classes = `${classes} bg-blue hover:bg-deepblue text-white`;
+      break;
   }
-});
-
-const shapeClasses = computed(() => {
-  if (props.ghost) return "";
 
   switch (props.shape) {
-    case "square":
-      return "rounded-lg";
+    case "circle":
+      classes = `${classes} rounded-full p-4.5`;
+      break;
     default:
-      return "rounded-full";
+      classes = `${classes} rounded-lg`;
+      break;
   }
+
+  return classes;
 });
 </script>
 
@@ -144,8 +136,8 @@ const shapeClasses = computed(() => {
 .btn-normal:active {
   background: linear-gradient(
       0deg,
-      rgba(255 255 255 / 30%),
-      rgba(255 255 255 / 30%)
+      rgb(255 255 255 / 60%),
+      rgba(255 255 255 / 60%)
     ),
     #0085ff;
 }
