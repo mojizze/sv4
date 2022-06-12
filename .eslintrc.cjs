@@ -29,6 +29,7 @@ module.exports = {
           'Tab',
           'Backdrop',
           'Modal',
+          'Badges',
         ]
       }
     ],
