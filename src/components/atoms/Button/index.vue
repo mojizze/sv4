@@ -3,7 +3,6 @@
     type="button"
     class="font-bold"
     :class="[getClasses]"
-    :label="label"
     :disabled="disabled"
     @click.prevent="$emit('btn:clicked')"
   >

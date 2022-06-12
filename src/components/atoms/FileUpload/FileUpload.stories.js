@@ -12,5 +12,9 @@ export const FileUploadComponent = (args) => ({
   setup() {
     return { args };
   },
-  template: `<FileUpload v-bind="args"  />`,
+  template: `
+    <div class="w-full">
+      <FileUpload v-bind="args" class="w-full"  />
+    </div>
+  `,
 });

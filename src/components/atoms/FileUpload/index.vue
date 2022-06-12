@@ -1,13 +1,15 @@
 <template>
   <div
     ref="dropzone"
-    class="flex h-44 items-center justify-center space-x-5 rounded-lg border border-dashed p-6"
+    class="flex h-18 items-center justify-center space-x-5 rounded-lg border border-dashed px-15 py-6"
     @drop.prevent="onDrop"
     @dragover.prevent="onDragOver"
     @dragleave.prevent="onDragLeave"
   >
-    <Icon name="file" /><span>Drag n Drop here</span><span>Or</span>
-    <label class="cursor-pointer font-bold text-blue hover:text-deepblue"
+    <Icon name="file" /><span class="text-gray2">Drag n Drop here</span
+    ><span>Or</span>
+    <label
+      class="cursor-pointer font-bold text-blue underline hover:text-deepblue"
       >Browse
       <input
         type="file"

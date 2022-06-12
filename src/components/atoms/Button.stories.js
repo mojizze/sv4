@@ -12,7 +12,7 @@ export default {
     },
     state: {
       control: { type: "select" },
-      options: ["default", "hover", "active", "disabled"],
+      options: ["default", "active", "disabled"],
     },
     size: {
       control: { type: "select" },

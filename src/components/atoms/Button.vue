@@ -3,19 +3,22 @@
     type="button"
     class="font-bold"
     :class="[sizeClasses, typeClasses, shapeClasses]"
-    :label="label"
     :disabled="state === 'disabled'"
     @click.prevent="$emit('btn:clicked')"
   >
     <div class="flex items-center">
       <div
         v-if="$slots.icon"
-        class="mx-auto h-4.5 w-4.5"
+        class="grid place-items-center"
         :class="{ 'mr-4.5': shape !== 'round' }"
       >
         <slot name="icon" />
       </div>
-      <span>{{ label }}</span>
+      <span>
+        <slot name="label">
+          {{ label }}
+        </slot>
+      </span>
     </div>
   </button>
 </template>
@@ -38,7 +41,7 @@ const props = defineProps({
     type: String,
     default: "default",
     validator(value) {
-      return ["default", "hover", "active", "disabled"].includes(value);
+      return ["default", "active", "disabled"].includes(value);
     },
   },
 
@@ -91,7 +94,7 @@ const typeClasses = computed(() => {
         : "border border-blue border-2 text-blue btn-outlined btn-outlined";
     default:
       return props.state === "disabled"
-        ? "bg-gray4 text-white"
+        ? "bg-gray4 text-white  cursor-not-allowed"
         : "bg-blue text-white hover:bg-deepblue btn-normal";
   }
 });
