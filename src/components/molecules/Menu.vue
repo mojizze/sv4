@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import { defineProps, ref } from "vue";
+import { ref } from "vue";
 import MenuItem from "@/components/atoms/MenuItem.vue";
 import Icon from "../atoms/Icon.vue";
 

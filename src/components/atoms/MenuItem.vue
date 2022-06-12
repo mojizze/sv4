@@ -48,8 +48,6 @@
 </template>
 
 <script setup>
-import { defineProps } from "vue";
-
 defineProps({
   menu: {
     type: Object,

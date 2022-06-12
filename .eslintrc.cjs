@@ -16,10 +16,10 @@ module.exports = {
     node: true,
   },
   plugins: ["tailwindcss"],
-  "ignorePatterns": ["!.storybook"],
+  ignorePatterns: ["!.storybook"],
   rules: {
-    'vue/multi-word-component-names': [
-      'error',
+    "vue/multi-word-component-names": [
+      "error",
       {
         ignores: [
           'Button',
@@ -30,16 +30,20 @@ module.exports = {
           'Backdrop',
           'Modal',
           'Badges',
-        ]
-      }
+          "index",
+        ],
+      },
     ],
     "tailwindcss/classnames-order": "off",
   },
   overrides: [
     {
-      files: ["cypress/integration/**.spec.{js,ts,jsx,tsx}", "src/modules/**/*.vue"],
+      files: [
+        "cypress/integration/**.spec.{js,ts,jsx,tsx}",
+        "src/modules/**/*.vue",
+      ],
       rules: {
-        'vue/multi-word-component-names': 'off'
+        "vue/multi-word-component-names": "off",
       },
       extends: ["plugin:cypress/recommended"],
     },
