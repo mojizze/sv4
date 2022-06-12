@@ -94,7 +94,7 @@ const getClasses = computed(() => {
 
   switch (props.type) {
     case "outline":
-      classes = `${classes} border border-blue border-2 text-blue btn-outlined btn-outlined`;
+      classes = `${classes} border border-blue border text-blue btn-outlined btn-outlined`;
       break;
     default:
       classes = `${classes} bg-blue hover:bg-deepblue text-white`;
