@@ -14,7 +14,7 @@
         </th>
       </tr>
     </thead>
-    <tbody class="">
+    <tbody>
       <tr v-for="(row, index) in data" :key="index">
         <td
           v-for="(column, index) in columns"

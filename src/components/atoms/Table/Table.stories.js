@@ -40,7 +40,7 @@ export const TableComponent = (args) => ({
     </template>
 
     <template v-slot:empty>
-      <TableEmptyState @btn:clicked="logger" btnLabel="Hello Button" />
+      <TableEmptyState @btn:clicked="logger" btnLabel="Add Beneficiary" />
     </template>
   </Table>`,
 });
