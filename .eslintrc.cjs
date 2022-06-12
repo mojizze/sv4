@@ -31,8 +31,8 @@ module.exports = {
           'Modal',
           'Badges',
           "index",
-        ]
-      }
+        ],
+      },
     ],
     "tailwindcss/classnames-order": "off",
   },

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex h-8.75 w-fit items-center justify-start rounded px-3 py-2.5"
+    class="rounded flex h-8.75 w-fit items-center justify-start px-3 py-2.5"
     :class="{
       'bg-gray6 text-black3': !isChecked,
       'bg-blue text-white': isChecked,
@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-import { defineProps, computed } from "vue";
+import { computed } from "vue";
 
 const props = defineProps({
   label: {
