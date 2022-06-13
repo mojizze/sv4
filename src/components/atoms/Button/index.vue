@@ -35,7 +35,10 @@ const props = defineProps({
     },
   },
 
-  disabled: Boolean,
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
 
   size: {
     type: String,
@@ -68,7 +71,10 @@ const props = defineProps({
 });
 
 const getClasses = computed(() => {
-  let classes = "disabled:opacity-40 disabled:cursor-not-allowed";
+  let classes = "";
+
+  let disabledClasses =
+    "disabled:bg-gray4 disabled:cursor-not-allowed disabled:text-white";
 
   if (props.ghost) return classes;
 
@@ -93,16 +99,18 @@ const getClasses = computed(() => {
 
   switch (props.type) {
     case "outline":
-      classes = `${classes} border border-blue border text-blue btn-outlined btn-outlined`;
+      disabledClasses =
+        "disabled:bg-transparent disabled:cursor-not-allowed disabled:text-gray2 disabled:border-gray2 disabled:hover:bg-transparent";
+      classes = `${classes} ${disabledClasses} border border-blue border text-blue btn-outlined btn-outlined`;
       break;
     default:
-      classes = `${classes} bg-blue hover:bg-deepblue text-white`;
+      classes = `${classes} ${disabledClasses} bg-blue hover:bg-deepblue text-white `;
       break;
   }
 
   switch (props.shape) {
     case "circle":
-      classes = `${classes} rounded-full p-4.5`;
+      classes = `${classes} rounded-full p-4.5 shadow-xl`;
       break;
     default:
       classes = `${classes} rounded-lg`;

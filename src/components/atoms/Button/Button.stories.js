@@ -1,5 +1,5 @@
-import Button from "./Button.vue";
-import Icon from "./Icon.vue";
+import Button from "./index.vue";
+import Icon from "../Icon.vue";
 
 export default {
   title: "Atoms/Button",
@@ -10,9 +10,9 @@ export default {
       control: { type: "select" },
       options: ["normal", "outline"],
     },
-    state: {
-      control: { type: "select" },
-      options: ["default", "active", "disabled"],
+    disabled: {
+      type: Boolean,
+      default: false,
     },
     size: {
       control: { type: "select" },
@@ -20,7 +20,7 @@ export default {
     },
     shape: {
       control: { type: "select" },
-      options: ["round", "square"],
+      options: ["circle", "square"],
     },
   },
 };
@@ -30,7 +30,7 @@ export const ButtonComponent = (args) => ({
   setup() {
     return { args };
   },
-  template: `<Button v-bind="args" label="Button Sample"/>`,
+  template: `<Button v-bind="args" label="Button Sample" disabled />`,
 });
 
 export const ButtonIconText = (args) => ({
@@ -39,11 +39,17 @@ export const ButtonIconText = (args) => ({
     return { args };
   },
   template: `
-    <Button v-bind="args" label="Button Sample">
-      <template #icon>
-        <Icon name="add" />
-      </template>
-    </Button>
+    <Button v-bind="args" icon="send" label="Button Sample" disabled />
+  `,
+});
+
+export const ButtonOutline = (args) => ({
+  components: { Button, Icon },
+  setup() {
+    return { args };
+  },
+  template: `
+    <Button v-bind="args" type="outline" label="Button Sample" />
   `,
 });
 
@@ -53,10 +59,6 @@ export const ButtonIcon = (args) => ({
     return { args };
   },
   template: `
-    <Button v-bind="args" shape="round">
-      <template #icon>
-        <Icon name="add" />
-      </template>
-    </Button>
+    <Button v-bind="args" icon="add" shape="circle" disabled />
   `,
 });
