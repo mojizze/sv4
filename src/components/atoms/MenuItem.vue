@@ -1,6 +1,7 @@
 <template>
   <router-link
     :to="menu.link"
+    class="mb-6"
     :exact-active-class="
       menu.link === $route.path
         ? 'text-blue font-medium'
@@ -13,17 +14,14 @@
     "
   >
     <div class="mb-6">
-      <div class="mb-4 ml-8 flex list-none items-center justify-between">
+      <div class="mb-4 flex list-none items-center justify-between">
         <div class="flex items-center justify-start">
           <slot name="icon" />
           <span :class="{ 'ml-2.5': menu.icons }">{{ menu.name }}</span>
         </div>
         <slot name="chevron-icon" />
       </div>
-      <div
-        v-if="menu.children && selected === menu.name"
-        class="ml-10 flex flex-col"
-      >
+      <div v-if="menu.children && selected === menu.name" class="flex flex-col">
         <router-link
           v-for="childMenu in menu.children"
           :to="childMenu.link"

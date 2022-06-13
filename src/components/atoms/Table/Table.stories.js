@@ -34,7 +34,7 @@ export const TableComponent = (args) => ({
 
     return { args, columns, tableData, logger };
   },
-  template: `<Table :data="[]" v-bind="args" :columns="columns" :loading="false">
+  template: `<Table :data="tableData" v-bind="args" :columns="columns" :loading="false">
   <template v-slot:edit="{row}">
       <Button ghost icon="outlineEclipses" />
     </template>

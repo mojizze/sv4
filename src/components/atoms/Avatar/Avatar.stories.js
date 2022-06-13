@@ -1,4 +1,4 @@
-import Avatar from "./Avatar.vue";
+import Avatar from "./index.vue";
 
 export default {
   title: "Atoms/Avatar",

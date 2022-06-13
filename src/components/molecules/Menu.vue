@@ -6,7 +6,7 @@
       :menu="menu"
       :selected="selected"
     >
-      <template #icon>
+      <template v-if="menu.icon" #icon>
         <Icon class="mr-2.5 h-5 w-5" :name="menu.icon" />
       </template>
       <template #chevron-icon>

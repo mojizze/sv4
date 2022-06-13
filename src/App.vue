@@ -4,5 +4,4 @@ import { RouterView } from "vue-router";
 
 <template>
   <RouterView />
-  <div v-loading>Hello</div>
 </template>

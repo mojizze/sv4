@@ -71,7 +71,7 @@
 </template>
 
 <script setup>
-import { defineEmits, defineProps, computed } from "vue";
+import { computed } from "vue";
 import {
   Listbox,
   ListboxButton,
