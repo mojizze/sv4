@@ -2,13 +2,14 @@
   <router-link
     :to="menu.link"
     class="mb-6"
+    :id="menu.link"
     :exact-active-class="
-      menu.link === $route.path
+      menu.link === $route.name
         ? 'text-blue font-medium'
         : 'text-gray2 font-normal'
     "
     :active-class="
-      menu.link === $route.path
+      menu.link === $route.name
         ? 'text-blue font-medium'
         : 'text-gray2 font-normal'
     "
@@ -28,12 +29,12 @@
           :key="childMenu.name"
           class="border-l border-l-gray5 px-3 pb-3 text-sm last:pb-0"
           :exact-active-class="
-            menu.link === $route.path
+            menu.link === $route.name
               ? 'border-l-blue text-blue'
               : 'border-l-gray5 text-gray2'
           "
           :active-class="
-            menu.link === $route.path
+            menu.link === $route.name
               ? 'border-l-blue text-blue'
               : 'border-l-gray5 text-gray2'
           "

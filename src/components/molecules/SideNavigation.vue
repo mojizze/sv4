@@ -45,19 +45,19 @@ import { ref } from "vue";
 const navigation = ref([
   {
     name: "Dashboard",
-    link: "#",
+    link: "dashboard",
     children: null,
     icon: "home",
   },
   {
     name: "Statements",
-    link: "#",
+    link: "statements",
     children: null,
     icon: "statement",
   },
   {
     name: "Payments",
-    link: "#",
+    link: "payments",
     children: [
       {
         name: "Payment Category",
@@ -84,7 +84,7 @@ const navigation = ref([
   },
   {
     name: "Collections",
-    link: "#",
+    link: "collections",
     icon: "send",
     children: [
       {
@@ -107,13 +107,13 @@ const navigation = ref([
   },
   {
     name: "Beneficiaries",
-    link: "#",
+    link: "beneficiaries",
     children: null,
     icon: "beneficiary",
   },
   {
     name: "Accounts",
-    link: "#",
+    link: "accounts",
     children: null,
     icon: "wallet",
   },

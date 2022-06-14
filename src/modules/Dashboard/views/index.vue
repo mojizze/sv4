@@ -1,5 +1,11 @@
 <template>
-  <p class="font-bold text-blue">Hello World</p>
+  <AuthenticatedLayout>
+    <template #content>
+      <p>Hello</p>
+    </template>
+  </AuthenticatedLayout>
 </template>
 
-<script setup></script>
+<script setup>
+import AuthenticatedLayout from "@/components/organisims/AuthenticatedLayout.vue";
+</script>

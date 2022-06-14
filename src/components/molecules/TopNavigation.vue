@@ -5,7 +5,7 @@
         @click="$emit('displayMenu')"
         class="h-5 w-5 cursor-pointer md:hidden"
       />
-      <p class="text-2xl font-bold text-black1">Accounts</p>
+      <p class="text-2xl font-bold text-black1">{{ page }}</p>
     </div>
     <div class="hidden md:flex">
       <Menu as="div" class="relative mr-6 inline-block text-left">
@@ -71,4 +71,11 @@ import Button from "@/components/atoms/Button/index.vue";
 import Icon from "../atoms/Icon.vue";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import { MenuAlt2Icon } from "@heroicons/vue/solid";
+
+defineProps({
+  page: {
+    type: String,
+    default: "Dashboard",
+  },
+});
 </script>
