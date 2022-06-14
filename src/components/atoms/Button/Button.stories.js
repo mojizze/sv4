@@ -10,10 +10,6 @@ export default {
       control: { type: "select" },
       options: ["normal", "outline"],
     },
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
     size: {
       control: { type: "select" },
       options: ["small", "normal", "medium", "large"],
@@ -30,7 +26,7 @@ export const ButtonComponent = (args) => ({
   setup() {
     return { args };
   },
-  template: `<Button v-bind="args" label="Button Sample" disabled />`,
+  template: `<Button v-bind="args" label="Button Sample" />`,
 });
 
 export const ButtonIconText = (args) => ({
@@ -39,7 +35,7 @@ export const ButtonIconText = (args) => ({
     return { args };
   },
   template: `
-    <Button v-bind="args" icon="send" label="Button Sample" disabled />
+    <Button v-bind="args" icon="send" label="Button Sample" />
   `,
 });
 
@@ -59,6 +55,6 @@ export const ButtonIcon = (args) => ({
     return { args };
   },
   template: `
-    <Button v-bind="args" icon="add" shape="circle" disabled />
+    <Button v-bind="args" icon="add" shape="circle" />
   `,
 });

@@ -1,0 +1,74 @@
+<template>
+  <div class="flex items-center justify-between">
+    <div class="flex w-full items-center justify-between md:flex-1">
+      <MenuAlt2Icon
+        @click="$emit('displayMenu')"
+        class="h-5 w-5 cursor-pointer md:hidden"
+      />
+      <p class="text-2xl font-bold text-black1">Accounts</p>
+    </div>
+    <div class="hidden md:flex">
+      <Menu as="div" class="relative mr-6 inline-block text-left">
+        <div>
+          <MenuButton
+            class="flex items-center rounded-lg bg-blue px-9 py-4.5 text-lg font-bold text-white hover:bg-deepblue disabled:cursor-not-allowed disabled:bg-gray4 disabled:text-white"
+          >
+            <Icon name="white-send" class="mr-4" />
+            Send Payment
+          </MenuButton>
+        </div>
+
+        <transition
+          enter-active-class="transition ease-out duration-100"
+          enter-from-class="transform opacity-0 scale-95"
+          enter-to-class="transform opacity-100 scale-100"
+          leave-active-class="transition ease-in duration-75"
+          leave-from-class="transform opacity-100 scale-100"
+          leave-to-class="transform opacity-0 scale-95"
+        >
+          <MenuItems
+            class="absolute right-0 mt-2 w-56 origin-top-right rounded bg-white shadow focus:outline-none"
+          >
+            <div class="py-1">
+              <MenuItem v-slot="{ active }">
+                <a
+                  href="#"
+                  :class="[
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm',
+                  ]"
+                  >Account settings</a
+                >
+              </MenuItem>
+              <MenuItem v-slot="{ active }">
+                <a
+                  href="#"
+                  :class="[
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm',
+                  ]"
+                  >Support</a
+                >
+              </MenuItem>
+            </div>
+          </MenuItems>
+        </transition>
+      </Menu>
+      <Button size="tiny" class="mr-6 bg-white" icon="notification" />
+      <Button size="tiny" class="bg-white" icon="mode">
+        <template #icon>
+          <div v-if="icon" class="grid place-items-center">
+            <Icon name="mode" :fill-stroke="'text-blue'" />
+          </div>
+        </template>
+      </Button>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import Button from "@/components/atoms/Button/index.vue";
+import Icon from "../atoms/Icon.vue";
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
+import { MenuAlt2Icon } from "@heroicons/vue/solid";
+</script>

@@ -7,15 +7,16 @@
     @click.prevent="$emit('btn:clicked')"
   >
     <div class="flex items-center justify-center">
-      <div
-        v-if="icon"
-        class="grid place-items-center"
-        :class="{ 'mr-4': label }"
-      >
-        <Icon :name="icon" />
-      </div>
+      <slot name="icon">
+        <div
+          v-if="icon"
+          class="grid place-items-center"
+          :class="{ 'mr-4': label }"
+        >
+          <Icon :name="icon" />
+        </div>
+      </slot>
       <span v-if="label">{{ label }}</span>
-      <slot></slot>
     </div>
   </button>
 </template>
@@ -44,7 +45,7 @@ const props = defineProps({
     type: String,
     default: "normal",
     validator(value) {
-      return ["small", "normal", "medium", "large"].includes(value);
+      return ["small", "normal", "medium", "large", "tiny"].includes(value);
     },
   },
 
@@ -52,10 +53,12 @@ const props = defineProps({
     type: String,
     required: false,
   },
+
   icon: {
     type: String,
     required: false,
   },
+
   ghost: {
     type: Boolean,
     required: false,
@@ -80,6 +83,9 @@ const getClasses = computed(() => {
 
   if (props.shape !== "circle")
     switch (props.size) {
+      case "tiny":
+        classes = `${classes} p-5 text-sm`;
+        break;
       case "small":
         classes = `${classes} px-7 py-3.5 text-sm`;
         break;
@@ -101,7 +107,7 @@ const getClasses = computed(() => {
     case "outline":
       disabledClasses =
         "disabled:bg-transparent disabled:cursor-not-allowed disabled:text-gray2 disabled:border-gray2 disabled:hover:bg-transparent";
-      classes = `${classes} ${disabledClasses} border border-blue border text-blue btn-outlined btn-outlined`;
+      classes = `${classes} ${disabledClasses} border-2 border-blue border text-blue btn-outlined btn-outlined`;
       break;
     default:
       classes = `${classes} ${disabledClasses} bg-blue hover:bg-deepblue text-white `;

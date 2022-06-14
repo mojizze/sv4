@@ -1,5 +1,5 @@
 <template>
-  <component :is="icon" />
+  <component :is="icon" :class="{ fillStroke: true }" />
 </template>
 
 <script setup>
@@ -9,6 +9,11 @@ const props = defineProps({
   name: {
     type: String,
     required: true,
+  },
+
+  fillStroke: {
+    type: String,
+    default: null,
   },
 });
 
