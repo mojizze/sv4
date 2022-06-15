@@ -15,7 +15,7 @@ const Template = (args) => ({
     return { ...args };
   },
   template: `
-    <div class="w-full h-full bg-white">
+    <div class="w-55 h-full bg-white">
       <side-navigation />
     </div>
   `,

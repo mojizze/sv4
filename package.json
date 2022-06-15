@@ -34,7 +34,8 @@
     "v-onboarding": "^1.1.1",
     "vite-svg-loader": "^3.3.0",
     "vue": "^3.2.36",
-    "vue-router": "^4.0.15"
+    "vue-router": "^4.0.15",
+    "vue3-transitions": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.2",

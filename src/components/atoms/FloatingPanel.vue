@@ -1,23 +1,30 @@
 <template>
-  <div v-if="value">
-    <Backdrop class="z-10" />
-    <div
-      class="absolute inset-y-0 left-0 z-20 h-full bg-white"
-      :class="[
-        { 'left-0': position === 'left', 'right-0': position === 'right' },
-        classes,
-      ]"
-    >
-      <slot name="close">
-        <Icon
-          name="close"
-          @click="value = false"
-          class="absolute top-10 right-14 cursor-pointer"
-        />
-      </slot>
-      <slot name="content" />
+  <transition
+    enter-active-class="transition-opacity duration-200"
+    leave-active-class="transition-opacity duration-300"
+    enter-class="opacity-0"
+    leave-to-class="opacity-0"
+  >
+    <div v-if="value">
+      <Backdrop class="z-10" />
+      <div
+        class="absolute inset-y-0 left-0 z-20 h-full bg-white"
+        :class="[
+          { 'left-0': position === 'left', 'right-0': position === 'right' },
+          classes,
+        ]"
+      >
+        <slot name="close">
+          <Icon
+            name="close"
+            @click="value = false"
+            class="absolute top-10 right-14 cursor-pointer"
+          />
+        </slot>
+        <slot name="content" />
+      </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script setup>

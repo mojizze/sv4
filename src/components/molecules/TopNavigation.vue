@@ -11,7 +11,7 @@
       <Menu as="div" class="relative mr-6 inline-block text-left">
         <div>
           <MenuButton
-            class="flex items-center rounded-lg bg-blue px-9 py-4.5 text-lg font-bold text-white hover:bg-deepblue disabled:cursor-not-allowed disabled:bg-gray4 disabled:text-white"
+            class="flex items-center rounded-lg bg-blue px-9 py-4.5 text-lg font-bold text-white hover:bg-deepblue"
           >
             <Icon name="white-send" class="mr-4" />
             Send Payment
@@ -29,26 +29,14 @@
           <MenuItems
             class="absolute right-0 mt-2 w-56 origin-top-right rounded bg-white shadow focus:outline-none"
           >
-            <div class="py-1">
-              <MenuItem v-slot="{ active }">
-                <a
-                  href="#"
-                  :class="[
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm',
-                  ]"
-                  >Account settings</a
+            <div class="space-y-6 p-6">
+              <MenuItem>
+                <a href="#" class="block font-bold text-black1"
+                  >Single Payment</a
                 >
               </MenuItem>
-              <MenuItem v-slot="{ active }">
-                <a
-                  href="#"
-                  :class="[
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm',
-                  ]"
-                  >Support</a
-                >
+              <MenuItem>
+                <a href="#" class="block font-bold text-black1">Bulk Payment</a>
               </MenuItem>
             </div>
           </MenuItems>

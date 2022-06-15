@@ -3,6 +3,7 @@ import { createPinia } from "pinia";
 import App from "./App.vue";
 import "./assets/css/index.css";
 import router from "./router";
+import Vue3Transitions from "vue3-transitions";
 
 const app = createApp(App);
 
@@ -16,5 +17,6 @@ app.directive("loading", (el) => {
 
 app.use(createPinia());
 app.use(router);
+app.use(Vue3Transitions);
 
 app.mount("#app");

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="z-30">
     <MenuItem
       v-for="menu in navigation"
       :key="menu.name"
@@ -7,14 +7,23 @@
       :selected="selected"
     >
       <template v-if="menu.icon" #icon>
-        <Icon class="mr-2.5 h-5 w-5" :name="menu.icon" />
+        <Icon
+          class="mr-2.5 h-5 w-5"
+          :class="{ 'text-blue': menu.link === $route.name }"
+          :name="menu.icon"
+        />
+      </template>
+      <template #parent>
+        <span class="cursor-pointer" @click="setSelectedMenu(menu.name)">{{
+          menu.name
+        }}</span>
       </template>
       <template #chevron-icon>
         <Icon
           name="arrow"
           @click="setSelectedMenu(menu.name)"
           v-if="menu.children"
-          class="mr-4"
+          class="mr-4 cursor-pointer"
           :class="{ 'rotate-[180deg]': selected !== menu.name }"
         />
       </template>

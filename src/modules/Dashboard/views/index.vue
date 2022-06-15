@@ -1,8 +1,6 @@
 <template>
   <AuthenticatedLayout>
-    <template #content>
-      <p>Hello</p>
-    </template>
+    <template #content> </template>
   </AuthenticatedLayout>
 </template>
 

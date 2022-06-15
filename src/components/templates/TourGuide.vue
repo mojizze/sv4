@@ -51,11 +51,7 @@
 </template>
 
 <script setup>
-import {
-  VOnboardingWrapper,
-  VOnboardingStep,
-  useVOnboarding,
-} from "v-onboarding";
+import { VOnboardingWrapper, VOnboardingStep } from "v-onboarding";
 import "v-onboarding/dist/style.css";
 import { onMounted, ref } from "vue";
 
@@ -99,11 +95,11 @@ const options = {
 };
 
 const wrapper = ref(null);
-const { start } = useVOnboarding(wrapper);
+// const { start } = useVOnboarding(wrapper);
 
 onMounted(() => {
   if (window.innerWidth >= 1024) {
-    start();
+    // start();
   }
 });
 </script>

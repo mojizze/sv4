@@ -27,7 +27,7 @@ body,
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: black white;
+  scrollbar-color: #244462 white;
 }
 
 ::-webkit-scrollbar {
