@@ -31,6 +31,7 @@ module.exports = {
           'Modal',
           'Badges',
           "index",
+          "Card",
         ],
       },
     ],
