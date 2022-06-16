@@ -163,6 +163,7 @@ module.exports = {
       // Neutral gray shades.
       blue: "#0085FF",
       deepblue: "#0066FF",
+      lightblue: "#C1E0FC",
 
       // State Colors.
       info: "#3DA1FD",
