@@ -1,28 +1,22 @@
 import SelectField from "./SelectField.vue";
-import { ref } from "vue";
 
 export default {
   title: "Atoms/SelectField",
-  component: SelectField,
+  components: SelectField,
 
-  argsTypes: {},
+  argTypes: {
+    width: 500,
+  },
 };
 
-export const SimpleSelectField = (args) => ({
+export const AvatarComponent = (args) => ({
   components: { SelectField },
   setup() {
-    const people = ref([
-      { name: "Wade Cooper" },
-      { name: "Arlene Mccoy" },
-      { name: "Devon Webb" },
-      { name: "Tom Cook" },
-      { name: "Tanya Fox" },
-      { name: "Hellen Schmidt" },
-      { name: "Hellen Scholes" },
-      { name: "Steven Schmidt" },
-    ]);
-    const model = ref(people.value[0]);
-    return { args, people, model };
+    const OPTIONS = new Array(124)
+      .fill()
+      .map((_, i) => ({ label: i + 1, value: i + 1 }));
+    console.log("OPTIONS :", OPTIONS);
+    return { args, OPTIONS };
   },
-  template: `<SelectField v-bind="args" :options="people" :model-value="model" property="name" @update:modelValue="(value) => model = value"/>`,
+  template: `<SelectField v-bind="args" :width="50" :options="OPTIONS" />`,
 });

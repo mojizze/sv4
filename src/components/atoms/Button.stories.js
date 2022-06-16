@@ -1,5 +1,5 @@
-import Button from "./index.vue";
-import Icon from "../Icon.vue";
+import Button from "./Button.vue";
+import Icon from "./Icon.vue";
 
 export default {
   title: "Atoms/Button",

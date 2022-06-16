@@ -1,30 +1,42 @@
 <template>
-  <div class="">
-    <label class="text-xs text-gray1" v-if="label">{{ label }}</label>
-    <input
-      :type="type"
-      :value="modelValue"
-      :min="min"
-      :max="max"
-      :maxlength="maxLength"
-      :minlength="minLength"
-      @keypress="preventInputType"
-      @input="$emit('update:modelValue', $event.target.value)"
-      class="w-full py-3.5 pl-4 text-sm text-black1 outline-none placeholder:text-sm placeholder:text-[#C4C4C4]"
-      :class="[
-        {
-          'border-blue': focus && !error && !success,
-          'border-[#E7ECE8]': !focus && !error && !success,
-          'border-[#E47A7A]': error,
-          'border-[#27AEAE]': success,
-        },
-        borderRadius,
-        border,
-      ]"
-      :placeholder="placeholderText"
-      @focus="focus = true"
-      @blur="focus = false"
-    />
+  <div>
+    <label class="text-xs text-gray1" :for="label" v-if="label">{{
+      label
+    }}</label>
+    <div class="relative">
+      <input
+        :id="label"
+        :type="type"
+        :name="name"
+        :value="modelValue"
+        :min="min"
+        :max="max"
+        :maxlength="maxLength"
+        :minlength="minLength"
+        @keypress="preventInputType"
+        @input="$emit('update:modelValue', $event.target.value)"
+        class="w-full py-3.5 px-4 text-sm text-black1 outline-none placeholder:text-sm placeholder:text-[#C4C4C4]"
+        :class="[
+          {
+            'border-blue': focus && !error && !success,
+            'border-[#E7ECE8]': !focus && !error && !success,
+            'border-[#E47A7A]': error,
+            'border-[#27AEAE]': success,
+          },
+          borderRadius,
+          border,
+        ]"
+        :placeholder="placeholderText"
+        @focus="focus = true"
+        @blur="focus = false"
+      />
+      <Icon
+        v-if="suffixIcon"
+        :name="suffixIcon"
+        class="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
+        @click="$emit('toggle-password-visibility')"
+      />
+    </div>
     <div
       v-if="error"
       class="mt-1 flex w-full items-center justify-start rounded bg-[#FFD4D4] py-0.5 pl-2 text-xs text-[#DF1818]"
@@ -36,7 +48,7 @@
       v-if="success"
       class="mt-1 flex w-full items-center justify-start rounded bg-green1/25 py-0.5 pl-2 text-xs text-green1"
     >
-      <Icon name="check" class="mr-2" />
+      <Icon name="greenCheck" class="mr-2" />
       <p>{{ successText }}</p>
     </div>
   </div>
@@ -56,13 +68,19 @@ const props = defineProps({
     type: String,
     default: "text",
     validator(value) {
-      return ["text", "number", "password", "text-only"].includes(value);
+      return ["text", "number", "password", "text-only", "tel"].includes(value);
     },
   },
 
   label: {
     type: String,
     default: null,
+  },
+  suffixIcon: {
+    type: String,
+  },
+  name: {
+    type: String,
   },
 
   min: {
@@ -120,7 +138,7 @@ const props = defineProps({
     default: "",
   },
 });
-defineEmits(["update:modelValue"]);
+defineEmits(["update:modelValue", "toggle-password-visibility"]);
 const focus = ref(false);
 
 function preventInputType(evt) {
