@@ -27,14 +27,14 @@
     />
     <div
       v-if="error"
-      class="rounded mt-1 flex w-full items-center justify-start bg-[#FFD4D4] py-0.5 pl-2 text-xs text-[#DF1818]"
+      class="mt-1 flex w-full items-center justify-start rounded bg-[#FFD4D4] py-0.5 pl-2 text-xs text-[#DF1818]"
     >
       <Icon name="alarm" class="mr-2" />
       <p>{{ errorText }}</p>
     </div>
     <div
       v-if="success"
-      class="rounded mt-1 flex w-full items-center justify-start bg-green1/25 py-0.5 pl-2 text-xs text-green1"
+      class="mt-1 flex w-full items-center justify-start rounded bg-green1/25 py-0.5 pl-2 text-xs text-green1"
     >
       <Icon name="check" class="mr-2" />
       <p>{{ successText }}</p>
