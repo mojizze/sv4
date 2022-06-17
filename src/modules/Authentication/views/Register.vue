@@ -57,8 +57,11 @@
                 <label class="text-xs text-gray1"
                   >Business Type
                   <SelectField
+                    class="w-full"
                     :options="BUSINESS_OPTIONS"
-                    placeholderText="Select an option"
+                    display-property="label"
+                    value-property="value"
+                    v-model="form.business_type"
                   />
                 </label>
               </div>
@@ -128,6 +131,7 @@ const form = ref({
   firstName: "",
   password: "",
   confirm: false,
+  business_type: "",
 });
 
 const BUSINESS_OPTIONS = [

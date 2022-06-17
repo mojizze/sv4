@@ -1,21 +1,47 @@
 import SelectField from "./SelectField.vue";
+import { ref } from "vue";
 
 export default {
   title: "Atoms/SelectField",
-  components: SelectField,
+  component: SelectField,
 
-  argTypes: {
-    width: 500,
-  },
+  argsTypes: {},
 };
 
-export const SelectComponent = (args) => ({
+export const SimpleSelectField = (args) => ({
   components: { SelectField },
   setup() {
-    const OPTIONS = new Array(124)
-      .fill()
-      .map((_, i) => ({ label: i + 1, value: i + 1 }));
-    return { args, OPTIONS };
+    const people = ref([
+      { name: "Wade Cooper" },
+      { name: "Arlene Mccoy" },
+      { name: "Devon Webb" },
+      { name: "Tom Cook" },
+      { name: "Tanya Fox" },
+      { name: "Hellen Schmidt" },
+      { name: "Hellen Scholes" },
+      { name: "Steven Schmidt" },
+    ]);
+    const model = ref(people.value[0]);
+    return { args, people, model };
   },
-  template: `<SelectField v-bind="args" :width="50" :options="OPTIONS" />`,
+  template: `<SelectField class="w-70" v-bind="args" :options="people" display-property="name" value-property="name" v-model="model" />`,
+});
+
+export const SearchSelectField = (args) => ({
+  components: { SelectField },
+  setup() {
+    const people = ref([
+      { name: "Wade Cooper" },
+      { name: "Arlene Mccoy" },
+      { name: "Devon Webb" },
+      { name: "Tom Cook" },
+      { name: "Tanya Fox" },
+      { name: "Hellen Schmidt" },
+      { name: "Hellen Scholes" },
+      { name: "Steven Schmidt" },
+    ]);
+    const model = ref(people.value[0]);
+    return { args, people, model };
+  },
+  template: `<SelectField class="w-70" :search="true" v-bind="args" :options="people" display-property="name" value-property="name" v-model="model"/>`,
 });
