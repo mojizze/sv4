@@ -46,7 +46,7 @@
               >
                 <li
                   :class="[
-                    active ? 'text-amber-900 bg-teal1' : 'text-gray-900',
+                    active ? 'bg-teal1' : 'text-black',
                     'relative cursor-pointer select-none py-2 pl-10 pr-4',
                   ]"
                 >
@@ -84,6 +84,7 @@ import {
 import { CheckIcon } from "@heroicons/vue/solid";
 import TextField from "@/components/atoms/TextField.vue";
 import Icon from "./Icon.vue";
+import { find } from "lodash";
 
 const props = defineProps({
   displayProperty: {
@@ -121,10 +122,10 @@ const emit = defineEmits(["update:modelValue"]);
 
 const selectedValue = computed({
   get() {
-    return props.modelValue;
+    return find(props.options, { [props.valueProperty]: props.modelValue });
   },
   set(value) {
-    emit("update:modelValue", value);
+    emit("update:modelValue", value[props.valueProperty]);
   },
 });
 </script>
