@@ -55,7 +55,7 @@
 </template>
 
 <script setup>
-import Button from "@/components/atoms/Button/index.vue";
+import Button from "@/components/atoms/Button.vue";
 import Icon from "../atoms/Icon.vue";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 

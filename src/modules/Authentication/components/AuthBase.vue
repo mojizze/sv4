@@ -1,5 +1,5 @@
 <template>
-  <div class="flex h-screen w-full">
+  <div class="flex h-screen w-full overflow-hidden">
     <div
       class="hidden w-[644px] flex-col space-y-10 bg-[#F1FAF9] px-12 py-7 lg:flex"
     >
@@ -25,7 +25,7 @@
         </slot>
       </div>
     </div>
-    <div class="flex flex-1 flex-col py-7 px-10 lg:px-12">
+    <div class="flex flex-1 flex-col overflow-auto py-7 px-10 lg:px-12">
       <slot name="content" />
     </div>
   </div>

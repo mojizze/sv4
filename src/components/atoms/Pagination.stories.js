@@ -1,4 +1,4 @@
-import Pagination from "./index.vue";
+import Pagination from "./Pagination.vue";
 
 export default {
   title: "Atoms/Pagination",

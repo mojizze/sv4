@@ -139,6 +139,7 @@ const props = defineProps({
   },
 });
 defineEmits(["update:modelValue", "toggle-password-visibility"]);
+
 const focus = ref(false);
 
 function preventInputType(evt) {

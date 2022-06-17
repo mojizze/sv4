@@ -15,10 +15,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(row, index) in data" :key="index">
+      <tr v-for="row in data" :key="row[main]">
         <td
-          v-for="(column, index) in columns"
-          :key="column.prop || index"
+          v-for="column in columns"
+          :key="column.prop || Table"
           class="p-4 text-sm"
         >
           <TableColumn>
@@ -53,6 +53,7 @@ import { get } from "lodash";
 defineProps({
   columns: { type: Array, required: true },
   data: { type: Array, required: true },
+  main: { type: String, default: "id" },
   emptyText: { type: String, default: "No data" },
   loading: { type: Boolean, required: true, default: false },
 });

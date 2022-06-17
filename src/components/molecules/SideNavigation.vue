@@ -39,7 +39,7 @@
 import Menu from "./Menu.vue";
 import MenuItem from "@/components/atoms/MenuItem.vue";
 import Icon from "@/components/atoms/Icon.vue";
-import Avatar from "@/components/atoms/Avatar/index.vue";
+import Avatar from "@/components/atoms/Avatar.vue";
 import { MenuDetails } from "@/helpers/Navigation";
 import { ref } from "vue";
 const navigation = ref(MenuDetails);

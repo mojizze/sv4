@@ -21,9 +21,7 @@ body,
   max-width: 1440px;
 }
 
-#app {
-  @apply lg:p-2;
-}
+
 
 * {
   scrollbar-width: thin;

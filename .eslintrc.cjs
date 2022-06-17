@@ -32,6 +32,7 @@ module.exports = {
           'Badges',
           "index",
           "Card",
+          "Pagination",
         ],
       },
     ],

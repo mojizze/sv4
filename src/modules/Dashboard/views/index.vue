@@ -2,7 +2,7 @@
   <AuthenticatedLayout>
     <template #content>
       <div
-        class="mt-6 grid h-full w-full grid-cols-1 overflow-auto lg:grid-cols-1 lg:gap-6"
+        class="mt-6 grid h-full w-full grid-cols-1 overflow-auto lg:grid-cols-5 lg:gap-6"
       >
         <div class="mr-0 block w-full lg:col-span-3 lg:flex-col">
           <BankAccounts class="mb-6" />

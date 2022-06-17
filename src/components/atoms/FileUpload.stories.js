@@ -1,4 +1,4 @@
-import FileUpload from "./index.vue";
+import FileUpload from "./FileUpload.vue";
 
 export default {
   title: "Atoms/FileUpload",

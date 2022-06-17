@@ -20,8 +20,8 @@
 </template>
 
 <script setup>
-import Select from "../Select/index.vue";
-import Button from "../Button/index.vue";
+import Select from "./SelectField.vue";
+import Button from "./Button.vue";
 
 const OPTIONS = new Array(124)
   .fill()
