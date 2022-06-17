@@ -30,6 +30,7 @@
                   <Button
                     label="Create Account"
                     ghost
+                    underline
                     class="text-blue"
                     @click="$router.push('/register')"
                   />

@@ -64,7 +64,7 @@
                   suffixIcon="eyeShow"
                   v-model="formData.password"
                 />
-                <div class="space-x-5 text-xs">
+                <div class="mt-1 space-x-5 text-xs">
                   <span class="inline-flex items-center space-x-2">
                     <Icon name="checkBlack" />
                     <span>at least 8 characters long</span>
@@ -88,6 +88,7 @@
                     label="Sign in"
                     ghost
                     class="text-blue"
+                    underline
                     @click="$router.push('/login')"
                   />
                 </div>
