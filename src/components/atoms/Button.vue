@@ -1,7 +1,7 @@
 <template>
   <button
     type="button"
-    class="font-bold"
+    class=""
     :class="[getClasses]"
     :disabled="disabled"
     @click.prevent="$emit('btn:clicked')"
@@ -77,12 +77,12 @@ const props = defineProps({
 });
 
 const getClasses = computed(() => {
-  let classes = "";
+  let classes = "font-bold";
 
   let disabledClasses =
     "disabled:bg-gray4 disabled:cursor-not-allowed disabled:text-white";
 
-  if (props.ghost) return classes;
+  if (props.ghost) return "";
 
   if (props.shape !== "circle")
     switch (props.size) {
