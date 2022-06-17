@@ -23,7 +23,9 @@
         <div class="flex min-h-0 flex-1 flex-col overflow-auto py-5">
           <div class="mx-auto flex flex-col space-y-10 lg:w-3/4">
             <div class="space-y-1">
-              <div class="text-2xl font-semibold">Sign Up to SoftPay</div>
+              <div class="text-2xl font-medium text-black1">
+                Sign Up to SoftPay
+              </div>
               <div>
                 Provide details that match with a valid business document.
               </div>
@@ -82,7 +84,12 @@
                 <Button label="Continue" class="w-full" @click="submit" />
                 <div class="text-center">
                   Already have an account?
-                  <Button label="Sign in" ghost class="text-blue" />
+                  <Button
+                    label="Sign in"
+                    ghost
+                    class="text-blue"
+                    @click="$router.push('/login')"
+                  />
                 </div>
               </div>
             </div>
@@ -124,8 +131,4 @@ const submit = () => {
 watch(accountType, (type) => {
   console.log(type);
 });
-
-// watch(formData, (form) => {
-//   console.log(form);
-// });
 </script>

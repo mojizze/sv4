@@ -11,7 +11,10 @@
         <div
           v-if="icon"
           class="grid place-items-center"
-          :class="{ 'mr-4': label }"
+          :class="{
+            'mr-4': label && size !== 'tiny',
+            'mr-2': label && size === 'tiny',
+          }"
         >
           <Icon :name="icon" />
         </div>
@@ -84,7 +87,7 @@ const getClasses = computed(() => {
   if (props.shape !== "circle")
     switch (props.size) {
       case "tiny":
-        classes = `${classes} px-5 py-2 text-sm`;
+        classes = `${classes} px-5 py-2 text-xs`;
         break;
       case "small":
         classes = `${classes} px-7 py-3 text-sm`;
