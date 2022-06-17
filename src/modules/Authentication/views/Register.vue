@@ -139,7 +139,12 @@
                 />
                 <div class="text-center">
                   Already have an account?
-                  <Button label="Sign in" ghost class="mb-10 text-blue" />
+                  <Button
+                    label="Sign in"
+                    ghost
+                    class="text-blue"
+                    @click="$router.push('/login')"
+                  />
                 </div>
               </div>
             </div>
