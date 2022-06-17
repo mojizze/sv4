@@ -26,7 +26,9 @@
               />
               <Button
                 icon="call"
-                label="Use phone number instead"
+                :label="`Use ${
+                  !showPhoneNumber ? 'phone number' : 'email'
+                } instead`"
                 class="text-xs font-light text-blue decoration-solid"
                 size="tiny"
                 @click="showPhoneNumber = !showPhoneNumber"
@@ -52,6 +54,7 @@
                     label="Reset Password"
                     ghost
                     class="text-blue"
+                    underline
                     @click="$router.push('/forgot-password')"
                   />
                 </div>
@@ -62,6 +65,7 @@
                     label="Create Account"
                     ghost
                     class="text-blue"
+                    underline
                     @click="$router.push('/register')"
                   />
                 </div>

@@ -143,6 +143,7 @@
                     label="Sign in"
                     ghost
                     class="text-blue"
+                    underline
                     @click="$router.push('/login')"
                   />
                 </div>

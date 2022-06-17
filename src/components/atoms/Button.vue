@@ -18,7 +18,7 @@
           <Icon :name="icon" />
         </div>
       </slot>
-      <span v-if="label && !loading">{{ label }}</span>
+      <span v-if="label && !loading" :class="{ 'underline underline-offset-2': underline }">{{ label }}</span>
       <svg
         v-if="loading"
         role="status"
@@ -54,17 +54,18 @@ const props = defineProps({
       return ["default", "outline", "light"].includes(value);
     },
   },
-
+  underline: {
+    type: Boolean,
+    default: false,
+  },
   disabled: {
     type: Boolean,
     default: false,
   },
-
   loading: {
     type: Boolean,
     default: false,
   },
-
   size: {
     type: String,
     default: "normal",
@@ -72,22 +73,18 @@ const props = defineProps({
       return ["small", "normal", "medium", "large", "tiny"].includes(value);
     },
   },
-
   label: {
     type: String,
     required: false,
   },
-
   icon: {
     type: String,
     required: false,
   },
-
   ghost: {
     type: Boolean,
     required: false,
   },
-
   shape: {
     type: String,
     default: "square",
