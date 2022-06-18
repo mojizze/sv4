@@ -158,6 +158,7 @@
 
 <script setup>
 import AuthBase from "../components/AuthBase.vue";
+// import Header from "../components/Header.vue";
 import Button from "../../../components/atoms/Button.vue";
 import TextField from "../../../components/atoms/TextField.vue";
 import SelectField from "../../../components/atoms/SelectField.vue";

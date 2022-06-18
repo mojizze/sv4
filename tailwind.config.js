@@ -232,6 +232,7 @@ module.exports = {
       lg: ["18px", { lineHeight: "25.2px" }],
       xl: ["20px", { lineHeight: "28px" }],
       "2xl": ["24px", { lineHeight: "26.4px" }],
+      "4xl": ["32px", { lineHeight: "19.6px" }],
     },
   },
 };
