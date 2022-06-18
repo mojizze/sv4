@@ -13,7 +13,7 @@
             <Icon :name="icon" />
             <div>{{ title }}</div>
           </div>
-          <div>
+          <div class="text-base">
             {{ description }}
           </div>
         </div>
@@ -25,12 +25,38 @@
           class="flex min-h-0 flex-1 flex-col items-center justify-center overflow-auto py-5"
         >
           <div class="mx-auto flex flex-col space-y-10 lg:w-3/4">
-            <Header
-              title="Verify Account"
-              :subtitle="subtitle"
-              class="pr-24"
-              goBack
-            />
+            <div class="mb-15">
+              <Button
+                icon="arrowLeft"
+                label="Go Back"
+                ghost
+                class="text-xs"
+                size="tiny"
+                @click="$router.back()"
+              />
+            </div>
+            <div class="space-y-1">
+              <div class="text-xl font-semibold text-black1">
+                Verify Account
+              </div>
+              <div>
+                We sent a 5-digit code to
+                <span
+                  class="text-lg font-semibold text-black1 underline underline-offset-2"
+                  >{{
+                    !verifyWithEmail ? "qonyekachi@gmail.com" : "07023567898"
+                  }}</span
+                >. Enter code below to verify your account.
+              </div>
+            </div>
+            <div>
+              <Button
+                label="Request Voice Call"
+                ghost
+                underline
+                class="font-semibold text-blue"
+              />
+            </div>
             <div class="space-y-3">
               <CodeInput
                 :fields="3"
@@ -40,7 +66,24 @@
               />
 
               <div class="space-y-10 pt-10">
-                <Button label="Continue" class="w-full" @click="submit" />
+                <div class="text-center">
+                  Didn’t get code yet?
+                  <span class="text-green1 underline underline-offset-2"
+                    >00:30 sec</span
+                  >
+                </div>
+                <div class="text-center">
+                  <Button
+                    :label="`Verify With ${
+                      verifyWithEmail ? 'Email Address' : 'Phone Number'
+                    } Instead`"
+                    ghost
+                    underline
+                    class="font-semibold text-blue"
+                    @click="verifyWithEmail = !verifyWithEmail"
+                  />
+                </div>
+                <Button label="Verify Account" class="w-full" @click="submit" />
                 <div class="text-center">
                   New user?
                   <Button
@@ -48,7 +91,7 @@
                     ghost
                     underline
                     class="text-blue"
-                    @click="$router.push('/register')"
+                    @click="$router.push('register')"
                   />
                 </div>
               </div>
@@ -62,18 +105,15 @@
 
 <script setup>
 import AuthBase from "../components/AuthBase.vue";
-import Header from "../components/Header.vue";
 import CodeInput from "../components/CodeInput.vue";
 import Button from "@components/atoms/Button.vue";
 import Icon from "@components/atoms/Icon.vue";
-import { ref, computed } from "vue";
-import router from "@router/index.js";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
 
+const { push } = useRouter();
 const formData = ref({});
-
-const subtitle = computed(() => {
-  return `We sent a 5-digit code to qonyekachi@gmail.com. Enter code below to verify your account`;
-});
+const verifyWithEmail = ref(true);
 
 const sideList = [
   {
@@ -104,6 +144,6 @@ const sideList = [
 
 const submit = () => {
   console.log(formData.value);
-  router.push("/password-reset-success");
+  push("/password-reset-success");
 };
 </script>
