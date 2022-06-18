@@ -16,10 +16,10 @@
                 @click="$router.back()"
               />
             </div>
-            <div class="space-y-1">
-              <div class="text-2xl font-medium text-black1">Reset Password</div>
-              <div>Enter your email address to get reset link.</div>
-            </div>
+            <Header
+              title="Reset Password"
+              subtitle="Enter your email address to get reset link."
+            />
             <div class="space-y-3">
               <TextField label="Email" placeholderText="E.g name@domain.com" />
 
@@ -46,13 +46,16 @@
 
 <script setup>
 import AuthBase from "../components/AuthBase.vue";
-import Button from "../../../components/atoms/Button.vue";
-import TextField from "../../../components/atoms/TextField.vue";
+import Header from "../components/Header.vue";
+import Button from "@components/atoms/Button.vue";
+import TextField from "@components/atoms/TextField.vue";
 import { ref } from "vue";
+import router from "@router/index.js";
 
 const formData = ref({});
 
 const submit = () => {
   console.log(formData.value);
+  router.push("/password-reset-success");
 };
 </script>

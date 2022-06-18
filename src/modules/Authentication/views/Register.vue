@@ -22,14 +22,10 @@
         </div>
         <div class="flex min-h-0 flex-1 flex-col overflow-auto py-5">
           <div class="mx-auto flex flex-col space-y-10 lg:w-3/4">
-            <div class="space-y-1">
-              <div class="text-2xl font-medium text-black1">
-                Sign Up to SoftPay
-              </div>
-              <div>
-                Provide details that match with a valid business document.
-              </div>
-            </div>
+            <Header
+              title="Sign Up to SoftPay"
+              subtitle="Provide details that match with a valid business document."
+            />
             <div class="space-y-3">
               <div class="grid-cols-2 gap-5 lg:grid">
                 <TextField label="First Name" placeholderText="E.g Segun" />
@@ -103,6 +99,7 @@
 
 <script setup>
 import AuthBase from "../components/AuthBase.vue";
+import Header from "../components/Header.vue";
 import Button from "../../../components/atoms/Button.vue";
 import TextField from "../../../components/atoms/TextField.vue";
 import SelectField from "../../../components/atoms/SelectField.vue";

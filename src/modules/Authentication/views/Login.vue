@@ -6,12 +6,10 @@
           class="flex min-h-0 flex-1 flex-col items-center justify-center overflow-auto py-5"
         >
           <div class="mx-auto flex flex-col space-y-10 lg:w-3/4">
-            <div class="space-y-1">
-              <div class="text-2xl font-medium text-black1">
-                Login To SoftPay
-              </div>
-              <div>Enter login detail to access account.</div>
-            </div>
+            <Header
+              title="Login To SoftPay"
+              subtitle="Enter login detail to access account."
+            />
             <div class="space-y-3">
               <TextField
                 v-if="showPhoneNumber"
@@ -27,7 +25,7 @@
               <Button
                 icon="call"
                 :label="`Use ${
-                  !showPhoneNumber ? 'phone number' : 'email'
+                  !showPhoneNumber ? 'phone number' : 'email address'
                 } instead`"
                 class="text-xs font-light text-blue decoration-solid"
                 size="tiny"
@@ -80,6 +78,7 @@
 
 <script setup>
 import AuthBase from "../components/AuthBase.vue";
+import Header from "../components/Header.vue";
 import Button from "../../../components/atoms/Button.vue";
 import TextField from "../../../components/atoms/TextField.vue";
 import CheckBox from "../../../components/atoms/CheckBox.vue";
