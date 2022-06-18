@@ -1,26 +1,28 @@
 <template>
-  <div
-    class="flex h-8.75 w-fit items-center justify-start rounded px-3 py-2.5"
-    :class="{
-      'bg-gray6 text-black3': !isChecked,
-      'bg-blue text-white': isChecked,
-    }"
-  >
-    <input
-      :checked="isChecked"
-      :type="type"
-      name="checkbox"
-      class="h-4 w-4"
-      :value="value"
-      :disabled="disabled"
-      @change="onInput"
+  <label class="block">
+    <div
+      class="flex h-8.75 w-fit items-center justify-start rounded px-3 py-2.5"
       :class="{
-        rounded: type === 'checkbox',
-        'rounded-full': type === 'radio',
+        'bg-gray6 text-black3': !isChecked,
+        'bg-blue text-white': isChecked,
       }"
-    />
-    <span class="ml-3 inline-block text-xs">{{ label }}</span>
-  </div>
+    >
+      <input
+        :checked="isChecked"
+        :type="type"
+        name="checkbox"
+        class="h-4 w-4"
+        :value="value"
+        :disabled="disabled"
+        @change="onInput"
+        :class="{
+          rounded: type === 'checkbox',
+          'rounded-full': type === 'radio',
+        }"
+      />
+      <span class="ml-3 inline-block text-xs">{{ label }}</span>
+    </div>
+  </label>
 </template>
 
 <script setup>

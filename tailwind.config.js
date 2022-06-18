@@ -167,7 +167,7 @@ module.exports = {
 
       // State Colors.
       info: "#3DA1FD",
-      success: "#27AEAE",
+      success: "#008800",
       warning: "#E2B93B",
       error: "#EB5757",
 

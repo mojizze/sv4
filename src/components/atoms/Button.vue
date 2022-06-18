@@ -1,7 +1,6 @@
 <template>
   <button
     type="button"
-    class="font-bold"
     :class="[getClasses]"
     :disabled="disabled"
     @click.prevent="$emit('btn:clicked')"
@@ -16,7 +15,7 @@
           <Icon :name="icon" />
         </div>
       </slot>
-      <span :class="[labelColor]" v-if="label">{{ label }}</span>
+      <span v-if="label">{{ label }}</span>
     </div>
   </button>
 </template>
@@ -52,11 +51,6 @@ const props = defineProps({
   label: {
     type: String,
     required: false,
-  },
-
-  labelColor: {
-    type: String,
-    default: "text-gray1",
   },
 
   icon: {

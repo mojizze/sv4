@@ -25,7 +25,7 @@
         </slot>
       </div>
     </div>
-    <div class="flex flex-1 flex-col overflow-auto py-7 px-10 lg:px-12">
+    <div class="flex w-full flex-1 flex-col overflow-auto py-7">
       <slot name="content" />
     </div>
   </div>
