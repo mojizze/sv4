@@ -12,7 +12,7 @@
       @keypress="isNumber"
       @keydown.delete="handleDelete"
       @paste="onPaste"
-      class="h-18 w-16 appearance-none rounded border text-center text-4xl font-semibold text-black1"
+      class="h-18 w-16 appearance-none rounded border border-black2 text-center text-4xl font-semibold text-black1"
     />
   </div>
 </template>
