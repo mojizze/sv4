@@ -50,12 +50,13 @@ import Header from "../components/Header.vue";
 import Button from "@components/atoms/Button.vue";
 import TextField from "@components/atoms/TextField.vue";
 import { ref } from "vue";
-import router from "@router/index.js";
+import { useRouter } from "vue-router";
 
+const { push } = useRouter();
 const formData = ref({});
 
 const submit = () => {
   console.log(formData.value);
-  router.push("/password-reset-success");
+  push("/password-reset-success");
 };
 </script>

@@ -3,7 +3,7 @@
     <template #content>
       <div class="flex min-h-0 flex-1 flex-col space-y-15 py-5 lg:py-16">
         <div
-          class="flex min-h-0 flex-1 flex-col items-center justify-center overflow-auto py-5"
+          class="flex min-h-0 flex-1 flex-col items-center justify-center py-5"
         >
           <div class="mx-auto flex flex-col space-y-10 lg:w-3/4">
             <Header
@@ -64,7 +64,9 @@ import Button from "../../../components/atoms/Button.vue";
 import TextField from "../../../components/atoms/TextField.vue";
 import Icon from "../../../components/atoms/Icon.vue";
 import { ref } from "vue";
-import router from "@router/index.js";
+import { useRouter } from "vue-router";
+
+const { push } = useRouter();
 
 const showPassword = ref(false);
 
@@ -75,6 +77,6 @@ const formData = ref({
 
 const submit = () => {
   console.log(formData.value);
-  router.push("/password-token");
+  push("/password-token");
 };
 </script>
