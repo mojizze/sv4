@@ -13,7 +13,7 @@
             size="small"
             type="light"
             :ghost="accountType !== 'individual'"
-            class="px-7 py-3"
+            class="py-3 px-7"
           />
           <Button
             label="Corporate"
@@ -21,7 +21,7 @@
             size="small"
             type="light"
             :ghost="accountType !== 'corporate'"
-            class="px-7 py-3"
+            class="py-3 px-7"
           />
         </div>
         <div class="mx-auto w-3/4 flex-1 space-y-10 overflow-auto">

@@ -36,7 +36,15 @@ module.exports = {
         ],
       },
     ],
-    "tailwindcss/classnames-order": "off",
+    'tailwindcss/classnames-order': "off",
+    'tailwindcss/no-custom-classname': [
+      'warn',
+      {
+        whitelist: [
+          'sp\\-([0-z]+(\\-[0-z]+)*)',
+        ]
+      }
+    ]
   },
   overrides: [
     {

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative h-full flex-col items-center justify-between overflow-auto bg-white py-7.5 pl-7.5 pr-4"
+    class="relative h-full flex-col items-center justify-between overflow-auto bg-white py-7.5 pr-4 pl-7.5"
   >
     <div class="">
       <section>

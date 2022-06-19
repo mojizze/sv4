@@ -1,7 +1,7 @@
 <template>
   <div class="flex h-screen w-full overflow-hidden">
     <div
-      class="hidden w-[644px] flex-col space-y-10 bg-[#F1FAF9] px-12 py-7 lg:flex"
+      class="sp-base-container hidden flex-col space-y-10 bg-[#F1FAF9] py-7 px-12 lg:flex"
     >
       <span class="left-12 text-xl font-bold text-blue"> Logo </span>
 
@@ -25,7 +25,7 @@
         </slot>
       </div>
     </div>
-    <div class="flex w-full flex-1 flex-col overflow-auto py-7">
+    <div class="sp-base-content flex flex-1 flex-col overflow-auto py-7">
       <slot name="content" />
     </div>
   </div>
@@ -34,3 +34,18 @@
 <script setup>
 import Icon from "@/components/atoms/Icon.vue";
 </script>
+
+<style>
+.sp-base-container {
+  flex: 0 1 45%;
+}
+
+.sp-base-content {
+  @apply w-full;
+}
+@media only screen and (min-width: 1024px) {
+  .sp-base-content {
+    flex: 0 1 55%;
+  }
+}
+</style>

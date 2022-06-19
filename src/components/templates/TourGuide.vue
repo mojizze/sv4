@@ -7,7 +7,7 @@
   >
     <template #default="{ next, step, exit, isLast }">
       <VOnboardingStep>
-        <div class="ml-58 -mt-6 w-[230px] bg-white shadow sm:rounded-lg">
+        <div class="-mt-6 ml-58 w-[230px] bg-white shadow sm:rounded-lg">
           <div class="px-3 pt-6 pb-4">
             <div class="flex-col items-center justify-between">
               <div v-if="step.content">
@@ -37,7 +37,7 @@
                 <button
                   @click="next"
                   type="button"
-                  class="inline-flex items-center rounded border border-transparent bg-blue px-4 py-1 text-sm font-medium text-white shadow-sm"
+                  class="inline-flex items-center rounded border border-transparent bg-blue py-1 px-4 text-sm font-medium text-white shadow-sm"
                 >
                   {{ isLast ? "Finish" : "Next" }}
                 </button>

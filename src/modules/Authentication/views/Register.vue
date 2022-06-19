@@ -2,16 +2,16 @@
   <AuthBase>
     <template #content>
       <div
-        class="mx-auto flex min-h-0 w-11/12 flex-1 flex-col overflow-hidden py-5 lg:w-[420px] lg:py-16"
+        class="mx-auto flex min-h-0 w-11/12 flex-1 flex-col overflow-hidden py-5 lg:w-7/12 lg:py-16"
       >
-        <div class="mb-8.5 flex justify-center">
+        <div class="mb-10 flex justify-center">
           <Button
             label="Individual"
             @click="accountType = 'individual'"
             size="small"
             type="light"
             :ghost="accountType !== 'individual'"
-            class="px-7 py-3"
+            class="py-3 px-7"
             :class="{
               'font-bold text-blue': accountType === 'individual',
               'font-normal text-gray1': accountType !== 'individual',
@@ -23,24 +23,24 @@
             size="small"
             type="light"
             :ghost="accountType !== 'corporate'"
-            class="px-7 py-3"
+            class="py-3 px-7"
             :class="{
               'font-bold text-blue': accountType === 'corporate',
               'font-normal text-gray1': accountType !== 'corporate',
             }"
           />
         </div>
-        <div class="mb-8 space-y-1">
-          <div class="text-2xl font-semibold text-black1">
-            Sign Up to SoftPay
-          </div>
-          <div class="text-gray1">
-            Provide details that match with a valid business document.
-          </div>
-        </div>
         <div class="flex min-h-0 w-full flex-1 flex-col overflow-auto">
+          <div class="mb-8 space-y-1">
+            <div class="text-2xl font-semibold text-black1">
+              Sign Up to SoftPay
+            </div>
+            <div class="text-gray1">
+              Provide details that match with a valid business document.
+            </div>
+          </div>
           <div
-            class="flex w-[calc(100%_-_34px)] flex-col space-y-10 lg:w-[386px]"
+            class="flex w-[calc(100%_-_10px)] flex-col space-y-10 lg:w-[calc(100%_-_34px)]"
           >
             <div class="space-y-3 text-black1">
               <div class="grid-cols-2 gap-5 lg:grid">
@@ -160,11 +160,13 @@ import CheckBox from "../../../components/atoms/CheckBox.vue";
 import { ref, watch, computed } from "vue";
 import useVuelidate from "@vuelidate/core";
 import { required, email, numeric } from "@vuelidate/validators";
+import { useAuthenticationStore } from "@/modules/Authentication/store";
 
 const accountType = ref("individual");
 const showPassword = ref(false);
 const eightCharacterLong = ref(false);
 const atLeastOneNumber = ref(false);
+const authenticationStore = useAuthenticationStore();
 
 const form = ref({
   firstName: "",
@@ -202,11 +204,11 @@ const canSubmit = computed(() => {
   );
 });
 
-console.log(v$.value);
-
 const submit = async () => {
   const result = await v$.value.$validate();
-  console.log(result);
+  if (result) {
+    await authenticationStore.register(form.value);
+  }
 };
 
 watch(

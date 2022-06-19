@@ -1,5 +1,5 @@
 import { createApp } from "vue";
-import { createPinia } from "pinia";
+import { createPinia, PiniaVuePlugin } from "pinia";
 import App from "./App.vue";
 import "./assets/css/index.css";
 import router from "./router";
@@ -21,10 +21,15 @@ app.directive("loading", (el) => {
 const pinia = createPinia();
 pinia.use(piniaPluginPersistedstate);
 app.use(pinia);
+app.use(PiniaVuePlugin);
 app.use(router);
 app.use(Vue3Transitions);
 const options = {
-  // You can set your default options here
+  hideProgressBar: true,
+  pauseOnHover: true,
+  closeOnClick: true,
+  showCloseButtonOnHover: true,
+  timeout: 10000,
 };
 
 app.use(Toast, options);

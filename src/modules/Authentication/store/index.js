@@ -3,8 +3,10 @@ import * as Service from "../services";
 import { useToast } from "vue-toastification";
 
 export const useAuthenticationStore = defineStore({
+  id: "AuthenticationStore",
   state: () => ({
     user: null,
+    loading: "",
   }),
 
   actions: {
@@ -14,7 +16,7 @@ export const useAuthenticationStore = defineStore({
         await Service.register(payload);
         toast.success("I am a toast");
       } catch (e) {
-        toast.error(e.message);
+        toast.error("Something went wrong");
         console.log(e);
       }
     },

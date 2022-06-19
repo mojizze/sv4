@@ -22,6 +22,9 @@ const requestInterceptor = (config) => {
   config.headers.common.Authorization = `Bearer ${localStorage.getItem(
     "access_token"
   )}`;
+
+  config.headers["Content-Type"] = "application/json";
+
   return config;
 };
 

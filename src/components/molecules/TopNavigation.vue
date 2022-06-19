@@ -11,7 +11,7 @@
       <Menu as="div" class="relative mr-6 inline-block text-left">
         <div>
           <MenuButton
-            class="flex items-center rounded-lg bg-blue px-9 py-4.5 text-lg font-bold text-white hover:bg-deepblue"
+            class="flex items-center rounded-lg bg-blue py-4.5 px-9 text-lg font-bold text-white hover:bg-deepblue"
           >
             <Icon name="white-send" class="mr-4" />
             Send Payment

@@ -47,7 +47,7 @@
     <div class="flex h-full items-start justify-start overflow-hidden">
       <SideNavigation class="hidden w-55 lg:block" />
       <div
-        class="max-h-full min-h-0 w-full overflow-auto bg-[#F1FAF9] py-6 pl-6 pr-5 lg:flex-1"
+        class="max-h-full min-h-0 w-full overflow-auto bg-[#F1FAF9] py-6 pr-5 pl-6 lg:flex-1"
       >
         <TopNavigation @displayMenu="visible = true" :page="$route.meta.name" />
         <slot name="content"></slot>

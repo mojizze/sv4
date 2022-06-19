@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex w-fit items-center justify-start rounded-[20px] py-1 pl-2 pr-8"
+    class="flex w-fit items-center justify-start rounded-[20px] py-1 pr-8 pl-2"
     :class="[background, color]"
   >
     <Icon :name="icon" class="mr-2.5" />

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="min-h-full bg-white px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8"
+    class="min-h-full bg-white py-16 px-4 sm:py-24 sm:px-6 md:grid md:place-items-center lg:px-8"
   >
     <div class="mx-auto max-w-max">
       <main class="sm:flex">
@@ -21,13 +21,13 @@
           >
             <a
               href="#"
-              class="inline-flex items-center rounded border border-transparent bg-deepblue px-4 py-2 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
+              class="inline-flex items-center rounded border border-transparent bg-deepblue py-2 px-4 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
             >
               Go back home
             </a>
             <a
               href="#"
-              class="inline-flex items-center rounded border border-transparent bg-teal1 px-4 py-2 text-sm font-medium text-black1 focus:outline-none focus:ring-2 focus:ring-offset-2"
+              class="inline-flex items-center rounded border border-transparent bg-teal1 py-2 px-4 text-sm font-medium text-black1 focus:outline-none focus:ring-2 focus:ring-offset-2"
             >
               Contact support
             </a>

@@ -29,6 +29,14 @@ export const ButtonComponent = (args) => ({
   template: `<Button v-bind="args" label="Button Sample" />`,
 });
 
+export const ButtonLoadingComponent = (args) => ({
+  components: { Button },
+  setup() {
+    return { args };
+  },
+  template: `<Button v-bind="args" label="Button Sample" :loading="true" />`,
+});
+
 export const ButtonIconText = (args) => ({
   components: { Button, Icon },
   setup() {

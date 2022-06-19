@@ -21,8 +21,6 @@ body,
   max-width: 1440px;
 }
 
-
-
 * {
   scrollbar-width: thin;
   scrollbar-color: #244462 white;
@@ -57,4 +55,12 @@ body,
 
 ::-webkit-scrollbar-corner {
   background-color: transparent;
+}
+
+.Vue-Toastification__toast {
+  border-radius: 4px !important;
+}
+
+.Vue-Toastification__toast--success {
+  background-color: #080 !important;
 }

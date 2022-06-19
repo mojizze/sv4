@@ -33,7 +33,7 @@
       <Icon
         v-if="suffixIcon"
         :name="suffixIcon"
-        class="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
+        class="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer"
         @click="$emit('toggle-password-visibility')"
       />
     </div>

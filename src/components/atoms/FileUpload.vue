@@ -1,7 +1,7 @@
 <template>
   <div
     ref="dropzone"
-    class="flex h-18 items-center justify-center space-x-5 rounded-lg border border-dashed px-15 py-6"
+    class="flex h-18 items-center justify-center space-x-5 rounded-lg border border-dashed py-6 px-15"
     @drop.prevent="onDrop"
     @dragover.prevent="onDragOver"
     @dragleave.prevent="onDragLeave"

@@ -2,7 +2,7 @@
   <Listbox v-slot="{ open }" v-model="selectedValue">
     <div class="relative mt-1">
       <ListboxButton
-        class="relative h-12 w-full cursor-default rounded-lg border border-gray5 bg-white py-2 pl-3 pr-10 text-left text-xs text-black1 focus:outline-none"
+        class="relative h-12 w-full cursor-default rounded-lg border border-gray5 bg-white py-2 pr-10 pl-3 text-left text-xs text-black1 focus:outline-none"
       >
         <span v-if="selectedValue" class="block truncate">{{
           selectedValue[displayProperty]
