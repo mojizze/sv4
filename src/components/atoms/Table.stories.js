@@ -1,5 +1,5 @@
 import Table from "./Table.vue";
-import Button from "../Button/index.vue";
+import Button from "./Button.vue";
 import TableEmptyState from "../molecules/TableEmptyState.vue";
 
 export default { title: "Atoms/Table", component: Table };

@@ -14,7 +14,7 @@
 
 <script setup>
 import Icon from "../atoms/Icon.vue";
-import Button from "../atoms/Button/index.vue";
+import Button from "../atoms/Button.vue";
 
 defineEmits(["btn:clicked"]);
 
