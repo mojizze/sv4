@@ -18,7 +18,11 @@
           <Icon :name="icon" />
         </div>
       </slot>
-      <span v-if="label && !loading" :class="{ 'underline underline-offset-2': underline }">{{ label }}</span>
+      <span
+        v-if="label && !loading"
+        :class="{ 'underline underline-offset-2': underline }"
+        >{{ label }}</span
+      >
       <svg
         v-if="loading"
         role="status"
