@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-between">
+  <div class="sticky flex items-center justify-between">
     <div class="flex w-full items-center justify-between md:flex-1">
       <div class="hidden md:block" v-if="$route.name === 'dashboard'">
         <p class="text-xl font-bold text-black1">Welcome To Softpay</p>

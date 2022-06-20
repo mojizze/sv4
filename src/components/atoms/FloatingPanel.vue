@@ -8,7 +8,7 @@
     <div v-if="value">
       <Backdrop class="z-10" />
       <div
-        class="absolute inset-y-0 left-0 z-20 h-full bg-white"
+        class="fixed inset-y-0 left-0 z-20 h-full bg-white"
         :class="[
           { 'left-0': position === 'left', 'right-0': position === 'right' },
           classes,

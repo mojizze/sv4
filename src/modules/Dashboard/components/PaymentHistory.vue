@@ -6,7 +6,7 @@
       >
         <div class="grid place-items-center">
           <Icon name="emptyFile" class="h-[116px] w-[116px]" />
-          <p class="mt-2 font-bold text-black5">No record to display</p>
+          <p class="mt-2 text-sm font-bold text-black5">No record to display</p>
           <p class="mt-2 text-xs text-gray2">
             Click on send payment to make payment
           </p>

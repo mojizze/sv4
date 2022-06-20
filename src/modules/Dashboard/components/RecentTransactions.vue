@@ -6,7 +6,7 @@
     <template #content>
       <div class="mt-18 grid place-items-center">
         <Icon name="emptyFile" class="h-[116px] w-[116px]" />
-        <p class="mt-2 font-bold text-black5">No Accounts Added</p>
+        <p class="mt-2 text-sm font-bold text-black5">No Accounts Added</p>
         <p class="mt-2 text-xs text-gray2">
           Click on the add button to add a new account
         </p>
