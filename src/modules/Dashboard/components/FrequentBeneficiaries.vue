@@ -1,5 +1,5 @@
 <template>
-  <Card title="Frequent Beneficiaries" class="relative h-[331px] w-full">
+  <Card title="Frequent Beneficiaries" class="relative w-full">
     <template #content>
       <div
         class="absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"

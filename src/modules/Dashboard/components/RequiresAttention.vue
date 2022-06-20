@@ -1,5 +1,5 @@
 <template>
-  <Card title="Bank Accounts" class="h-[159px] w-full"> </Card>
+  <Card title="Bank Accounts" class="h-full w-full"> </Card>
 </template>
 
 <script setup>

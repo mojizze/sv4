@@ -1,5 +1,5 @@
 <template>
-  <Card title="Bank Accounts" class="h-[188px] w-full">
+  <Card title="Bank Accounts">
     <template #content>
       <div class="-mt-6 grid place-items-center">
         <Icon name="emptyFile" class="h-[77px] w-[77px]" />

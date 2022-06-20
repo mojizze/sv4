@@ -17,8 +17,7 @@ html,
 body,
 #app,
 #root {
-  @apply relative mx-auto min-h-screen w-full;
-  max-width: 1440px;
+  @apply relative mx-auto h-screen w-full;
 }
 
 * {

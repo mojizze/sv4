@@ -1,5 +1,5 @@
 <template>
-  <Card title="Recent Transactions" class="h-[388px] w-full">
+  <Card title="Recent Transactions" class="w-full">
     <template #header>
       <span class="cursor-pointer font-bold text-blue">View All</span>
     </template>
