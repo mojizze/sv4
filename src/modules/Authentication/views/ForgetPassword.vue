@@ -1,11 +1,13 @@
 <template>
   <AuthBase baseImage="password-base">
     <template #content>
-      <div class="flex min-h-0 flex-1 flex-col space-y-15 py-5 lg:py-16">
+      <div
+        class="mx-auto flex min-h-0 w-11/12 flex-1 flex-col overflow-hidden py-5 lg:w-7/12 lg:py-16"
+      >
         <div
           class="flex min-h-0 flex-1 flex-col items-center justify-center overflow-auto py-5"
         >
-          <div class="mx-auto flex flex-col space-y-10 lg:w-3/4">
+          <div class="flex w-full flex-col space-y-10">
             <div>
               <Button
                 icon="arrowLeft"

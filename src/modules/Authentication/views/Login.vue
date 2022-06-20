@@ -1,11 +1,13 @@
 <template>
   <AuthBase>
     <template #content>
-      <div class="flex min-h-0 flex-1 flex-col space-y-15 py-5 lg:py-16">
+      <div
+        class="mx-auto flex min-h-0 w-11/12 flex-1 flex-col overflow-hidden py-5 lg:w-7/12 lg:py-16"
+      >
         <div
           class="flex min-h-0 flex-1 flex-col items-center justify-center overflow-auto py-5"
         >
-          <div class="mx-auto flex flex-col space-y-10 lg:w-3/4">
+          <div class="flex w-full flex-col space-y-10">
             <Header
               title="Login To SoftPay"
               subtitle="Enter login detail to access account."
@@ -15,6 +17,7 @@
                 v-if="showPhoneNumber"
                 type="tel"
                 label="Phone Number"
+                v-model="formData.email"
                 placeholderText="E.g 08090008900"
               />
               <TextField
@@ -83,16 +86,20 @@ import Button from "../../../components/atoms/Button.vue";
 import TextField from "../../../components/atoms/TextField.vue";
 import CheckBox from "../../../components/atoms/CheckBox.vue";
 import { ref } from "vue";
+import { useAuthenticationStore } from "@/modules/Authentication/store";
 
 const showPhoneNumber = ref(false);
 const showPassword = ref(false);
+const authenticationStore = useAuthenticationStore();
 
 const formData = ref({
   password: "",
+  email: "",
   confirm: false,
 });
 
-const submit = () => {
+const submit = async () => {
+  await authenticationStore.register(formData.value);
   console.log(formData.value);
 };
 </script>

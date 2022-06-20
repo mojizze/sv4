@@ -1,11 +1,21 @@
 <template>
   <Card title="Payment History" class="relative">
+    <template #header>
+      <div class="flex items-center justify-start">
+        <div class="mr-8 hidden items-center justify-start lg:flex">
+          <div class="mr-2 w-13 border-2 border-[#F1F7FA]"></div>
+          <p class="inline text-gray3">Previous month</p>
+        </div>
+        <div class="flex items-center justify-start rounded bg-[#F1F7FA] p-2">
+          <p class="mr-2.5 text-sm text-black1">June 2020</p>
+          <Icon name="calendar" class="" />
+        </div>
+      </div>
+    </template>
     <template #content>
-      <div
-        class="absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
-      >
-        <div class="grid place-items-center">
-          <Icon name="emptyFile" class="h-[116px] w-[116px]" />
+      <div class="mt-4 grid h-full place-items-center lg:-mt-4">
+        <div class="text-center">
+          <Icon name="emptyFile" class="mx-auto h-[116px] w-[116px]" />
           <p class="mt-2 text-sm font-bold text-black5">No record to display</p>
           <p class="mt-2 text-xs text-gray2">
             Click on send payment to make payment

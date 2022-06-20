@@ -1,5 +1,5 @@
 <template>
-  <component :is="icon" :class="{ fillStroke: true }" />
+  <component :is="icon" />
 </template>
 
 <script setup>

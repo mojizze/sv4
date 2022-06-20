@@ -2,29 +2,26 @@
   <AuthenticatedLayout>
     <template #content>
       <div
-        class="mt-6 hidden h-full w-full flex-col justify-start lg:flex lg:h-[calc(100vh_-_133px)] lg:flex-row"
+        class="flex max-h-screen min-h-0 w-full flex-col justify-start sm:mt-6 lg:h-[calc(100vh_-_133px)] lg:flex-row"
       >
-        <div class="sp-db-section-1 mr-6 flex w-full flex-col justify-start">
+        <div
+          class="sp-db-section-1 mb-6 flex w-full flex-col justify-start lg:mr-6 lg:mb-0"
+        >
           <BankAccounts class="sp-db-section-1__child_1 mb-6" />
           <PaymentHistory class="sp-db-section-1__child_2 mb-0" />
-          <div class="sp-db-section-1__child_3 mt-6 flex justify-start">
-            <RequiresAttention class="mr-6 w-1/2" />
-            <UpcomingPayment class="w-1/2" />
+          <div
+            class="sp-db-section-1__child_3 mt-6 flex flex-col justify-start lg:flex-row"
+          >
+            <RequiresAttention class="mb-6 w-full lg:mb-0 lg:mr-6 lg:w-1/2" />
+            <UpcomingPayment class="w-full lg:w-1/2" />
           </div>
         </div>
         <div class="sp-db-section-2 mb-0 flex w-full flex-col justify-start">
           <RecentTransaction class="sp-db-section-2__child_1 mb-6" />
-          <FrequentBeneficiaries class="sp-db-section-2__child_2 mb-0" />
+          <FrequentBeneficiaries
+            class="sp-db-section-2__child_2 mb-20 lg:mb-0"
+          />
         </div>
-      </div>
-
-      <div class="mt-6 flex h-full w-full flex-col justify-start lg:hidden">
-        <BankAccounts class="sp-db-section-1__child_1 mb-6" />
-        <PaymentHistory class="mb-6 max-h-full min-h-0" />
-        <RequiresAttention class="mb-6 w-full" />
-        <UpcomingPayment class="mb-6 w-full" />
-        <RecentTransaction class="sp-db-section-2__child_1 mb-6" />
-        <FrequentBeneficiaries class="sp-db-section-2__child_2 mb-6 lg:mb-0" />
       </div>
     </template>
   </AuthenticatedLayout>
@@ -49,7 +46,7 @@ import UpcomingPayment from "../components/UpcomingPayment.vue";
   }
 
   &__child_1 {
-    flex: 0 1 100%;
+    flex: 0 1 auto;
 
     @media only screen and (min-width: 1024px) {
       flex: 0 1 25%;
@@ -65,7 +62,7 @@ import UpcomingPayment from "../components/UpcomingPayment.vue";
   }
 
   &__child_3 {
-    flex: 0 1 100%;
+    flex: 0 1 auto;
 
     @media only screen and (min-width: 1024px) {
       flex: 0 1 24%;
