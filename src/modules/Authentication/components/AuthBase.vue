@@ -7,7 +7,7 @@
 
       <div class="flex flex-1 flex-col items-center justify-center space-y-20">
         <slot name="info">
-          <Icon name="auth-base" />
+          <Icon :name="baseImage" />
 
           <div class="w-full">
             <div class="mx-auto w-3/4">
@@ -33,6 +33,8 @@
 
 <script setup>
 import Icon from "@/components/atoms/Icon.vue";
+
+defineProps({ baseImage: { type: String, default: "auth-base" } });
 </script>
 
 <style>

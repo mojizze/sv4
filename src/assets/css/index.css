@@ -19,6 +19,8 @@ body,
 #root {
   @apply relative mx-auto min-h-screen w-full;
   max-width: 1440px;
+  @apply text-gray1 font-normal;
+
 }
 
 * {

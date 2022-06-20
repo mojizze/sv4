@@ -139,7 +139,13 @@
                 />
                 <div class="text-center">
                   Already have an account?
-                  <Button label="Sign in" ghost class="mb-10 text-blue" />
+                  <Button
+                    label="Sign in"
+                    ghost
+                    class="text-blue"
+                    underline
+                    @click="$router.push('/login')"
+                  />
                 </div>
               </div>
             </div>
@@ -152,6 +158,7 @@
 
 <script setup>
 import AuthBase from "../components/AuthBase.vue";
+// import Header from "../components/Header.vue";
 import Button from "../../../components/atoms/Button.vue";
 import TextField from "../../../components/atoms/TextField.vue";
 import SelectField from "../../../components/atoms/SelectField.vue";
