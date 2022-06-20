@@ -10,12 +10,19 @@
         <div
           v-if="icon"
           class="grid place-items-center"
-          :class="{ 'mr-4': label }"
+          :class="{
+            'mr-4': label && size !== 'tiny',
+            'mr-2': label && size === 'tiny',
+          }"
         >
           <Icon :name="icon" />
         </div>
       </slot>
-      <span v-if="label && !loading">{{ label }}</span>
+      <span
+        v-if="label && !loading"
+        :class="{ 'underline underline-offset-2': underline }"
+        >{{ label }}</span
+      >
       <svg
         v-if="loading"
         role="status"
@@ -51,17 +58,18 @@ const props = defineProps({
       return ["default", "outline", "light"].includes(value);
     },
   },
-
+  underline: {
+    type: Boolean,
+    default: false,
+  },
   disabled: {
     type: Boolean,
     default: false,
   },
-
   loading: {
     type: Boolean,
     default: false,
   },
-
   size: {
     type: String,
     default: "normal",
@@ -69,22 +77,18 @@ const props = defineProps({
       return ["small", "normal", "medium", "large", "tiny"].includes(value);
     },
   },
-
   label: {
     type: String,
     required: false,
   },
-
   icon: {
     type: String,
     required: false,
   },
-
   ghost: {
     type: Boolean,
     required: false,
   },
-
   shape: {
     type: String,
     default: "square",
@@ -95,17 +99,17 @@ const props = defineProps({
 });
 
 const getClasses = computed(() => {
-  let classes = "";
+  let classes = "font-bold";
 
   let disabledClasses =
     "disabled:bg-gray4 disabled:cursor-not-allowed disabled:text-white";
 
-  if (props.ghost) return classes;
+  if (props.ghost) return "";
 
   if (props.shape !== "circle")
     switch (props.size) {
       case "tiny":
-        classes = `${classes} px-5 py-2 text-sm`;
+        classes = `${classes} px-5 py-2 text-xs`;
         break;
       case "small":
         classes = `${classes} px-7 py-3 text-sm`;

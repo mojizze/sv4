@@ -1,6 +1,6 @@
 <template>
   <label class="flex space-x-3">
-    <div class="mt-1">
+    <div class="mt-0.5">
       <input
         type="checkbox"
         class="h-4 w-4"
