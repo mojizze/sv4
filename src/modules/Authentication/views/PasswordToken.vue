@@ -20,23 +20,21 @@
       </div>
     </template>
     <template #content>
-      <div class="flex min-h-0 flex-1 flex-col space-y-15 py-5 lg:py-16">
+      <div class="flex flex-1 items-center justify-center px-10 py-5">
         <div
           class="flex min-h-0 flex-1 flex-col items-center justify-center overflow-auto py-5"
         >
-          <div class="mx-auto flex flex-col space-y-10 lg:w-3/4">
+          <div class="flex flex-col space-y-10">
             <div class="mb-15">
               <Button
                 icon="arrowLeft"
                 label="Go Back"
                 ghost
-                class="text-xs"
-                size="tiny"
                 @click="$router.back()"
               />
             </div>
             <div class="space-y-1">
-              <div class="text-xl font-semibold text-black1">
+              <div class="text-xl font-semibold text-black1 2xl:text-2xl">
                 Verify Account
               </div>
               <div>
