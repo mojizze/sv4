@@ -38,14 +38,14 @@
       />
     </div>
     <div
-      v-if="error"
+      v-if="errorText"
       class="mt-1 flex w-full items-center justify-start rounded bg-[#FFD4D4] py-0.5 pl-2 text-xs text-[#DF1818]"
     >
       <Icon name="alarm" class="mr-2" />
       <p>{{ errorText }}</p>
     </div>
     <div
-      v-if="success"
+      v-if="successText"
       class="mt-1 flex w-full items-center justify-start rounded bg-green1/25 py-0.5 pl-2 text-xs text-green1"
     >
       <Icon name="greenCheck" class="mr-2" />

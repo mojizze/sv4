@@ -1,80 +1,91 @@
 <template>
-  <Listbox v-slot="{ open }" v-model="selectedValue">
-    <div class="relative mt-1">
-      <ListboxButton
-        class="relative h-12 w-full cursor-default rounded-lg border border-gray5 bg-white py-2 pr-10 pl-3 text-left text-xs text-black1 focus:outline-none"
-      >
-        <span v-if="selectedValue" class="block truncate">{{
-          selectedValue[displayProperty]
-        }}</span>
-        <span v-else class="block truncate">{{ placeholder }}</span>
-        <span
-          class="pointer-events-none absolute inset-y-0 right-0 grid place-items-center pr-2"
+  <div>
+    <Listbox v-slot="{ open }" v-model="selectedValue">
+      <div class="relative mt-1">
+        <ListboxButton
+          class="relative h-12 w-full cursor-default rounded-lg border border-gray5 bg-white py-2 pr-10 pl-3 text-left text-xs text-black1 focus:outline-none"
         >
-          <Icon v-if="!open" name="arrow-big" aria-hidden="true" />
-          <Icon
-            v-else
-            name="arrow-big"
-            class="rotate-[180deg]"
-            aria-hidden="true"
-          />
-        </span>
-      </ListboxButton>
-
-      <transition
-        leave-active-class="transition duration-100 ease-in"
-        leave-from-class="opacity-100"
-        leave-to-class="opacity-0"
-      >
-        <div>
-          <ListboxOptions
-            class="absolute z-10 mt-1 w-full rounded border border-teal1 bg-white pb-1 text-base shadow-md focus:outline-none sm:text-sm"
+          <span v-if="selectedValue" class="block truncate">{{
+            selectedValue[displayProperty]
+          }}</span>
+          <span v-else class="block truncate">{{ placeholder }}</span>
+          <span
+            class="pointer-events-none absolute inset-y-0 right-0 grid place-items-center pr-2"
           >
-            <TextField
-              v-if="search"
-              class="w-full"
-              border-radius="rounded-tr rounded-tl"
-              border="border-b"
+            <Icon v-if="!open" name="arrow-big" aria-hidden="true" />
+            <Icon
+              v-else
+              name="arrow-big"
+              class="rotate-[180deg]"
+              aria-hidden="true"
             />
-            <div class="max-h-60 overflow-auto">
-              <ListboxOption
-                v-slot="{ active, selected }"
-                v-for="option in options"
-                :key="option[valueProperty]"
-                :value="option"
-                as="template"
-              >
-                <li
-                  :class="[
-                    active ? 'bg-teal1' : 'text-black',
-                    'relative cursor-pointer select-none py-2 pl-10 pr-4',
-                  ]"
+          </span>
+        </ListboxButton>
+
+        <transition
+          leave-active-class="transition duration-100 ease-in"
+          leave-from-class="opacity-100"
+          leave-to-class="opacity-0"
+        >
+          <div>
+            <ListboxOptions
+              class="absolute z-10 mt-1 w-full rounded border border-teal1 bg-white pb-1 text-base shadow-md focus:outline-none sm:text-sm"
+            >
+              <TextField
+                v-if="search"
+                v-model="query"
+                @input="$emit('optionsFilter', query)"
+                class="w-full"
+                border-radius="rounded-tr rounded-tl"
+                border="border-b"
+              />
+              <div class="max-h-60 overflow-auto">
+                <ListboxOption
+                  v-slot="{ active, selected }"
+                  v-for="option in options"
+                  :key="option[valueProperty]"
+                  :value="option"
+                  as="template"
                 >
-                  <span
+                  <li
                     :class="[
-                      selected ? 'font-medium' : 'font-normal',
-                      'block truncate',
+                      active ? 'bg-teal1' : 'text-black',
+                      'relative cursor-pointer select-none py-2 pl-10 pr-4',
                     ]"
-                    >{{ option[displayProperty] }}</span
                   >
-                  <span
-                    v-if="selected"
-                    class="absolute inset-y-0 left-0 flex items-center pl-3 text-deepblue"
-                  >
-                    <CheckIcon class="h-5 w-5" aria-hidden="true" />
-                  </span>
-                </li>
-              </ListboxOption>
-            </div>
-          </ListboxOptions>
-        </div>
-      </transition>
+                    <span
+                      :class="[
+                        selected ? 'font-medium' : 'font-normal',
+                        'block truncate',
+                      ]"
+                      >{{ option[displayProperty] }}</span
+                    >
+                    <span
+                      v-if="selected"
+                      class="absolute inset-y-0 left-0 flex items-center pl-3 text-deepblue"
+                    >
+                      <CheckIcon class="h-5 w-5" aria-hidden="true" />
+                    </span>
+                  </li>
+                </ListboxOption>
+              </div>
+            </ListboxOptions>
+          </div>
+        </transition>
+      </div>
+    </Listbox>
+    <div
+      v-if="errorText"
+      class="mt-1 flex w-full items-center justify-start rounded bg-[#FFD4D4] py-0.5 pl-2 text-xs text-[#DF1818]"
+    >
+      <Icon name="alarm" class="mr-2" />
+      <p>{{ errorText }}</p>
     </div>
-  </Listbox>
+  </div>
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import {
   Listbox,
   ListboxButton,
@@ -116,9 +127,16 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+
+  errorText: {
+    type: String,
+    default: "",
+  },
 });
 
 const emit = defineEmits(["update:modelValue"]);
+
+const query = ref("");
 
 const selectedValue = computed({
   get() {

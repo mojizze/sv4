@@ -17,13 +17,16 @@
                 v-if="showPhoneNumber"
                 type="tel"
                 label="Phone Number"
-                v-model="formData.email"
+                v-model="formData.uid"
                 placeholderText="E.g 08090008900"
+                :error-text="v$.uid.$errors[0] && v$.uid.$errors[0].$message"
               />
               <TextField
                 v-else
+                v-model="formData.uid"
                 label="Email"
                 placeholderText="E.g name@domain.com"
+                :error-text="v$.uid.$errors[0] && v$.uid.$errors[0].$message"
               />
               <Button
                 icon="call"
@@ -32,7 +35,7 @@
                 } instead`"
                 class="text-xs font-light text-blue decoration-solid"
                 size="tiny"
-                @click="showPhoneNumber = !showPhoneNumber"
+                @click="toggleUid"
                 ghost
               />
               <TextField
@@ -42,6 +45,9 @@
                 @toggle-password-visibility="showPassword = !showPassword"
                 suffixIcon="eyeShow"
                 v-model="formData.password"
+                :error-text="
+                  v$.password.$errors[0] && v$.password.$errors[0].$message
+                "
               />
               <CheckBox
                 v-model="formData.confirm"
@@ -59,7 +65,12 @@
                     @click="$router.push('/forgot-password')"
                   />
                 </div>
-                <Button label="Continue" class="w-full" @click="submit" />
+                <Button
+                  label="Continue"
+                  :loading="loading"
+                  class="w-full"
+                  @click="submit"
+                />
                 <div class="text-center">
                   New user?
                   <Button
@@ -87,19 +98,51 @@ import TextField from "../../../components/atoms/TextField.vue";
 import CheckBox from "../../../components/atoms/CheckBox.vue";
 import { ref } from "vue";
 import { useAuthenticationStore } from "@/modules/Authentication/store";
+import { email, required, numeric } from "@vuelidate/validators";
+import useVuelidate from "@vuelidate/core";
+import { useToast } from "vue-toastification";
+import { useRouter } from "vue-router";
+const toast = useToast();
+const { push } = useRouter();
 
 const showPhoneNumber = ref(false);
 const showPassword = ref(false);
 const authenticationStore = useAuthenticationStore();
+const loading = ref(false);
 
 const formData = ref({
   password: "",
-  email: "",
+  uid: "",
   confirm: false,
 });
 
-const submit = async () => {
-  await authenticationStore.register(formData.value);
-  console.log(formData.value);
+const rules = {
+  password: { required },
+  uid: showPhoneNumber.value ? { required, numeric } : { email, required },
 };
+
+const v$ = useVuelidate(rules, formData);
+
+const submit = async () => {
+  loading.value = true;
+  try {
+    const result = v$.value.$validate();
+    if (result) {
+      await authenticationStore.login(formData.value);
+      toast.success("Login Successful");
+      await push("/dashboard");
+    }
+    loading.value = false;
+  } catch (e) {
+    loading.value = false;
+    toast.error(
+      e?.message ? e?.message : "Login was not successful, pleas try again."
+    );
+  }
+};
+
+function toggleUid() {
+  showPhoneNumber.value = !showPhoneNumber.value;
+  formData.value.uid = "";
+}
 </script>

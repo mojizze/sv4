@@ -20,7 +20,9 @@
       </div>
     </template>
     <template #content>
-      <div class="flex min-h-0 flex-1 flex-col space-y-15 py-5 lg:py-16">
+      <div
+        class="mx-auto flex min-h-0 w-11/12 flex-1 flex-col overflow-hidden py-5 lg:w-7/12 lg:py-16"
+      >
         <div
           class="flex min-h-0 flex-1 flex-col items-center justify-center overflow-auto py-5"
         >

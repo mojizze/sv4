@@ -1,5 +1,7 @@
 export default function auth({ next, router }) {
-  if (!localStorage.getItem("access_token")) {
+  const data = JSON.parse(localStorage.getItem("AuthenticationStore"));
+
+  if (!data.access_token) {
     return router.push({ name: "login" });
   }
 

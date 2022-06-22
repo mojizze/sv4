@@ -6,9 +6,7 @@ import { HTTP } from "@/api";
  * @returns {Promise<AxiosResponse<any>>}
  */
 export function register(payload) {
-  return HTTP.post("register/", payload, {
-    data: {},
-  });
+  return HTTP.post("register/", payload);
 }
 
 /**
@@ -17,7 +15,7 @@ export function register(payload) {
  * @returns {Promise<AxiosResponse<any>>}
  */
 export function createBusiness(payload) {
-  return HTTP.post("business", payload);
+  return HTTP.post("businesses", payload);
 }
 
 /**

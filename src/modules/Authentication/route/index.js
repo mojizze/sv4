@@ -1,13 +1,23 @@
+import guest from "@/middlewares/guest.js";
+
 const routes = [
   {
     path: "/login",
     name: "login",
     component: () => import("../views/Login.vue"),
+    meta: {
+      name: "Login",
+      middleware: [guest],
+    },
   },
   {
     path: "/register",
     name: "register",
     component: () => import("../views/Register.vue"),
+    meta: {
+      name: "Register",
+      middleware: [guest],
+    },
   },
   {
     path: "/forgot-password",
