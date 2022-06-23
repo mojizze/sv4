@@ -2,7 +2,7 @@
   <AuthenticatedLayout>
     <template #content>
       <div
-        class="flex max-h-screen min-h-0 w-full flex-col justify-start overflow-auto lg:h-[calc(100vh_-_133px)] lg:flex-row"
+        class="flex h-full min-h-0 w-full flex-col justify-start overflow-auto lg:flex-row"
       >
         <div
           class="sp-db-section-1 mb-6 flex w-full flex-col justify-start lg:mr-6 lg:mb-0"
@@ -53,15 +53,15 @@ import UpcomingPayment from "../components/UpcomingPayment.vue";
     flex: 0 1 auto;
 
     @media only screen and (min-width: 1024px) {
-      flex: 0 1 25%;
+      flex: 0 1 24%;
     }
   }
 
   &__child_2 {
-    //flex: 0 1 100%;
+    flex: 0 1 100%;
 
     @media only screen and (min-width: 1024px) {
-      flex: 0 1 51%;
+      flex: 0 1 50%;
     }
   }
 
@@ -69,7 +69,7 @@ import UpcomingPayment from "../components/UpcomingPayment.vue";
     flex: 0 1 auto;
 
     @media only screen and (min-width: 1024px) {
-      flex: 0 1 24%;
+      flex: 0 1 23%;
     }
   }
 }

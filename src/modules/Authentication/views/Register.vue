@@ -216,7 +216,7 @@
               />
               <Button
                 label="Continue"
-                :disabled="!canSubmit"
+                :disabled="!form.confirm"
                 class="w-full"
                 @click="submit"
               />
@@ -338,7 +338,9 @@ const submit = async () => {
     }
   } catch (e) {
     loading.value = false;
-    console.log(e?.message || e);
+    const errorMessage =
+      e?.errors[0]?.message || "Something went wrong, pleasse try again.";
+    toast.error(errorMessage);
   }
 };
 

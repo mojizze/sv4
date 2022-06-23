@@ -25,11 +25,6 @@ const routes = [
     component: () => import("../views/ForgetPassword.vue"),
   },
   {
-    path: "/login",
-    name: "login",
-    component: () => import("../views/Login.vue"),
-  },
-  {
     path: "/password-token",
     name: "password-token",
     component: () => import("../views/PasswordToken.vue"),

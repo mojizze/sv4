@@ -1,6 +1,6 @@
 <template>
   <div
-    class="min-h-full bg-white py-16 px-4 sm:py-24 sm:px-6 md:grid md:place-items-center lg:px-8"
+    class="h-screen bg-white py-16 px-4 sm:py-24 sm:px-6 md:grid md:place-items-center lg:px-8"
   >
     <div class="mx-auto max-w-max">
       <main class="sm:flex">

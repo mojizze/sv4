@@ -42,7 +42,9 @@
                 <span
                   class="text-lg font-semibold text-black1 underline underline-offset-2"
                   >{{
-                    !verifyWithEmail ? "qonyekachi@gmail.com" : "07023567898"
+                    !verifyWithEmail
+                      ? authenticationStore.email
+                      : authenticationStore.phone
                   }}</span
                 >. Enter code below to verify your account.
               </div>
@@ -108,6 +110,9 @@ import Button from "@components/atoms/Button.vue";
 import Icon from "@components/atoms/Icon.vue";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { useAuthenticationStore } from "@/modules/Authentication/store";
+
+const authenticationStore = useAuthenticationStore();
 
 const { push } = useRouter();
 const formData = ref({});
