@@ -1,7 +1,7 @@
 <template>
   <AuthenticatedLayout>
     <template #content>
-      <div class="relative mt-6 w-full bg-white p-6">
+      <div class="relative mt-6 flex w-full flex-1 flex-col bg-white p-6">
         <div class="flex items-center justify-between lg:justify-start">
           <TextField
             class="w-10/12 sm:w-11/12 lg:w-2/12"
@@ -9,16 +9,18 @@
           />
           <Icon name="filter" />
         </div>
-        <Table
-          class="mt-6 hidden overflow-auto md:table"
-          :data="tableData"
-          :columns="columns"
-          :loading="false"
-        >
-          <template v-slot:empty>
-            <TableEmptyState />
-          </template>
-        </Table>
+        <div class="flex-1">
+          <Table
+            class="mt-6 hidden overflow-auto md:table"
+            :data="tableData"
+            :columns="columns"
+            :loading="false"
+          >
+            <template #empty>
+              <TableEmptyState />
+            </template>
+          </Table>
+        </div>
         <Pagination class="bg-white" />
       </div>
     </template>
@@ -26,7 +28,7 @@
 </template>
 
 <script setup>
-import AuthenticatedLayout from "@/components/organisims/AuthenticatedLayout.vue";
+import AuthenticatedLayout from "@/components/organisms/AuthenticatedLayout.vue";
 import TextField from "@/components/atoms/TextField.vue";
 import Icon from "@/components/atoms/Icon.vue";
 import Pagination from "@/components/atoms/Pagination.vue";

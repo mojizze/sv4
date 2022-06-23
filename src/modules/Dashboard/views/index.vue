@@ -2,23 +2,29 @@
   <AuthenticatedLayout>
     <template #content>
       <div
-        class="flex max-h-screen min-h-0 w-full flex-col justify-start lg:h-[calc(100vh_-_133px)] lg:flex-row"
+        class="flex max-h-screen min-h-0 w-full flex-col justify-start overflow-auto lg:h-[calc(100vh_-_133px)] lg:flex-row"
       >
         <div
           class="sp-db-section-1 mb-6 flex w-full flex-col justify-start lg:mr-6 lg:mb-0"
         >
-          <BankAccounts class="sp-db-section-1__child_1 mb-6" />
-          <PaymentHistory class="sp-db-section-1__child_2 mb-0" />
+          <BankAccounts class="sp-db-section-1__child_1 mb-6 flex flex-col" />
+          <PaymentHistory class="sp-db-section-1__child_2 mb-0 flex flex-col" />
           <div
             class="sp-db-section-1__child_3 mt-6 flex flex-col justify-start lg:flex-row"
           >
-            <RequiresAttention class="mb-6 w-full lg:mb-0 lg:mr-6 lg:w-1/2" />
-            <UpcomingPayment class="w-full lg:w-1/2" />
+            <RequiresAttention
+              class="mb-6 flex w-full flex-col lg:mb-0 lg:mr-6 lg:w-1/2"
+            />
+            <UpcomingPayment class="flex w-full flex-col lg:w-1/2" />
           </div>
         </div>
         <div class="sp-db-section-2 flex h-full w-full flex-col justify-start">
-          <RecentTransaction class="sp-db-section-2__child_1 mb-6" />
-          <FrequentBeneficiaries class="sp-db-section-2__child_2" />
+          <RecentTransaction
+            class="sp-db-section-2__child_1 mb-6 flex flex-col"
+          />
+          <FrequentBeneficiaries
+            class="sp-db-section-2__child_2 flex flex-col"
+          />
         </div>
       </div>
     </template>

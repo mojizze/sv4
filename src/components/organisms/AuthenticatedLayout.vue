@@ -39,7 +39,7 @@
       <SideNavigation class="hidden lg:flex" />
 
       <div
-        class="flex h-full min-h-0 w-full flex-col space-y-5 overflow-auto bg-[#F1FAF9] py-6 pr-5 pl-6 lg:flex-1"
+        class="flex h-full min-h-0 w-full flex-col space-y-5 overflow-hidden bg-[#F1FAF9] py-6 pr-5 pl-6 lg:flex-1"
       >
         <TopNavigation @displayMenu="visible = true" :page="$route.meta.name" />
 
