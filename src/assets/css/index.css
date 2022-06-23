@@ -17,7 +17,7 @@ html,
 body,
 #app,
 #root {
-  @apply relative mx-auto h-screen w-full;
+  @apply relative mx-auto min-h-screen w-full;
   @apply text-gray1 font-normal;
   scroll-behavior: smooth;
 }

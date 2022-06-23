@@ -2,7 +2,7 @@
   <div
     class="relative h-full flex-col items-center justify-between overflow-auto bg-white py-7.5 pr-4 pl-7.5"
   >
-    <div class="">
+    <div class="h-5/6">
       <section>
         <p class="text-xl font-bold text-blue">Logo</p>
       </section>
@@ -25,7 +25,7 @@
         </MenuItem>
       </section>
     </div>
-    <div class="mt-16 flex">
+    <div class="flex h-1/6">
       <Avatar class="mr-2" name="Layor Pan" />
       <div>
         <p class="text-sm text-black1">The Sharply Africa...</p>

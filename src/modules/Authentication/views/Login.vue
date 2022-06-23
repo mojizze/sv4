@@ -7,7 +7,9 @@
         <div
           class="flex min-h-0 flex-1 flex-col items-center justify-center overflow-auto py-5"
         >
-          <div class="flex w-full flex-col space-y-10">
+          <div
+            class="flex w-[calc(100%_-_10px)] flex-col space-y-10 lg:w-[calc(100%_-_34px)]"
+          >
             <Header
               title="Login To SoftPay"
               subtitle="Enter login detail to access account."

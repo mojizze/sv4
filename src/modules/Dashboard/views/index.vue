@@ -2,7 +2,7 @@
   <AuthenticatedLayout>
     <template #content>
       <div
-        class="flex max-h-screen min-h-0 w-full flex-col justify-start sm:mt-6 lg:h-[calc(100vh_-_133px)] lg:flex-row"
+        class="flex h-full min-h-0 w-full flex-col justify-start overflow-auto sm:mt-6 sm:h-[calc(100%_-_85px)] lg:flex-row"
       >
         <div
           class="sp-db-section-1 mb-6 flex w-full flex-col justify-start lg:mr-6 lg:mb-0"
@@ -16,11 +16,9 @@
             <UpcomingPayment class="w-full lg:w-1/2" />
           </div>
         </div>
-        <div class="sp-db-section-2 mb-0 flex w-full flex-col justify-start">
+        <div class="sp-db-section-2 flex h-full w-full flex-col justify-start">
           <RecentTransaction class="sp-db-section-2__child_1 mb-6" />
-          <FrequentBeneficiaries
-            class="sp-db-section-2__child_2 mb-20 lg:mb-0"
-          />
+          <FrequentBeneficiaries class="sp-db-section-2__child_2" />
         </div>
       </div>
     </template>

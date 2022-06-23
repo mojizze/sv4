@@ -37,9 +37,7 @@
       </tr>
       <tr v-if="data.length === 0 && !loading">
         <td :colspan="columns.length">
-          <div class="flex justify-center py-20">
-            <slot name="empty">{{ emptyText }}</slot>
-          </div>
+          <slot name="empty">{{ emptyText }}</slot>
         </td>
       </tr>
     </tbody>

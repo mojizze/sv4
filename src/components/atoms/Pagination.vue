@@ -8,7 +8,7 @@
       <div
         class="flex h-full items-center justify-center divide-x divide-gray6 rounded-lg border border-gray6"
       >
-        <Button icon="leftArrow" class="h-full px-4" ghost />
+        <Button icon="rightArrow" class="h-full rotate-[180deg] px-4" ghost />
         <Button icon="rightArrow" class="h-full px-4" ghost disabled />
       </div>
     </div>

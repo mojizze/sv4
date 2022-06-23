@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import DashboardRoutes from "../modules/Dashboard/route";
 import AuthenticationRoute from "../modules/Authentication/route";
+import StatementsnRoute from "../modules/Statements/route";
 import NotFound from "@/components/templates/NotFound.vue";
 
 const router = createRouter({
@@ -8,6 +9,7 @@ const router = createRouter({
   routes: [
     ...DashboardRoutes,
     ...AuthenticationRoute,
+    ...StatementsnRoute,
     { path: "/404", component: NotFound },
     { path: "/:catchAll(.*)", name: "NotFound", redirect: "/404" },
   ],

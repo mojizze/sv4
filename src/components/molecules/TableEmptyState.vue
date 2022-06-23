@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col items-center justify-center space-y-3">
-    <Icon :name="icon" />
-    <div class="font-bold">{{ title }}</div>
+    <Icon :name="icon" class="h-[116px] w-[116px]" />
+    <div class="font-bold text-black1">{{ title }}</div>
     <div>{{ subTitle }}</div>
     <Button
       v-if="btnLabel"

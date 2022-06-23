@@ -9,7 +9,7 @@
       <template v-if="menu.icon" #icon>
         <Icon
           class="mr-2.5 h-5 w-5"
-          :class="{ 'text-blue': menu.link === $route.name }"
+          :class="[menu.link === $route.name ? 'text-blue' : 'text-gray3']"
           :name="menu.icon"
         />
       </template>
