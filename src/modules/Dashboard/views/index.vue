@@ -2,7 +2,7 @@
   <AuthenticatedLayout>
     <template #content>
       <div
-        class="flex max-h-screen min-h-0 w-full flex-col justify-start sm:mt-6 lg:h-[calc(100vh_-_133px)] lg:flex-row"
+        class="flex max-h-screen min-h-0 w-full flex-col justify-start lg:h-[calc(100vh_-_133px)] lg:flex-row"
       >
         <div
           class="sp-db-section-1 mb-6 flex w-full flex-col justify-start lg:mr-6 lg:mb-0"
@@ -28,7 +28,7 @@
 </template>
 
 <script setup>
-import AuthenticatedLayout from "@/components/organisims/AuthenticatedLayout.vue";
+import AuthenticatedLayout from "@/components/organisms/AuthenticatedLayout.vue";
 import BankAccounts from "../components/BankAccounts.vue";
 import RecentTransaction from "../components/RecentTransactions.vue";
 import FrequentBeneficiaries from "../components/FrequentBeneficiaries.vue";

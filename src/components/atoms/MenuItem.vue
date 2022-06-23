@@ -1,29 +1,37 @@
 <template>
-  <div class="mb-6">
-    <div class="mb-4 flex list-none items-center justify-between">
-      <div class="flex items-center justify-start">
-        <slot name="icon" />
-        <router-link
-          v-if="!menu.children"
-          :to="menu.link"
-          :id="menu.link"
-          :class="{ 'ml-2.5': menu.icons }"
-          :exact-active-class="
-            menu.link === $route.name
-              ? 'text-blue font-medium'
-              : 'text-gray2 font-normal'
-          "
-          :active-class="
-            menu.link === $route.name
-              ? 'text-blue font-medium'
-              : 'text-gray2 font-normal'
-          "
-        >
+  <div class="text-base">
+    <div class="flex list-none items-center" :class="{ 'space--10': selected }">
+      <router-link
+        :to="
+          menu.children ? `/${menu.link}/${menu.children[0].link}` : menu.link
+        "
+        :id="menu.link"
+        :class="['flex flex-1 items-center justify-between']"
+        :exact-active-class="
+          menu.link === $route.name
+            ? 'text-blue font-medium'
+            : 'text-gray2 font-normal'
+        "
+        :active-class="
+          menu.link === $route.name
+            ? 'text-blue font-medium'
+            : 'text-gray2 font-normal'
+        "
+        @click="setSelectedMenu(menu.name)"
+      >
+        <div class="flex items-center">
+          <slot name="icon" />
+
           {{ menu.name }}
-        </router-link>
-        <slot v-else name="parent"></slot>
-      </div>
-      <slot name="chevron-icon" />
+        </div>
+        <Icon
+          name="arrow"
+          @click="setSelectedMenu(menu.name)"
+          v-if="menu.children"
+          class=""
+          :class="{ 'rotate-[180deg]': selected !== menu.name }"
+        />
+      </router-link>
     </div>
     <div v-if="menu.children && selected === menu.name" class="flex flex-col">
       <router-link
@@ -49,14 +57,23 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
+import Icon from "../atoms/Icon.vue";
+
 defineProps({
   menu: {
     type: Object,
     required: true,
   },
-  selected: {
-    type: String,
-    default: "",
-  },
 });
+
+const selected = ref("");
+
+const setSelectedMenu = (name) => {
+  if (selected.value === name) {
+    selected.value = "";
+  } else {
+    selected.value = name;
+  }
+};
 </script>
