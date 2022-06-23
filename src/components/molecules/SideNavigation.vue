@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative flex h-full w-55 flex-col overflow-auto bg-white py-7.5 pr-4 pl-7.5 lg:w-72"
+    class="relative flex h-full w-55 flex-col overflow-auto bg-white py-7.5 pr-4 pl-7.5 2xl:w-72"
   >
     <Icon
       name="close"

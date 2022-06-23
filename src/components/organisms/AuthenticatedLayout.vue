@@ -63,7 +63,6 @@ import { useRoute } from "vue-router";
 const visible = ref(false);
 const route = useRoute();
 const currentMenu = computed(() => {
-  console.log("route=====>>>>", route.meta);
   return find([...MenuDetails, ...OtherMenuDetails], { link: route.name });
 });
 </script>
