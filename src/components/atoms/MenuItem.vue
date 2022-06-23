@@ -2,11 +2,10 @@
   <div class="text-base">
     <div class="flex list-none items-center" :class="{ 'space--10': selected }">
       <router-link
-        :to="
-          menu.children ? `/${menu.link}/${menu.children[0].link}` : menu.link
-        "
+        v-if="!menu.children"
+        :to="menu.link"
         :id="menu.link"
-        :class="['flex flex-1 items-center justify-between']"
+        :class="['flex flex-1 items-center']"
         :exact-active-class="
           menu.link === $route.name
             ? 'text-blue font-medium'
@@ -19,24 +18,35 @@
         "
         @click="setSelectedMenu(menu.name)"
       >
+        <slot name="icon" />
+
+        {{ menu.name }}
+      </router-link>
+
+      <div
+        v-else
+        class="flex flex-1 cursor-pointer items-center justify-between"
+        @click="setSelectedMenu(menu.name)"
+      >
         <div class="flex items-center">
           <slot name="icon" />
-
           {{ menu.name }}
         </div>
         <Icon
           name="arrow"
-          @click="setSelectedMenu(menu.name)"
           v-if="menu.children"
           class=""
           :class="{ 'rotate-[180deg]': selected !== menu.name }"
         />
-      </router-link>
+      </div>
     </div>
-    <div v-if="menu.children && selected === menu.name" class="flex flex-col">
+    <div
+      v-if="menu.children && selected === menu.name"
+      class="my-7 ml-2 flex flex-col space-y-2 border-l"
+    >
       <router-link
         v-for="childMenu in menu.children"
-        :to="childMenu.link"
+        :to="`/${menu.link}/${childMenu.link}`"
         :key="childMenu.name"
         class="border-l border-l-gray5 px-3 pb-3 text-sm last:pb-0"
         :exact-active-class="
