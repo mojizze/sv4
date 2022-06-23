@@ -15,17 +15,16 @@
             'mr-2': label && size === 'tiny',
           }"
         >
-          <Icon :name="icon" />
+          <Icon :name="icon" class="h-5 w-5" />
         </div>
       </slot>
       <span
         v-if="label && !loading"
-        :class="{ 'underline underline-offset-2': underline }"
+        :class="{ 'font-semibold underline underline-offset-2': underline }"
         >{{ label }}</span
       >
       <svg
         v-if="loading"
-        role="status"
         class="h-6 w-6 animate-spin fill-blue text-gray4 dark:text-gray2"
         viewBox="0 0 100 101"
         fill="none"

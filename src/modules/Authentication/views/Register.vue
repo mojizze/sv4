@@ -1,10 +1,8 @@
 <template>
   <AuthBase>
     <template #content>
-      <div
-        class="sp-register mx-auto flex min-h-0 w-11/12 flex-1 flex-col overflow-hidden py-5 lg:w-7/12 lg:py-16"
-      >
-        <div class="mb-10 flex justify-center">
+      <div class="flex min-h-0 flex-1 flex-col space-y-20 py-5 lg:py-16">
+        <div class="flex justify-center">
           <Button
             label="Individual"
             @click="accountType = 'individual'"
@@ -30,18 +28,12 @@
             }"
           />
         </div>
-        <div class="flex min-h-0 w-full flex-1 flex-col overflow-auto">
-          <div class="mb-8 space-y-1">
-            <div class="text-2xl font-semibold text-black1">
-              Sign Up to SoftPay
-            </div>
-            <div class="text-gray1">
-              Provide details that match with a valid business document.
-            </div>
-          </div>
-          <div
-            class="flex w-[calc(100%_-_10px)] flex-col space-y-10 lg:w-[calc(100%_-_34px)]"
-          >
+        <div class="flex-1 overflow-auto">
+          <div class="space-y-10 px-10">
+            <Header
+              title="Sign Up to SoftPay"
+              subtitle="Provide details that match with a valid business document."
+            />
             <div class="space-y-3 text-black1">
               <div class="grid-cols-2 gap-5 lg:grid">
                 <TextField
@@ -215,29 +207,28 @@
                   </span>
                 </div>
               </div>
-              <div class="space-y-10 pt-10">
-                <CheckBox
-                  v-model="form.confirm"
-                  class="text-base"
-                  label="I confirm that the details provided match my business details and agree to the User Agreement and Privacy Policy"
-                />
+            </div>
+            <div class="space-y-10">
+              <CheckBox
+                v-model="form.confirm"
+                class="text-base"
+                label="I confirm that the details provided match my business details and agree to the User Agreement and Privacy Policy"
+              />
+              <Button
+                label="Continue"
+                :disabled="!canSubmit"
+                class="w-full"
+                @click="submit"
+              />
+              <div class="text-center">
+                Already have an account?
                 <Button
-                  label="Continue"
-                  :disabled="!form.confirm"
-                  class="w-full"
-                  @click="submit"
-                  :loading="loading"
+                  label="Sign in"
+                  ghost
+                  class="text-blue"
+                  underline
+                  @click="$router.push('/login')"
                 />
-                <div class="text-center">
-                  Already have an account?
-                  <Button
-                    label="Sign in"
-                    ghost
-                    class="text-blue"
-                    underline
-                    @click="$router.push('/login')"
-                  />
-                </div>
               </div>
             </div>
           </div>
@@ -249,7 +240,7 @@
 
 <script setup>
 import AuthBase from "../components/AuthBase.vue";
-// import Header from "../components/Header.vue";
+import Header from "../components/Header.vue";
 import Button from "../../../components/atoms/Button.vue";
 import TextField from "../../../components/atoms/TextField.vue";
 import SelectField from "../../../components/atoms/SelectField.vue";

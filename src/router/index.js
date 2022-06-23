@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import DashboardRoutes from "../modules/Dashboard/route";
+import TeamsRoutes from "../modules/Teams/route";
+import PaymentsRoutes from "../modules/Payments/route";
 import AuthenticationRoute from "../modules/Authentication/route";
 import StatementsnRoute from "../modules/Statements/route";
 import NotFound from "@/components/templates/NotFound.vue";
@@ -8,6 +10,8 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     ...DashboardRoutes,
+    ...TeamsRoutes,
+    ...PaymentsRoutes,
     ...AuthenticationRoute,
     ...StatementsnRoute,
     { path: "/404", component: NotFound },

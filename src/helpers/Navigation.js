@@ -17,7 +17,7 @@ export const MenuDetails = [
     children: [
       {
         name: "Payment Category",
-        link: "#",
+        link: "category",
       },
       {
         name: "Transactions",
@@ -72,5 +72,26 @@ export const MenuDetails = [
     link: "accounts",
     children: null,
     icon: "wallet",
+  },
+];
+
+export const OtherMenuDetails = [
+  {
+    name: "Teams",
+    link: "teams",
+    children: null,
+    icon: "teams",
+  },
+  {
+    name: "Settings",
+    link: "#",
+    children: null,
+    icon: "setting",
+  },
+  {
+    name: "Help Center",
+    link: "#",
+    children: null,
+    icon: "help",
   },
 ];

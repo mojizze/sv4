@@ -1,17 +1,12 @@
 <template>
   <div>
     <div v-if="goBack" class="mb-15">
-      <Button
-        icon="arrowLeft"
-        label="Go Back"
-        ghost
-        class="text-xs"
-        size="tiny"
-        @click="$router.back()"
-      />
+      <Button icon="arrowLeft" label="Go Back" ghost @click="$router.back()" />
     </div>
     <div class="space-y-1">
-      <div class="text-xl font-semibold text-black1">{{ title }}</div>
+      <div class="text-xl font-semibold text-black1 2xl:text-2xl">
+        {{ title }}
+      </div>
       <div>{{ subtitle }}</div>
     </div>
   </div>
