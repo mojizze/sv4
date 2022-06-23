@@ -1,7 +1,7 @@
 <template>
   <div class="flex h-screen w-full overflow-hidden">
     <div
-      class="sp-base-container hidden flex-col space-y-10 bg-[#F1FAF9] py-7 px-12 lg:flex"
+      class="sp-base-container hidden flex-col space-y-10 overflow-auto bg-[#F1FAF9] py-7 px-12 lg:flex"
     >
       <span class="left-12 text-xl font-bold text-blue"> Logo </span>
 
@@ -16,7 +16,9 @@
               >
                 Don't Ever Miss A Payment
               </h1>
-              <h2 class="mt-4 text-center text-sm leading-[20px] text-black1">
+              <h2
+                class="mt-4 px-20 text-center text-sm leading-[20px] text-black1"
+              >
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
                 aliquam, purus sit amet luctus venenatis
               </h2>
@@ -26,7 +28,11 @@
       </div>
     </div>
     <div class="sp-base-content flex flex-1 flex-col overflow-auto py-7">
-      <slot name="content" />
+      <div
+        class="mx-auto flex min-h-0 w-11/12 flex-1 flex-col lg:w-9/12 xl:w-8/12 2xl:w-7/12"
+      >
+        <slot name="content" />
+      </div>
     </div>
   </div>
 </template>

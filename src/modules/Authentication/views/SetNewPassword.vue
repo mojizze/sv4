@@ -1,13 +1,11 @@
 <template>
   <AuthBase baseImage="password-base">
     <template #content>
-      <div
-        class="mx-auto flex min-h-0 w-11/12 flex-1 flex-col overflow-hidden py-5 lg:w-7/12 lg:py-16"
-      >
+      <div class="flex flex-1 items-center justify-center px-10 py-5">
         <div
           class="flex min-h-0 flex-1 flex-col items-center justify-center overflow-auto py-5"
         >
-          <div class="flex flex-col space-y-10">
+          <div class="flex w-full flex-col space-y-10">
             <Header
               title="Set New Password"
               subtitle="Choose a new password to complete process."
@@ -22,7 +20,7 @@
                   suffixIcon="eyeShow"
                   v-model="formData.password"
                 />
-                <div class="mt-1 space-x-5 text-xs">
+                <div class="mt-2 space-x-5 text-xs">
                   <span class="inline-flex items-center space-x-2">
                     <Icon name="checkBlack" />
                     <span>at least 8 characters long</span>
@@ -61,6 +59,7 @@
 
 <script setup>
 import AuthBase from "../components/AuthBase.vue";
+import Header from "../components/Header.vue";
 import Button from "../../../components/atoms/Button.vue";
 import TextField from "../../../components/atoms/TextField.vue";
 import Icon from "../../../components/atoms/Icon.vue";

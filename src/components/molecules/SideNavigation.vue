@@ -1,23 +1,28 @@
 <template>
   <div
-    class="relative h-full flex-col items-center justify-between overflow-auto bg-white py-7.5 pr-4 pl-7.5"
+    class="relative flex h-full w-55 flex-col overflow-auto bg-white py-7.5 pr-4 pl-7.5 2xl:w-72"
   >
-    <div class="">
+    <Icon
+      name="close"
+      @click="$emit('close')"
+      class="absolute top-7.5 right-2 cursor-pointer lg:hidden"
+    />
+    <div class="flex-1 space-y-16">
       <section>
         <p class="text-xl font-bold text-blue">Logo</p>
       </section>
 
-      <section class="mt-16 mb-7.5">
+      <section class="">
         <p class="mb-6 text-sm text-gray2">Main Menu</p>
         <Menu :navigation="navigation" />
       </section>
 
-      <section class="mt-16">
+      <section class="">
         <p class="mb-6 text-sm text-gray2">Others</p>
         <Menu :navigation="others" />
       </section>
 
-      <section class="mt-16">
+      <section class="">
         <MenuItem :menu="logout">
           <template #icon>
             <Icon class="mr-2.5 h-5 w-5" :name="logout.icon" />
@@ -25,11 +30,15 @@
         </MenuItem>
       </section>
     </div>
-    <div class="mt-16 flex">
-      <Avatar class="mr-2" name="Layor Pan" />
+    <div class="my-10 flex">
       <div>
-        <p class="text-sm text-black1">The Sharply Africa...</p>
-        <p class="text-xs text-gray2">Layor Pan</p>
+        <Avatar class="mr-2" name="Layor Pan" />
+      </div>
+      <div class="min-w-0 flex-1">
+        <div class="truncate text-sm text-black1">
+          The Sharply Africana vision
+        </div>
+        <div class="text-xs text-gray2">Layor Pan</div>
       </div>
     </div>
   </div>
@@ -40,30 +49,14 @@ import Menu from "./Menu.vue";
 import MenuItem from "@/components/atoms/MenuItem.vue";
 import Icon from "@/components/atoms/Icon.vue";
 import Avatar from "@/components/atoms/Avatar.vue";
-import { MenuDetails } from "@/helpers/Navigation";
+import { MenuDetails, OtherMenuDetails } from "@/helpers/Navigation";
 import { ref } from "vue";
+
+defineEmits(["close"]);
+
 const navigation = ref(MenuDetails);
 
-const others = ref([
-  {
-    name: "Teams",
-    link: "#",
-    children: null,
-    icon: "teams",
-  },
-  {
-    name: "Settings",
-    link: "#",
-    children: null,
-    icon: "setting",
-  },
-  {
-    name: "Help Center",
-    link: "#",
-    children: null,
-    icon: "help",
-  },
-]);
+const others = ref(OtherMenuDetails);
 
 const logout = ref({
   name: "Logout",

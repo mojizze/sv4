@@ -64,5 +64,6 @@ defineProps({
     type: String,
     default: "Dashboard",
   },
+  icon: { type: Boolean, default: false },
 });
 </script>
