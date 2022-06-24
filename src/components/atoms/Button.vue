@@ -15,7 +15,7 @@
             'mr-2': label && size === 'tiny',
           }"
         >
-          <Icon :name="icon" class="h-5 w-5" />
+          <Icon :name="icon" class="" />
         </div>
       </slot>
       <span
