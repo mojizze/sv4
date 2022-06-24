@@ -10,16 +10,10 @@ import Toast from "vue-toastification";
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import VCalendar from "v-calendar";
 import vClickOutside from "click-outside-vue3";
+import ElementPlus from "element-plus";
+import "element-plus/dist/index.css";
 
 const app = createApp(App);
-
-app.directive("loading", (el) => {
-  // this will be called for both `mounted` and `updated`
-  const elm = document.createElement("div");
-  elm.innerHTML =
-    '<span style="background-color:red;top:0;left;0">loading...</span>';
-  el.append(elm);
-});
 
 const pinia = createPinia();
 pinia.use(piniaPluginPersistedstate);
@@ -29,6 +23,7 @@ app.use(router);
 app.use(Vue3Transitions);
 app.use(vClickOutside);
 app.use(VCalendar, {});
+app.use(ElementPlus);
 
 const options = {
   hideProgressBar: true,

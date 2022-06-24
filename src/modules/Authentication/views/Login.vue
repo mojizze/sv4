@@ -1,9 +1,7 @@
 <template>
   <AuthBase>
     <template #content>
-      <div
-        class="flex min-h-0 flex-1 flex-col items-center justify-center overflow-auto py-5"
-      >
+      <div class="flex flex-1 items-center justify-center px-10 py-5">
         <div
           class="flex w-[calc(100%_-_10px)] flex-col space-y-10 lg:w-[calc(100%_-_34px)]"
         >
