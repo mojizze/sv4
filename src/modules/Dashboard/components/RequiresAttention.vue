@@ -1,5 +1,5 @@
 <template>
-  <Card title="Requires Attention" class="h-full w-full">
+  <Card title="Requires Attention" class="lg:overflow-auto">
     <template #header>
       <span class="cursor-pointer text-xs font-bold text-blue lg:text-sm"
         >View All</span

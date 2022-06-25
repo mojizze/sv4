@@ -1,5 +1,5 @@
 <template>
-  <Card title="Upcoming Payment" class="h-full w-full">
+  <Card title="Upcoming Payment" class="lg:overflow-auto">
     <template #header>
       <span class="cursor-pointer text-xs text-gray3 lg:text-sm"
         >This Month</span

@@ -1,29 +1,27 @@
 <template>
   <AuthenticatedLayout>
     <template #content>
-      <div
-        class="flex h-full min-h-0 w-full flex-col justify-start overflow-auto lg:flex-row"
-      >
+      <div class="mt-6 flex max-h-screen w-full flex-1 flex-col overflow-auto">
         <div
-          class="sp-db-section-1 mb-6 flex w-full flex-col justify-start lg:mr-6 lg:mb-0"
+          class="grid h-full gap-6 md:grid-cols-2 lg:grid-cols-6 lg:grid-rows-12"
         >
-          <BankAccounts class="sp-db-section-1__child_1 mb-6 flex flex-col" />
-          <PaymentHistory class="sp-db-section-1__child_2 mb-0 flex flex-col" />
-          <div
-            class="sp-db-section-1__child_3 mt-6 flex flex-col justify-start lg:flex-row"
-          >
-            <RequiresAttention
-              class="mb-6 flex w-full flex-col lg:mb-0 lg:mr-6 lg:w-1/2"
-            />
-            <UpcomingPayment class="flex w-full flex-col lg:w-1/2" />
-          </div>
-        </div>
-        <div class="sp-db-section-2 flex h-full w-full flex-col justify-start">
+          <BankAccounts
+            class="col-span-2 row-auto lg:col-span-4 lg:row-start-1 lg:row-end-5"
+          />
+          <PaymentHistory
+            class="col-span-2 row-auto lg:col-span-4 lg:row-start-5 lg:row-end-10"
+          />
           <RecentTransaction
-            class="sp-db-section-2__child_1 mb-6 flex flex-col"
+            class="col-span-2 row-auto md:col-span-1 lg:col-start-5 lg:col-end-7 lg:row-start-1 lg:row-end-8"
           />
           <FrequentBeneficiaries
-            class="sp-db-section-2__child_2 flex flex-col"
+            class="col-span-2 row-auto md:col-span-1 lg:col-start-5 lg:col-end-7 lg:row-start-8 lg:row-end-13"
+          />
+          <RequiresAttention
+            class="col-span-2 row-auto md:col-span-1 lg:col-start-1 lg:col-end-3 lg:row-start-10 lg:row-end-13"
+          />
+          <UpcomingPayment
+            class="col-span-2 row-auto md:col-span-1 lg:col-start-3 lg:col-end-5 lg:row-start-10 lg:row-end-13"
           />
         </div>
       </div>
@@ -42,7 +40,7 @@ import UpcomingPayment from "../components/UpcomingPayment.vue";
 </script>
 
 <style lang="scss">
-.sp-db-section-1 {
+/* .sp-db-section-1 {
   flex: 0 1 100%;
 
   @media only screen and (min-width: 1024px) {
@@ -96,5 +94,5 @@ import UpcomingPayment from "../components/UpcomingPayment.vue";
   @media only screen and (min-width: 1024px) {
     flex: 0 1 47%;
   }
-}
+} */
 </style>

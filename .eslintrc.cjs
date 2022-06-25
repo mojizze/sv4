@@ -33,6 +33,7 @@ module.exports = {
           "index",
           "Card",
           "Pagination",
+          "Calendar",
         ],
       },
     ],

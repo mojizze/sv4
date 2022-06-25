@@ -1,7 +1,9 @@
 <template>
   <AuthenticatedLayout>
     <template #content>
-      <div class="relative mt-6 flex w-full flex-1 flex-col bg-white p-6">
+      <div
+        class="relative mt-6 flex w-full flex-1 flex-col bg-white p-6 shadow-xl"
+      >
         <div class="flex items-center justify-between lg:justify-start">
           <TextField
             class="w-10/12 sm:w-11/12 lg:w-2/12"
@@ -21,7 +23,7 @@
             </template>
           </Table>
         </div>
-        <Pagination class="bg-white" />
+        <Pagination class="hidden bg-white" />
       </div>
     </template>
   </AuthenticatedLayout>

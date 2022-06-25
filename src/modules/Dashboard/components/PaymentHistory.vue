@@ -1,5 +1,5 @@
 <template>
-  <Card title="Payment History" class="relative">
+  <Card title="Payment History">
     <template #header>
       <div class="flex items-center justify-start">
         <div class="mr-8 hidden items-center justify-start lg:flex">

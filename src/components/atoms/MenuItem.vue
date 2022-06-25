@@ -42,22 +42,22 @@
     </div>
     <div
       v-if="menu.children && selected === menu.name"
-      class="my-7 ml-2 flex flex-col space-y-2 border-l"
+      class="my-7 ml-2 flex flex-col space-y-2 border-l border-l-gray5"
     >
       <router-link
         v-for="childMenu in menu.children"
         :to="`/${menu.link}/${childMenu.link}`"
         :key="childMenu.name"
-        class="border-l border-l-gray5 px-3 pb-3 text-sm last:pb-0"
+        class="px-3 pb-3 text-sm last:pb-0"
         :exact-active-class="
           menu.link === $route.name
-            ? 'border-l-blue text-blue'
-            : 'border-l-gray5 text-gray2'
+            ? 'border-l-blue border-l  text-blue'
+            : 'text-gray2'
         "
         :active-class="
           menu.link === $route.name
-            ? 'border-l-blue text-blue'
-            : 'border-l-gray5 text-gray2'
+            ? 'border-l-blue border-l  text-blue'
+            : 'text-gray2'
         "
       >
         <span class="block">{{ childMenu.name }}</span>
