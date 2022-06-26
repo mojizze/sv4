@@ -9,7 +9,12 @@
         class="flex h-full items-center justify-center divide-x divide-gray6 rounded-lg border border-gray6"
       >
         <Button icon="rightArrow" class="h-full rotate-[180deg] px-4" ghost />
-        <Button icon="rightArrow" class="h-full px-4" ghost disabled />
+        <Button
+          icon="rightArrow"
+          class="h-full rotate-[360deg] px-4"
+          ghost
+          disabled
+        />
       </div>
     </div>
     <div class="flex items-center space-x-5">

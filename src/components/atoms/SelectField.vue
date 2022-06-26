@@ -3,12 +3,17 @@
     <Listbox :horizontal="true" v-slot="{ open }" v-model="selectedValue">
       <div class="relative mt-1">
         <ListboxButton
-          class="relative h-12 w-full cursor-default rounded-lg border border-gray5 bg-white py-2 pr-10 pl-3 text-left text-xs text-black1 focus:outline-none"
+          class="relative flex h-12 w-full cursor-default items-center justify-start rounded border border-gray5 bg-white py-2 pr-10 pl-3 text-left text-xs text-black1 focus:outline-none"
         >
-          <span v-if="selectedValue" class="block truncate">{{
+          <span
+            v-if="labelPrefix.length > 0"
+            class="mr-3 inline-block text-gray1/60"
+            >{{ labelPrefix }}</span
+          >
+          <span v-if="selectedValue" class="inline-block truncate">{{
             selectedValue[displayProperty]
           }}</span>
-          <span v-else class="block truncate">{{ placeholder }}</span>
+          <span v-else class="inline-block truncate" v-html="placeholder" />
           <span
             class="pointer-events-none absolute inset-y-0 right-0 grid place-items-center pr-2"
           >
@@ -39,7 +44,7 @@
                 border-radius="rounded-tr rounded-tl"
                 border="border-b"
               />
-              <div class="max-h-60 overflow-auto">
+              <div class="max-h-60 overflow-auto" v-if="options.length > 0">
                 <ListboxOption
                   v-slot="{ active, selected }"
                   v-for="option in options"
@@ -66,6 +71,13 @@
                     >
                       <CheckIcon class="h-5 w-5" aria-hidden="true" />
                     </span>
+                  </li>
+                </ListboxOption>
+              </div>
+              <div v-else class="">
+                <ListboxOption as="template">
+                  <li class="px-4 py-2 text-xs font-bold text-black1">
+                    No Data Available
                   </li>
                 </ListboxOption>
               </div>
@@ -129,6 +141,11 @@ const props = defineProps({
   },
 
   errorText: {
+    type: String,
+    default: "",
+  },
+
+  labelPrefix: {
     type: String,
     default: "",
   },

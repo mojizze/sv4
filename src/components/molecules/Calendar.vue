@@ -1,13 +1,21 @@
 <template>
   <div class="w-fit">
-    <DatePicker v-model="date">
+    <DatePicker
+      title-position="left"
+      v-model="date"
+      popover-visibility="hidden"
+    >
       <template #default="{ togglePopover }">
         <div
-          class="flex w-full cursor-pointer items-center justify-start rounded border border-gray5 px-4 py-3 text-sm"
+          class="z-20 flex cursor-pointer items-center justify-start rounded border border-gray5 px-4 py-3 text-sm"
           @click.stop="dateSelected($event, togglePopover)"
         >
-          <span class="mr-2 block text-gray1/60">{{ displayText }}: </span>
-          <div class="flex items-center justify-start text-gray1/60">
+          <span class="pointer-events-none z-10 mr-2 block text-gray1/60"
+            >{{ displayText }}:
+          </span>
+          <div
+            class="pointer-events-none z-10 flex items-center justify-start text-gray1/60"
+          >
             <span class="mr-2.5">{{ date.toLocaleDateString() }}</span>
             <Icon name="calendar-gray" />
           </div>
