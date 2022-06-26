@@ -2,11 +2,14 @@ import { createApp } from "vue";
 import { createPinia, PiniaVuePlugin } from "pinia";
 import App from "./App.vue";
 import "./assets/css/index.css";
+import "v-calendar/dist/style.css";
 import router from "./router";
 import Vue3Transitions from "vue3-transitions";
 import "vue-toastification/dist/index.css";
 import Toast from "vue-toastification";
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
+import VCalendar from "v-calendar";
+import vClickOutside from "click-outside-vue3";
 
 const app = createApp(App);
 
@@ -24,6 +27,9 @@ app.use(pinia);
 app.use(PiniaVuePlugin);
 app.use(router);
 app.use(Vue3Transitions);
+app.use(vClickOutside);
+app.use(VCalendar, {});
+
 const options = {
   hideProgressBar: true,
   pauseOnHover: true,

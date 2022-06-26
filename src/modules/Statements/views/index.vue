@@ -8,6 +8,7 @@
           <TextField
             class="w-10/12 sm:w-11/12 lg:w-2/12"
             placeholderText="Search..."
+            type="date"
           />
           <Icon name="filter" />
         </div>
