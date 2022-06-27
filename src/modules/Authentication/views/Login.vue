@@ -124,7 +124,7 @@ const v$ = useVuelidate(rules, formData);
 const submit = async () => {
   loading.value = true;
   try {
-    const result = v$.value.$validate();
+    const result = await v$.value.$validate();
     if (result) {
       await authenticationStore.login(formData.value);
       toast.success("Login Successful");

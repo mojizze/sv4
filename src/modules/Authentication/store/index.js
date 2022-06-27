@@ -27,5 +27,25 @@ export const useAuthenticationStore = defineStore({
     async createBusiness(payload) {
       await Service.createBusiness(payload);
     },
+
+    async requestForResetOTP(payload) {
+      await Service.requestPasswordChangeOTP(payload);
+    },
+
+    async loggedOutUserChangePassword(payload) {
+      await Service.loggedOutUserChangePassword(payload);
+    },
+
+    async loggedInUserChangePassword(payload) {
+      await Service.loggedInUserChangePassword(payload);
+    },
+
+    async verifyAccount(payload) {
+      await Service.verifyAccount(payload);
+    },
+
+    async fetchUserProfile() {
+      this.user = await Service.fetchUserProfile();
+    },
   },
 });
