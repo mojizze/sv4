@@ -1,31 +1,15 @@
 <template>
   <AuthenticatedLayout>
     <template #content>
-      <div class="flex flex-1 flex-col overflow-auto rounded-lg bg-white py-8">
-        <div>
-          <el-tabs class="sp-teams-tabs">
-            <el-tab-pane label="Teammates">
-              <el-table :data="tableData" style="width: 100%">
-                <el-table-column prop="date" label="Name" />
-                <el-table-column prop="name" label="Email" />
-                <el-table-column prop="address" label="Role" />
-                <el-table-column align="right" width="150px">
-                  <template #default>
-                    <Button ghost icon="outlineEclipses" />
-                  </template>
-                </el-table-column>
-              </el-table>
-            </el-tab-pane>
-            <el-tab-pane label="Pending Invite">
-              <el-table :data="[]" style="width: 100%">
-                <el-table-column prop="date" label="Date" />
-                <el-table-column prop="name" label="Name" />
-                <el-table-column prop="address" label="Address">
-                </el-table-column>
-              </el-table>
-            </el-tab-pane>
-          </el-tabs>
-        </div>
+      <div class="flex min-h-0 flex-1 flex-col rounded-lg bg-white py-8">
+        <el-tabs class="sp-teams-tabs">
+          <el-tab-pane label="Teammates">
+            <TeamTable :data="teamMates" />
+          </el-tab-pane>
+          <el-tab-pane label="Pending Invite">
+            <TeamTable :data="pendingMates" />
+          </el-tab-pane>
+        </el-tabs>
       </div>
     </template>
   </AuthenticatedLayout>
@@ -33,54 +17,71 @@
 
 <script setup>
 import AuthenticatedLayout from "@components/organisms/AuthenticatedLayout.vue";
-import Button from "@components/atoms/Button.vue";
+import TeamTable from "../components/TeamTable.vue";
 
-const tableData = [
+const teamMates = [
   {
-    date: "2016-05-03",
-    name: "Tom",
-    address: "No. 189, Grove St, Los Angeles",
+    email: "maureen.gardner@msn.com",
+    name: "Damilola Obalakun",
+    role: "Owner",
   },
   {
-    date: "2016-05-02",
-    name: "Tom",
-    address: "No. 189, Grove St, Los Angeles",
+    email: "rebecca.kennedy@outlook.com",
+    name: "Everett Mcdonald",
+    role: "Admin",
   },
   {
-    date: "2016-05-04",
-    name: "Tom",
-    address: "No. 189, Grove St, Los Angeles",
+    email: "jessie.murphy@aol.com",
+    name: "Kurt Simmons",
+    role: "Member",
   },
   {
-    date: "2016-05-01",
-    name: "Tom",
-    address: "No. 189, Grove St, Los Angeles",
+    email: "r.weber@live.com",
+    name: "Glenda Bradley",
+    role: "Member",
+  },
+];
+
+const pendingMates = [
+  {
+    email: "Oluwaremilekuntabade@msn.com",
+    name: "Oluwaremilekun Tabade",
+    role: "Member",
+  },
+  {
+    email: "Lazarusmcdonald@outlook.com",
+    name: "Lazarus Mcdonald",
+    role: "Admin",
+  },
+  {
+    email: "jessie.murphy@aol.com",
+    name: "Chan Simmons",
+    role: "Member",
+  },
+  {
+    email: "r.weber@live.com",
+    name: "Helen Bradley",
+    role: "Member",
   },
 ];
 </script>
 
 <style lang="scss">
-.sp-teams-tabs.el-tabs .el-tabs__nav {
-  & .el-tabs__item {
-    @apply h-12 px-10 text-base;
-  }
-}
+.sp-teams-tabs.el-tabs {
+  @apply flex min-h-0 flex-1 flex-col;
 
-.el-table {
-  & .el-table__cell {
-    @apply py-5 px-7;
+  & .el-tabs__nav {
+    & .el-tabs__item {
+      @apply h-12 px-10 text-base;
+    }
   }
 
-  & th.el-table__cell {
-    @apply font-light;
-  }
+  & .el-tabs__content {
+    @apply flex min-h-0 flex-1 flex-col;
 
-  & td.el-table__cell {
-    @apply border-0;
-  }
-
-  & .el-table__inner-wrapper::before {
-    @apply hidden;
+    & .el-tab-pane {
+      @apply flex min-h-0 flex-1 flex-col;
+    }
   }
 }
 </style>
