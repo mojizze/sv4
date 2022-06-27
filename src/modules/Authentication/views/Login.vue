@@ -3,80 +3,90 @@
     <template #content>
       <div class="flex flex-1 items-center justify-center px-10 py-5">
         <div
-          class="flex w-[calc(100%_-_10px)] flex-col space-y-10 lg:w-[calc(100%_-_34px)]"
+          class="flex min-h-0 flex-1 flex-col items-center justify-center overflow-auto py-5"
         >
-          <Header
-            title="Login To SoftPay"
-            subtitle="Enter login detail to access account."
-          />
-          <div class="space-y-3">
-            <TextField
-              v-if="showPhoneNumber"
-              type="tel"
-              label="Phone Number"
-              v-model="formData.uid"
-              placeholderText="E.g 08090008900"
-              :error-text="v$.uid.$errors[0] && v$.uid.$errors[0].$message"
+          <div class="flex w-full flex-col space-y-10">
+            <Header
+              title="Login To SoftPay"
+              subtitle="Enter login detail to access account."
             />
-            <TextField
-              v-else
-              v-model="formData.uid"
-              label="Email"
-              placeholderText="E.g name@domain.com"
-              :error-text="v$.uid.$errors[0] && v$.uid.$errors[0].$message"
-            />
-            <Button
-              icon="call"
-              :label="`Use ${
-                !showPhoneNumber ? 'phone number' : 'email address'
-              } instead`"
-              class="text-xs font-light text-blue decoration-solid"
-              size="tiny"
-              @click="toggleUid"
-              ghost
-            />
-            <TextField
-              :type="showPassword ? 'text' : 'password'"
-              label="Password"
-              placeholderText="***************"
-              @toggle-password-visibility="showPassword = !showPassword"
-              suffixIcon="eyeShow"
-              v-model="formData.password"
-              :error-text="
-                v$.password.$errors[0] && v$.password.$errors[0].$message
-              "
-            />
-            <CheckBox
-              v-model="formData.confirm"
-              class="text-base"
-              label="Remember Me"
-            />
-            <div class="space-y-10 pt-10">
-              <div class="text-center">
-                Forgot Password?
-                <Button
-                  label="Reset Password"
-                  ghost
-                  class="text-blue"
-                  underline
-                  @click="$router.push('/forgot-password')"
-                />
-              </div>
-              <Button
-                label="Continue"
-                :loading="loading"
-                class="w-full"
-                @click="submit"
+            <div class="space-y-3">
+              <TextField
+                v-if="showPhoneNumber"
+                type="tel"
+                label="Phone Number"
+                v-model="formData.uid"
+                placeholderText="E.g 08090008900"
+                :error-text="v$.uid.$errors[0] && v$.uid.$errors[0].$message"
               />
-              <div class="text-center">
-                New user?
+              <TextField
+                v-else
+                v-model="formData.uid"
+                label="Email"
+                placeholderText="E.g name@domain.com"
+                :error-text="v$.uid.$errors[0] && v$.uid.$errors[0].$message"
+              />
+              <Button
+                v-if="showPhoneNumber"
+                icon="email"
+                label="Use email address instead"
+                class="text-xs font-light text-blue decoration-solid"
+                size="tiny"
+                @click="toggleUid"
+                ghost
+              />
+              <Button
+                v-else
+                icon="call"
+                label="Use phone number instead"
+                class="text-xs font-light text-blue decoration-solid"
+                size="tiny"
+                @click="toggleUid"
+                ghost
+              />
+              <TextField
+                :type="showPassword ? 'text' : 'password'"
+                label="Password"
+                placeholderText="***************"
+                @toggle-password-visibility="showPassword = !showPassword"
+                suffixIcon="eyeShow"
+                v-model="formData.password"
+                :error-text="
+                  v$.password.$errors[0] && v$.password.$errors[0].$message
+                "
+              />
+              <CheckBox
+                v-model="formData.confirm"
+                class="text-base"
+                label="Remember Me"
+              />
+              <div class="space-y-10 pt-10">
+                <div class="text-center">
+                  Forgot Password?
+                  <Button
+                    label="Reset Password"
+                    ghost
+                    class="text-blue"
+                    underline
+                    @click="$router.push('/forgot-password')"
+                  />
+                </div>
                 <Button
-                  label="Create Account"
-                  ghost
-                  class="text-blue"
-                  underline
-                  @click="$router.push('/register')"
+                  label="Continue"
+                  :loading="loading"
+                  class="w-full"
+                  @click="submit"
                 />
+                <div class="text-center">
+                  New user?
+                  <Button
+                    label="Create Account"
+                    ghost
+                    class="text-blue"
+                    underline
+                    @click="$router.push('/register')"
+                  />
+                </div>
               </div>
             </div>
           </div>
