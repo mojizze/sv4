@@ -43,7 +43,7 @@
 
                   <template #empty>
                     <TableEmptyState
-                      btn-label="4Set Up Recurring Payment"
+                      btn-label="Set Up Recurring Payment"
                       sub-title="Click on send payment to make payment"
                     />
                   </template>
