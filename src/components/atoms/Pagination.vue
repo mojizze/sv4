@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-between px-10 py-2 text-sm">
+  <div class="flex justify-between py-2 text-sm">
     <div class="flex items-center space-x-10">
       <div class="flex items-center space-x-5">
         <el-select v-model="pageNum" class="sp-pagination-select">

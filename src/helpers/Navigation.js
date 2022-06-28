@@ -1,42 +1,47 @@
 export const MenuDetails = [
   {
     name: "Dashboard",
-    link: "dashboard",
+    link: "/dashboard",
     children: null,
     icon: "home",
   },
   {
     name: "Statements",
-    link: "statements",
+    link: "/statements",
     children: null,
     icon: "statement",
   },
   {
     name: "Payments",
     link: "payments",
+    icon: "send",
     children: [
       {
         name: "Payment Category",
-        link: "category",
+        link: "/payments/category",
+        icon: "send",
       },
       {
         name: "Transactions",
-        link: "#",
+        link: "/payments/transactions",
+        icon: "send",
       },
       {
         name: "Requires Attention",
-        link: "#",
+        link: "/payments/requires-attention",
+        icon: "send",
       },
       {
         name: "Recurring Payments",
-        link: "#",
+        link: "/payments/recurring-payment",
+        icon: "send",
       },
       {
         name: "Beneficiaries",
-        link: "#",
+        link: "/payments/beneficiaries",
+        icon: "send",
       },
     ],
-    icon: "send",
   },
   {
     name: "Collections",
@@ -46,26 +51,24 @@ export const MenuDetails = [
       {
         name: "Recieved Payments",
         link: "#",
+        icon: "send",
       },
       {
         name: "Products",
         link: "#",
+        icon: "send",
       },
       {
         name: "Invoices",
         link: "#",
+        icon: "send",
       },
       {
         name: "Customers",
         link: "#",
+        icon: "send",
       },
     ],
-  },
-  {
-    name: "Beneficiaries",
-    link: "beneficiaries",
-    children: null,
-    icon: "beneficiary",
   },
   {
     name: "Accounts",

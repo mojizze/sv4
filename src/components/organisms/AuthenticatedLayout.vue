@@ -12,7 +12,7 @@
       <div
         class="flex items-center justify-start border-l border-l-gray3 pl-6 text-blue"
       >
-        <Icon :name="currentMenu.icon" />
+        <Icon :name="currentMenu.icon" class="h-6 w-6" />
         <span class="ml-2.5 block">{{ currentMenu.name }}</span>
       </div>
     </div>
@@ -38,13 +38,18 @@
 
       <SideNavigation class="hidden lg:flex" />
 
-      <div
-        class="flex h-full min-h-0 w-full flex-col space-y-5 overflow-hidden bg-[#F1FAF9] py-6 pr-5 pl-6 lg:flex-1"
-      >
-        <TopNavigation @displayMenu="visible = true" :page="$route.meta.name" />
+      <FadeInOut entry="left" exit="left" :duration="500">
+        <div
+          class="flex h-full min-h-0 w-full flex-col space-y-5 overflow-hidden bg-[#F1FAF9] py-6 pr-5 pl-6 lg:flex-1"
+        >
+          <TopNavigation
+            @displayMenu="visible = true"
+            :page="$route.meta.name"
+          />
 
-        <slot name="content" />
-      </div>
+          <slot name="content" />
+        </div>
+      </FadeInOut>
     </div>
   </div>
 </template>
@@ -59,10 +64,28 @@ import { MenuIcon } from "@heroicons/vue/solid";
 import { MenuDetails, OtherMenuDetails } from "@/helpers/Navigation";
 import { find } from "lodash";
 import { useRoute } from "vue-router";
+import { FadeInOut } from "vue3-transitions";
 
 const visible = ref(false);
 const route = useRoute();
+
+const flattenArray = (members) => {
+  let children = [];
+  const flattenMembers = members.map((m) => {
+    if (m.children && m.children.length) {
+      children = [...children, ...m.children];
+    }
+    return m;
+  });
+
+  return flattenMembers.concat(
+    children.length ? flattenArray(children) : children
+  );
+};
+
 const currentMenu = computed(() => {
-  return find([...MenuDetails, ...OtherMenuDetails], { link: route.name });
+  return find(flattenArray([...MenuDetails, ...OtherMenuDetails]), {
+    link: route.path,
+  });
 });
 </script>

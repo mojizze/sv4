@@ -4,7 +4,9 @@
       <template v-if="menu.icon" #icon>
         <Icon
           class="mr-2.5 h-5 w-5"
-          :class="[menu.link === $route.name ? 'text-blue' : 'text-gray3']"
+          :class="[
+            $route.path.includes(menu.link) ? 'text-blue' : 'text-gray3',
+          ]"
           :name="menu.icon"
         />
       </template>

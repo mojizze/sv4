@@ -1,5 +1,5 @@
 <template>
-  <div class="flex min-h-0 flex-1 flex-col">
+  <div class="flex h-full flex-1 flex-col">
     <slot name="tableSection" />
 
     <Pagination :options="OPTIONS" />
@@ -15,7 +15,11 @@ const OPTIONS = new Array(124)
 
 <style lang="scss">
 .el-table {
-  @apply flex flex-1;
+  @apply flex h-full flex-1;
+
+  &__empty-text {
+    line-height: normal !important;
+  }
 
   & .el-table__cell {
     @apply py-5 px-7;
@@ -30,15 +34,23 @@ const OPTIONS = new Array(124)
   }
 
   & .el-table__inner-wrapper {
-    @apply flex flex-col;
+    @apply flex h-full flex-col;
 
     & .el-table__body-wrapper {
-      @apply flex-1 overflow-auto;
+      @apply min-h-0 flex-1 overflow-auto;
+
+      & .el-scrollbar__view {
+        @apply h-full;
+      }
     }
 
     &::before {
       @apply hidden;
     }
+  }
+
+  & .el-table__header tr th {
+    @apply border-y border-gray6 text-gray2;
   }
 }
 </style>

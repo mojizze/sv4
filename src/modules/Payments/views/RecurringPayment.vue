@@ -4,16 +4,6 @@
       <div
         class="relative z-10 mt-6 flex w-full flex-1 flex-col bg-white p-6 shadow-xl"
       >
-        <Button
-          size="tiny"
-          shape="circle"
-          class="absolute bottom-18 right-4 z-10"
-        >
-          <template #icon>
-            <Icon name="add" class="h-6 w-6 fill-blue stroke-white" />
-          </template>
-        </Button>
-
         <div class="flex items-center justify-start lg:justify-start">
           <TextField
             class="mr-4 w-10/12 sm:w-11/12 lg:w-2/12"
@@ -32,19 +22,36 @@
           />
           <Icon name="filter" class="lg:hidden" />
         </div>
-        <div class="flex-1">
-          <Table
-            class="mt-6 hidden h-full overflow-auto md:table"
-            :data="statementStore.statements"
-            :columns="columns"
-            :loading="false"
-          >
-            <template #empty>
-              <TableEmptyState />
+        <div class="mt-6 flex-1">
+          <TableWithPagination>
+            <template #tableSection>
+              <div class="h-full">
+                <el-table :data="[]" style="width: 100%">
+                  <el-table-column
+                    prop="name"
+                    label="Date Created"
+                    width="250px"
+                  />
+                  <el-table-column prop="email" label="Name" width="250px" />
+                  <el-table-column prop="role" label="Description" />
+                  <el-table-column prop="role" label="Beneficiary" />
+                  <el-table-column align="right" width="150px">
+                    <template #default>
+                      <Button ghost icon="outlineEclipses" />
+                    </template>
+                  </el-table-column>
+
+                  <template #empty>
+                    <TableEmptyState
+                      btn-label="4Set Up Recurring Payment"
+                      sub-title="Click on send payment to make payment"
+                    />
+                  </template>
+                </el-table>
+              </div>
             </template>
-          </Table>
+          </TableWithPagination>
         </div>
-        <Pagination class="hidden bg-white md:flex" />
       </div>
     </template>
   </AuthenticatedLayout>
@@ -55,21 +62,8 @@ import AuthenticatedLayout from "@/components/organisms/AuthenticatedLayout.vue"
 import TextField from "@/components/atoms/TextField.vue";
 import Icon from "@/components/atoms/Icon.vue";
 import Button from "@/components/atoms/Button.vue";
-import Pagination from "@/components/atoms/Pagination.vue";
-import Table from "@/components/atoms/Table.vue";
 import TableEmptyState from "@/components/molecules/TableEmptyState.vue";
 import Calendar from "@/components/molecules/Calendar.vue";
-import { useStatementStore } from "@/modules/Statements/store";
-import { ref } from "vue";
 import SelectField from "../../../components/atoms/SelectField.vue";
-
-const columns = ref([
-  { label: "Date", prop: "date", width: "150" },
-  { label: "Name", prop: "name" },
-  { label: "Memo", prop: "memo" },
-  { label: "Source", prop: "source" },
-  { label: "Amount", prop: "amount" },
-]);
-
-const statementStore = useStatementStore();
+import TableWithPagination from "@/components/molecules/TableWithPagination.vue";
 </script>

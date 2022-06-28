@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import TableWithPagination from "@components/molecules/TableWithPagination.vue";
+import TableWithPagination from "@/components/molecules/TableWithPagination.vue";
 import Button from "@components/atoms/Button.vue";
 
 defineProps({
