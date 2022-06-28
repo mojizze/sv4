@@ -1,57 +1,48 @@
 <template>
-  <AuthenticatedLayout>
-    <template #content>
-      <div
-        class="relative z-10 mt-6 flex w-full flex-1 flex-col bg-white p-6 shadow-xl"
-      >
-        <Button
-          size="tiny"
-          shape="circle"
-          class="absolute bottom-18 right-4 z-10"
-        >
-          <template #icon>
-            <Icon name="add" class="h-6 w-6 fill-blue stroke-white" />
-          </template>
-        </Button>
+  <div
+    class="relative z-10 mt-6 flex w-full flex-1 flex-col bg-white p-6 shadow-xl"
+  >
+    <Button size="tiny" shape="circle" class="absolute bottom-18 right-4 z-10">
+      <template #icon>
+        <Icon name="add" class="h-6 w-6 fill-blue stroke-white" />
+      </template>
+    </Button>
 
-        <div class="flex items-center justify-start lg:justify-start">
-          <TextField
-            class="mr-4 w-10/12 sm:w-11/12 lg:w-2/12"
-            placeholderText="Search..."
-            type="text"
-          />
-          <Calendar class="mr-4 hidden lg:block" />
-          <Calendar class="mr-4 hidden lg:block" />
-          <SelectField
-            :options="[]"
-            display-property="name"
-            value-property="name"
-            placeholder='<span class="text-black1">All Account</span>'
-            label-prefix="Source:"
-            class="mr-4 hidden lg:block"
-          />
-          <Icon name="filter" class="lg:hidden" />
-        </div>
-        <div class="flex-1">
-          <Table
-            class="mt-6 hidden h-full overflow-auto md:table"
-            :data="statementStore.statements"
-            :columns="columns"
-            :loading="false"
-          >
-            <template #empty>
-              <TableEmptyState />
-            </template>
-          </Table>
-        </div>
-        <Pagination class="hidden bg-white md:flex" />
-      </div>
-    </template>
-  </AuthenticatedLayout>
+    <div class="flex items-center justify-start lg:justify-start">
+      <TextField
+        class="mr-4 w-10/12 sm:w-11/12 lg:w-2/12"
+        placeholderText="Search..."
+        type="text"
+      />
+      <Calendar class="mr-4 hidden lg:block" />
+      <Calendar class="mr-4 hidden lg:block" />
+      <SelectField
+        :options="[]"
+        display-property="name"
+        value-property="name"
+        placeholder='<span class="text-black1">All Account</span>'
+        label-prefix="Source:"
+        class="mr-4 hidden lg:block"
+      />
+      <Icon name="filter" class="lg:hidden" />
+    </div>
+    <div class="flex-1">
+      <Table
+        class="mt-6 hidden h-full overflow-auto md:table"
+        :data="statementStore.statements"
+        :columns="columns"
+        :loading="false"
+      >
+        <template #empty>
+          <TableEmptyState />
+        </template>
+      </Table>
+    </div>
+    <Pagination class="hidden bg-white md:flex" />
+  </div>
 </template>
 
 <script setup>
-import AuthenticatedLayout from "@/components/organisms/AuthenticatedLayout.vue";
 import TextField from "@/components/atoms/TextField.vue";
 import Icon from "@/components/atoms/Icon.vue";
 import Button from "@/components/atoms/Button.vue";

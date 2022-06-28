@@ -5,6 +5,7 @@ import PaymentsRoutes from "../modules/Payments/route";
 import AuthenticationRoute from "../modules/Authentication/route";
 import StatementsnRoute from "../modules/Statements/route";
 import NotFound from "@/components/templates/NotFound.vue";
+import { close, start } from "@/helpers/NProgress";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,9 @@ function nextFactory(context, middleware, index) {
 }
 
 router.beforeEach((to, from, next) => {
+  if (to.name) {
+    start();
+  }
   if (to.meta.middleware) {
     const middleware = Array.isArray(to.meta.middleware)
       ? to.meta.middleware
@@ -48,7 +52,11 @@ router.beforeEach((to, from, next) => {
     return middleware[0]({ ...context, next: nextMiddleware });
   }
 
-  return next();
+  next();
+});
+
+router.afterEach(() => {
+  close();
 });
 
 export default router;

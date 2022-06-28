@@ -1,7 +1,16 @@
+<template>
+  <AuthenticatedLayout v-if="store.access_token">
+    <template #content>
+      <RouterView />
+    </template>
+  </AuthenticatedLayout>
+  <RouterView v-else />
+</template>
+
 <script setup>
 import { RouterView } from "vue-router";
-</script>
+import AuthenticatedLayout from "@/components/organisms/AuthenticatedLayout.vue";
+import { useAuthenticationStore } from "@/modules/Authentication/store";
 
-<template>
-  <RouterView />
-</template>
+const store = useAuthenticationStore();
+</script>

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { close, start } from "@/helpers/NProgress";
 
 const apiBaseUrl = import.meta.env.VITE_BASE_API_URL;
 
@@ -19,6 +20,8 @@ const baseConfig = {
 const HTTP = axios.create(baseConfig);
 
 const requestInterceptor = (config) => {
+  start();
+
   config.headers.common.Authorization = `Bearer ${localStorage.getItem(
     "access_token"
   )}`;
@@ -29,10 +32,12 @@ const requestInterceptor = (config) => {
 };
 
 const responseSuccessInterceptor = (response) => {
+  close();
   return response.data.data || response.data;
 };
 
 const responseErrorInterceptor = (error) => {
+  close();
   return Promise.reject(error.response.data);
 };
 
