@@ -8,7 +8,12 @@
     <template #default="{ next, step, exit, isLast }">
       <VOnboardingStep>
         <div
-          class="-mt-6 ml-58 w-[230px] bg-white shadow sm:rounded-lg xl:ml-74"
+          class="w-[230px] bg-white shadow sm:rounded-lg"
+          :class="[
+            step.content.title === 'Make Payment'
+              ? 'mt-2 ml-10'
+              : '-mt-6 ml-58 2xl:ml-74',
+          ]"
         >
           <div class="px-3 pt-6 pb-4">
             <div class="flex-col items-center justify-between">
@@ -37,11 +42,20 @@
                   Skip
                 </button>
                 <button
+                  v-if="!isLast"
                   @click="next"
                   type="button"
                   class="inline-flex items-center rounded border border-transparent bg-blue py-1 px-4 text-sm font-medium text-white shadow-sm"
                 >
-                  {{ isLast ? "Finish" : "Next" }}
+                  Next
+                </button>
+                <button
+                  v-else
+                  @click="[finishTour(), exit()]"
+                  type="button"
+                  class="inline-flex items-center rounded border border-transparent bg-blue py-1 px-4 text-sm font-medium text-white shadow-sm"
+                >
+                  Finish
                 </button>
               </div>
             </div>
@@ -59,7 +73,7 @@ import {
   useVOnboarding,
 } from "v-onboarding";
 import { onMounted, ref } from "vue";
-
+import { useAuthenticationStore } from "@/modules/Authentication/store";
 const steps = [
   {
     attachTo: { element: "#dashboard" },
@@ -93,6 +107,14 @@ const steps = [
         "Lorem ipsum dolor sit amet, conse, ctetur adipiscing elit ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam",
     },
   },
+  {
+    attachTo: { element: "#makePayment" },
+    content: {
+      title: "Make Payment",
+      description:
+        "Lorem ipsum dolor sit amet, conse, ctetur adipiscing elit ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam",
+    },
+  },
 ];
 
 const options = {
@@ -101,14 +123,18 @@ const options = {
 
 const wrapper = ref(null);
 const { start } = useVOnboarding(wrapper);
-onMounted(() => start());
+const store = useAuthenticationStore();
 
-// onMounted(() => {
-//   // const data = JSON.parse(localStorage.getItem("AuthenticationStore"));
-//   // console.log(data?.user?.tourCompleted);
-//   return start();
-//   // if (window.innerWidth >= 1024 && !data?.user?.tourCompleted) {
-//   //   start();
-//   // }
-// });
+async function finishTour() {
+  await store.tourCompleted();
+  await store.fetchUserProfile();
+}
+
+onMounted(() => {
+  const data = JSON.parse(localStorage.getItem("AuthenticationStore"));
+
+  if (window.innerWidth >= 1024 && !data?.user?.tourCompleted) {
+    start();
+  }
+});
 </script>

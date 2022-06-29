@@ -1,4 +1,5 @@
 <template>
+  <TourGuide />
   <div class="relative flex h-screen w-full flex-col overflow-hidden">
     <div
       class="ml-4 flex h-15 w-full items-center justify-start bg-white lg:hidden"
@@ -63,6 +64,7 @@ import { MenuDetails, OtherMenuDetails } from "@/helpers/Navigation";
 import { find } from "lodash";
 import { useRoute } from "vue-router";
 import { FadeInOut } from "vue3-transitions";
+import TourGuide from "@/components/templates/TourGuide.vue";
 
 const visible = ref(false);
 const route = useRoute();

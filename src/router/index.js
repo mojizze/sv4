@@ -54,7 +54,7 @@ router.beforeEach((to, from, next) => {
     return middleware[0]({ ...context, next: nextMiddleware });
   }
 
-  next();
+  return next();
 });
 
 router.afterEach(() => {

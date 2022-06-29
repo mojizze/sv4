@@ -16,7 +16,7 @@ export const useAuthenticationStore = defineStore({
 
   getters: {
     name: (state) => {
-      return `${state.user.firstName} ${state.user.lastName}`;
+      return `${state.user?.firstName} ${state.user?.lastName}`;
     },
   },
 

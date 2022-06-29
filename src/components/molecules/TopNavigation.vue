@@ -8,7 +8,11 @@
       <p v-else class="text-2xl font-bold text-black1">{{ page }}</p>
     </div>
     <div class="hidden md:flex">
-      <Menu as="div" class="relative mr-6 inline-block text-left">
+      <Menu
+        as="div"
+        id="makePayment"
+        class="relative mr-6 inline-block text-left"
+      >
         <div>
           <MenuButton
             class="flex items-center rounded-lg bg-blue py-4.5 px-9 text-lg font-bold text-white hover:bg-deepblue"
