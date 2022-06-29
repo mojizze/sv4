@@ -22,7 +22,7 @@ const OPTIONS = new Array(124)
   }
 
   & .el-table__cell {
-    @apply py-5 px-7;
+    @apply py-3 px-7;
   }
 
   & th.el-table__cell {
