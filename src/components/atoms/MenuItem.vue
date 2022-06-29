@@ -31,7 +31,7 @@
         <div
           class="flex items-center"
           :class="[
-            $route.name.includes(menu.link) ? 'text-blue' : 'text-gray2',
+            $route.path.includes(menu.link) ? 'text-blue' : 'text-gray2',
           ]"
         >
           <slot name="icon" />

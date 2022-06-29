@@ -70,3 +70,11 @@ export function verifyAccount(payload) {
 export function fetchUserProfile() {
   return HTTP.get("/profile");
 }
+
+/**
+ *
+ * @returns {Promise<AxiosResponse<any>>}
+ */
+export function completeTour() {
+  return HTTP.get("/users/tour-completed");
+}

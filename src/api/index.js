@@ -21,10 +21,9 @@ const HTTP = axios.create(baseConfig);
 
 const requestInterceptor = (config) => {
   start();
+  const data = JSON.parse(localStorage.getItem("AuthenticationStore"));
 
-  config.headers.common.Authorization = `Bearer ${localStorage.getItem(
-    "access_token"
-  )}`;
+  config.headers.common.Authorization = `Bearer ${data?.access_token}`;
 
   config.headers["Content-Type"] = "application/json";
 

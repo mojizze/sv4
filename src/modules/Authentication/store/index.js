@@ -14,6 +14,12 @@ export const useAuthenticationStore = defineStore({
 
   persist: true,
 
+  getters: {
+    name: (state) => {
+      return `${state.user.firstName} ${state.user.lastName}`;
+    },
+  },
+
   actions: {
     async register(payload) {
       await Service.register(payload);
@@ -45,7 +51,20 @@ export const useAuthenticationStore = defineStore({
     },
 
     async fetchUserProfile() {
-      this.user = await Service.fetchUserProfile();
+      const { profile } = await Service.fetchUserProfile();
+      this.user = profile;
+    },
+
+    async tourCompleted() {
+      await Service.completeTour();
+    },
+
+    logout() {
+      localStorage.removeItem("AuthenticationStore");
+      this.user = null;
+      this.access_token = null;
+
+      location.reload();
     },
   },
 });

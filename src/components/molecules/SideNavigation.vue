@@ -22,23 +22,27 @@
         <Menu :navigation="others" />
       </section>
 
-      <section class="">
-        <MenuItem :menu="logout">
-          <template #icon>
-            <Icon class="mr-2.5 h-5 w-5" :name="logout.icon" />
-          </template>
-        </MenuItem>
+      <section class="text-base">
+        <div class="flex cursor-pointer list-none items-center space-y-10">
+          <div
+            @click="store.logout()"
+            class="flex flex-1 items-center font-normal text-gray2"
+          >
+            <Icon class="mr-2.5 h-5 w-5" name="logout" />
+            <span>Logout</span>
+          </div>
+        </div>
       </section>
     </div>
     <div class="my-10 flex">
       <div>
-        <Avatar class="mr-2" name="Layor Pan" />
+        <Avatar class="mr-2" :name="store.name" />
       </div>
       <div class="min-w-0 flex-1">
         <div class="truncate text-sm text-black1">
           The Sharply Africana vision
         </div>
-        <div class="text-xs text-gray2">Layor Pan</div>
+        <div class="text-xs text-gray2">{{ store.name }}</div>
       </div>
     </div>
   </div>
@@ -46,10 +50,10 @@
 
 <script setup>
 import Menu from "./Menu.vue";
-import MenuItem from "@/components/atoms/MenuItem.vue";
 import Icon from "@/components/atoms/Icon.vue";
 import Avatar from "@/components/atoms/Avatar.vue";
 import { MenuDetails, OtherMenuDetails } from "@/helpers/Navigation";
+import { useAuthenticationStore } from "@/modules/Authentication/store";
 import { ref } from "vue";
 
 defineEmits(["close"]);
@@ -58,10 +62,5 @@ const navigation = ref(MenuDetails);
 
 const others = ref(OtherMenuDetails);
 
-const logout = ref({
-  name: "Logout",
-  link: "#",
-  children: null,
-  icon: "logout",
-});
+const store = useAuthenticationStore();
 </script>

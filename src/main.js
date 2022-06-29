@@ -16,8 +16,8 @@ import "element-plus/dist/index.css";
 const app = createApp(App);
 
 const pinia = createPinia();
-pinia.use(piniaPluginPersistedstate);
 app.use(pinia);
+pinia.use(piniaPluginPersistedstate);
 app.use(PiniaVuePlugin);
 app.use(router);
 app.use(Vue3Transitions);

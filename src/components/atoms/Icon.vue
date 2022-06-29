@@ -18,8 +18,12 @@ const props = defineProps({
 });
 
 const icon = computed(() => {
-  return defineAsyncComponent(() =>
-    import("../../assets/icons/" + props.name + ".svg?component")
-  );
+  if (props.name) {
+    return defineAsyncComponent(() =>
+      import("../../assets/icons/" + props.name + ".svg?component")
+    );
+  }
+
+  return "<div />";
 });
 </script>

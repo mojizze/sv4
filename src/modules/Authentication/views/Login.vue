@@ -135,6 +135,7 @@ const submit = async () => {
     const result = await v$.value.$validate();
     if (result) {
       await authenticationStore.login(formData.value);
+      await authenticationStore.fetchUserProfile();
       toast.success("Login Successful");
       await push("/dashboard");
     }

@@ -1,6 +1,4 @@
 <template>
-  <TourGuide />
-
   <div class="relative flex h-screen w-full flex-col overflow-hidden">
     <div
       class="ml-4 flex h-15 w-full items-center justify-start bg-white lg:hidden"
@@ -12,8 +10,8 @@
       <div
         class="flex items-center justify-start border-l border-l-gray3 pl-6 text-blue"
       >
-        <Icon :name="currentMenu.icon" class="h-6 w-6" />
-        <span class="ml-2.5 block">{{ currentMenu.name }}</span>
+        <Icon :name="currentMenu && currentMenu.icon" class="h-6 w-6" />
+        <span class="ml-2.5 block">{{ currentMenu && currentMenu.name }}</span>
       </div>
     </div>
 
@@ -57,7 +55,6 @@
 <script setup>
 import SideNavigation from "@/components/molecules/SideNavigation.vue";
 import TopNavigation from "@/components/molecules/TopNavigation.vue";
-import TourGuide from "@/components/templates/TourGuide.vue";
 import { ref, computed } from "vue";
 import Icon from "@/components/atoms/Icon.vue";
 import { MenuIcon } from "@heroicons/vue/solid";

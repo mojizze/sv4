@@ -1,6 +1,6 @@
 <template>
   <VOnboardingWrapper
-    class="hidden lg:block"
+    class="lg:block"
     ref="wrapper"
     :steps="steps"
     :options="options"
@@ -51,7 +51,11 @@
 </template>
 
 <script setup>
-import { VOnboardingWrapper, VOnboardingStep } from "v-onboarding";
+import {
+  VOnboardingWrapper,
+  VOnboardingStep,
+  useVOnboarding,
+} from "v-onboarding";
 import "v-onboarding/dist/style.css";
 import { onMounted, ref } from "vue";
 
@@ -95,11 +99,14 @@ const options = {
 };
 
 const wrapper = ref(null);
-// const { start } = useVOnboarding(wrapper);
+const { start } = useVOnboarding(wrapper);
 
 onMounted(() => {
-  if (window.innerWidth >= 1024) {
-    // start();
-  }
+  // const data = JSON.parse(localStorage.getItem("AuthenticationStore"));
+  // console.log(data?.user?.tourCompleted);
+  start();
+  // if (window.innerWidth >= 1024 && !data?.user?.tourCompleted) {
+  //   start();
+  // }
 });
 </script>
