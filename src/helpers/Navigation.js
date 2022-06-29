@@ -49,30 +49,30 @@ export const MenuDetails = [
     icon: "send",
     children: [
       {
-        name: "Recieved Payments",
-        link: "#",
+        name: "Received Payments",
+        link: "/collections/received-payments",
         icon: "send",
       },
       {
         name: "Products",
-        link: "#",
+        link: "/collections/products",
         icon: "send",
       },
       {
         name: "Invoices",
-        link: "#",
+        link: "/collections/invoices",
         icon: "send",
       },
       {
         name: "Customers",
-        link: "#",
+        link: "/collections/customers",
         icon: "send",
       },
     ],
   },
   {
     name: "Accounts",
-    link: "accounts",
+    link: "/accounts",
     children: null,
     icon: "wallet",
   },
@@ -81,7 +81,7 @@ export const MenuDetails = [
 export const OtherMenuDetails = [
   {
     name: "Teams",
-    link: "teams",
+    link: "/teams",
     children: null,
     icon: "teams",
   },

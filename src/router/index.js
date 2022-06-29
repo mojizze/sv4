@@ -3,7 +3,8 @@ import DashboardRoutes from "../modules/Dashboard/route";
 import TeamsRoutes from "../modules/Teams/route";
 import PaymentsRoutes from "../modules/Payments/route";
 import AuthenticationRoute from "../modules/Authentication/route";
-import StatementsnRoute from "../modules/Statements/route";
+import StatementsRoute from "../modules/Statements/route";
+import CollectionRoute from "../modules/Collections/route";
 import NotFound from "@/components/templates/NotFound.vue";
 import { close, start } from "@/helpers/NProgress";
 
@@ -14,7 +15,8 @@ const router = createRouter({
     ...TeamsRoutes,
     ...PaymentsRoutes,
     ...AuthenticationRoute,
-    ...StatementsnRoute,
+    ...StatementsRoute,
+    ...CollectionRoute,
     { path: "/404", component: NotFound },
     { path: "/:catchAll(.*)", name: "NotFound", redirect: "/404" },
   ],

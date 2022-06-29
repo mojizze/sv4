@@ -1,22 +1,17 @@
 <template>
-  <AuthenticatedLayout>
-    <template #content>
-      <div class="flex min-h-0 flex-1 flex-col rounded-lg bg-white py-8">
-        <el-tabs class="sp-teams-tabs">
-          <el-tab-pane label="Teammates">
-            <TeamTable :data="teamMates" />
-          </el-tab-pane>
-          <el-tab-pane label="Pending Invite">
-            <TeamTable :data="pendingMates" />
-          </el-tab-pane>
-        </el-tabs>
-      </div>
-    </template>
-  </AuthenticatedLayout>
+  <div class="flex min-h-0 flex-1 flex-col rounded-lg bg-white p-6">
+    <el-tabs class="sp-teams-tabs">
+      <el-tab-pane label="Teammates">
+        <TeamTable :data="teamMates" />
+      </el-tab-pane>
+      <el-tab-pane label="Pending Invite">
+        <TeamTable :data="pendingMates" />
+      </el-tab-pane>
+    </el-tabs>
+  </div>
 </template>
 
 <script setup>
-import AuthenticatedLayout from "@components/organisms/AuthenticatedLayout.vue";
 import TeamTable from "../components/TeamTable.vue";
 
 const teamMates = [

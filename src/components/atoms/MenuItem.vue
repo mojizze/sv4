@@ -16,7 +16,7 @@
             ? 'text-blue font-medium'
             : 'text-gray2 font-normal'
         "
-        @click="setSelectedMenu(menu.name)"
+        @click="$emit('setSelectedMenu', menu.name)"
       >
         <slot name="icon" />
 
@@ -27,7 +27,7 @@
         v-else
         :id="menu.name.toLowerCase()"
         class="flex flex-1 cursor-pointer items-center justify-between"
-        @click="setSelectedMenu(menu.name)"
+        @click="$emit('setSelectedMenu', menu.name)"
       >
         <div
           class="flex items-center"
@@ -73,31 +73,16 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
 import Icon from "../atoms/Icon.vue";
-import { useRoute } from "vue-router";
 
 defineProps({
   menu: {
     type: Object,
     required: true,
   },
-});
-
-const route = useRoute();
-
-const selected = ref("");
-
-const setSelectedMenu = (name) => {
-  if (selected.value === name) {
-    selected.value = "";
-  } else {
-    selected.value = name.toLowerCase();
-  }
-};
-
-onMounted(() => {
-  const currentRoute = route.path.split("/");
-  selected.value = currentRoute[1].toLowerCase();
+  selected: {
+    type: String,
+    required: "",
+  },
 });
 </script>

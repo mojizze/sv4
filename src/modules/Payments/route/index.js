@@ -1,3 +1,5 @@
+import auth from "@/middlewares/auth";
+
 const routes = [
   {
     path: "/payments/category",
@@ -5,6 +7,7 @@ const routes = [
     component: () => import("../views/Category.vue"),
     meta: {
       name: "Category",
+      middleware: [auth],
     },
   },
   {
@@ -13,6 +16,7 @@ const routes = [
     component: () => import("../views/Transactions.vue"),
     meta: {
       name: "Transactions",
+      middleware: [auth],
     },
   },
   {
@@ -21,6 +25,7 @@ const routes = [
     component: () => import("../views/RequiresAttention.vue"),
     meta: {
       name: "Requires Attention",
+      middleware: [auth],
     },
   },
   {
@@ -29,6 +34,7 @@ const routes = [
     component: () => import("../views/RecurringPayment.vue"),
     meta: {
       name: "Recurring Payment",
+      middleware: [auth],
     },
   },
   {
@@ -37,6 +43,7 @@ const routes = [
     component: () => import("../views/Beneficiaries.vue"),
     meta: {
       name: "Beneficiaries",
+      middleware: [auth],
     },
   },
 ];

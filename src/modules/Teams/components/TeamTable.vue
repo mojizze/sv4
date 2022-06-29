@@ -1,7 +1,7 @@
 <template>
   <TableWithPagination>
     <template #tableSection>
-      <el-table :data="data" style="width: 100%">
+      <el-table class="mt-6" :data="data" style="width: 100%">
         <el-table-column prop="name" label="Name" />
         <el-table-column prop="email" label="Email" />
         <el-table-column prop="role" label="Role" width="150px" />

@@ -1,5 +1,5 @@
 <template>
-  <component :is="icon" />
+  <component v-if="icon" :is="icon" />
 </template>
 
 <script setup>
@@ -24,6 +24,6 @@ const icon = computed(() => {
     );
   }
 
-  return "<div />";
+  return false;
 });
 </script>
