@@ -1,7 +1,7 @@
 <template>
   <div class="flex h-screen w-full overflow-hidden">
     <div
-      class="sp-base-container hidden flex-col space-y-10 overflow-auto bg-[#F1FAF9] py-7 px-12 lg:flex"
+      class="sp-base-container hidden flex-col space-y-10 overflow-hidden bg-[#F1FAF9] py-7 px-12 lg:flex"
     >
       <span class="left-12 text-xl font-bold text-blue"> Logo </span>
 

@@ -8,10 +8,11 @@
         class="mr-6 h-6 w-6 cursor-pointer"
       />
       <div
+        v-if="currentMenu"
         class="flex items-center justify-start border-l border-l-gray3 pl-6 text-blue"
       >
-        <Icon :name="currentMenu && currentMenu.icon" class="h-6 w-6" />
-        <span class="ml-2.5 block">{{ currentMenu && currentMenu.name }}</span>
+        <Icon :name="currentMenu.icon" class="h-6 w-6" />
+        <span class="ml-2.5 block">{{ currentMenu.name }}</span>
       </div>
     </div>
 
@@ -81,8 +82,10 @@ const flattenArray = (members) => {
 };
 
 const currentMenu = computed(() => {
-  return find(flattenArray([...MenuDetails, ...OtherMenuDetails]), {
-    link: route.path,
-  });
+  return (
+    find(flattenArray([...MenuDetails, ...OtherMenuDetails]), {
+      link: route.path,
+    }) || null
+  );
 });
 </script>
