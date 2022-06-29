@@ -29,7 +29,7 @@
             leave-to="translate-x-full"
           >
             <DialogPanel
-              class="relative space-y-16 overflow-hidden rounded-lg bg-white px-10 py-16 text-left shadow-xl transition-all sm:w-full lg:w-1/3"
+              class="relative space-y-16 overflow-hidden rounded-lg bg-white p-10 text-left shadow-xl transition-all sm:w-full lg:w-1/3"
             >
               <Icon
                 name="close"

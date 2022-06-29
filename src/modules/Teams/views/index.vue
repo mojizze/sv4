@@ -38,7 +38,7 @@ import TeamTable from "../components/TeamTable.vue";
 import TeamForm from "../components/TeamForm.vue";
 import { ref } from "vue";
 
-const show = ref(true);
+const show = ref(false);
 const teamMates = [
   {
     email: "maureen.gardner@msn.com",
