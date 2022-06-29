@@ -12,6 +12,7 @@ import VCalendar from "v-calendar";
 import vClickOutside from "click-outside-vue3";
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
+import "v-onboarding/dist/style.css";
 
 const app = createApp(App);
 

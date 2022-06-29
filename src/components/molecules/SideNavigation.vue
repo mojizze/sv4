@@ -1,4 +1,5 @@
 <template>
+  <TourGuide />
   <div
     class="relative flex h-full w-55 flex-col overflow-auto bg-white py-7.5 pr-4 pl-7.5 2xl:w-72"
   >
@@ -55,6 +56,7 @@ import Avatar from "@/components/atoms/Avatar.vue";
 import { MenuDetails, OtherMenuDetails } from "@/helpers/Navigation";
 import { useAuthenticationStore } from "@/modules/Authentication/store";
 import { ref } from "vue";
+import TourGuide from "@/components/templates/TourGuide.vue";
 
 defineEmits(["close"]);
 

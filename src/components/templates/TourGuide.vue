@@ -1,13 +1,15 @@
 <template>
   <VOnboardingWrapper
-    class="lg:block"
+    class="hidden lg:block"
     ref="wrapper"
     :steps="steps"
     :options="options"
   >
     <template #default="{ next, step, exit, isLast }">
       <VOnboardingStep>
-        <div class="-mt-6 ml-58 w-[230px] bg-white shadow sm:rounded-lg">
+        <div
+          class="-mt-6 ml-58 w-[230px] bg-white shadow sm:rounded-lg xl:ml-74"
+        >
           <div class="px-3 pt-6 pb-4">
             <div class="flex-col items-center justify-between">
               <div v-if="step.content">
@@ -56,7 +58,6 @@ import {
   VOnboardingStep,
   useVOnboarding,
 } from "v-onboarding";
-import "v-onboarding/dist/style.css";
 import { onMounted, ref } from "vue";
 
 const steps = [
@@ -100,13 +101,14 @@ const options = {
 
 const wrapper = ref(null);
 const { start } = useVOnboarding(wrapper);
+onMounted(() => start());
 
-onMounted(() => {
-  // const data = JSON.parse(localStorage.getItem("AuthenticationStore"));
-  // console.log(data?.user?.tourCompleted);
-  start();
-  // if (window.innerWidth >= 1024 && !data?.user?.tourCompleted) {
-  //   start();
-  // }
-});
+// onMounted(() => {
+//   // const data = JSON.parse(localStorage.getItem("AuthenticationStore"));
+//   // console.log(data?.user?.tourCompleted);
+//   return start();
+//   // if (window.innerWidth >= 1024 && !data?.user?.tourCompleted) {
+//   //   start();
+//   // }
+// });
 </script>

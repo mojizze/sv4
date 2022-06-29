@@ -3,7 +3,7 @@
     <div class="flex w-full items-center justify-between md:flex-1">
       <div class="hidden md:block" v-if="$route.name === 'dashboard'">
         <p class="text-xl font-bold text-black1">Welcome To Softpay</p>
-        <p class="mt-2 text-gray1">Hi Layor Salami. Welcome Back</p>
+        <p class="mt-2 text-gray1">{{ store.name }}. Welcome Back</p>
       </div>
       <p v-else class="text-2xl font-bold text-black1">{{ page }}</p>
     </div>
@@ -58,7 +58,7 @@
 import Button from "@/components/atoms/Button.vue";
 import Icon from "../atoms/Icon.vue";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
-
+import { useAuthenticationStore } from "@/modules/Authentication/store";
 defineProps({
   page: {
     type: String,
@@ -66,4 +66,6 @@ defineProps({
   },
   icon: { type: Boolean, default: false },
 });
+
+const store = useAuthenticationStore();
 </script>

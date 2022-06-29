@@ -4,7 +4,7 @@
       <router-link
         v-if="!menu.children"
         :to="menu.link"
-        :id="menu.link"
+        :id="menu.name.toLowerCase()"
         :class="['flex flex-1 items-center']"
         :exact-active-class="
           $route.path.includes(menu.link)
@@ -25,6 +25,7 @@
 
       <div
         v-else
+        :id="menu.name.toLowerCase()"
         class="flex flex-1 cursor-pointer items-center justify-between"
         @click="setSelectedMenu(menu.name)"
       >
