@@ -87,7 +87,7 @@ export const OtherMenuDetails = [
   },
   {
     name: "Settings",
-    link: "#",
+    link: "/settings",
     children: null,
     icon: "setting",
   },
