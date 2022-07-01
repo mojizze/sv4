@@ -1,44 +1,45 @@
 <template>
-  <TransitionRoot as="template" :show="show">
-    <Dialog as="div" class="relative z-10" @close="emit('close')">
+  <TransitionRoot as="template" :show="show" appear>
+    <Dialog
+      class="fixed inset-0 z-[999] overflow-hidden"
+      @close="emit('close')"
+    >
       <TransitionChild
         as="template"
-        enter="ease-out duration-300"
+        enter="transition-opacity ease-in-out duration-300"
         enter-from="opacity-0"
         enter-to="opacity-100"
-        leave="ease-in duration-200"
+        leave="transition-opacity ease-in-out duration-300"
         leave-from="opacity-100"
         leave-to="opacity-0"
       >
-        <div class="fixed inset-0 bg-black4/40 transition-opacity" />
+        <DialogOverlay class="absolute inset-0 bg-black4/40" />
       </TransitionChild>
 
-      <div class="fixed inset-0 z-10 overflow-y-auto">
-        <div
-          class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
+      <TransitionChild
+        as="template"
+        enter="transform transition-transform ease-in-out duration-300"
+        enter-from="translate-x-full"
+        enter-to="translate-x-0"
+        leave="transform transition-transform ease-in-out duration-300"
+        leave-from="translate-x-0"
+        leave-to="translate-x-full"
+      >
+        <DialogPanel
+          class="fixed inset-y-0 right-0 space-y-16 overflow-hidden rounded-lg bg-white p-10 text-left shadow-xl transition-all sm:w-full lg:w-1/3"
         >
-          <TransitionChild
-            as="template"
-            enter="ease-out duration-300"
-            enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-            enter-to="opacity-100 translate-y-0 sm:scale-100"
-            leave="ease-in duration-200"
-            leave-from="opacity-100 translate-y-0 sm:scale-100"
-            leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-          >
-            <DialogPanel
-              class="relative overflow-hidden rounded-lg bg-white px-4 pb-4 text-left shadow-xl transition-all sm:w-full sm:max-w-sm sm:p-6"
-            >
-              <div>
-                <DialogTitle>
-                  <slot name="title" />
-                </DialogTitle>
-                <slot name="content" />
-              </div>
-            </DialogPanel>
-          </TransitionChild>
-        </div>
-      </div>
+          <Icon
+            name="close"
+            class="absolute top-10 right-5 cursor-pointer"
+            @click="emit('close')"
+          />
+          <DialogTitle>
+            <slot name="title" />
+          </DialogTitle>
+
+          <slot name="content" />
+        </DialogPanel>
+      </TransitionChild>
     </Dialog>
   </TransitionRoot>
 </template>
@@ -50,12 +51,21 @@ import {
   DialogTitle,
   TransitionChild,
   TransitionRoot,
+  DialogOverlay,
 } from "@headlessui/vue";
+import Icon from "@components/atoms/Icon.vue";
 
 defineProps({
   show: {
     type: Boolean,
     default: false,
+  },
+  position: {
+    type: String,
+    default: "left",
+    validator(value) {
+      return ["left", "center"].includes(value);
+    },
   },
 });
 

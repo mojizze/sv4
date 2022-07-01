@@ -65,3 +65,7 @@ body,
 .Vue-Toastification__toast--success {
   background-color: #080 !important;
 }
+
+.el-select .el-input--large {
+  @apply h-12;
+}

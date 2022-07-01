@@ -187,6 +187,7 @@ module.exports = {
       blue: "#0085FF",
       deepblue: "#0066FF",
       lightblue: "#C1E0FC",
+      fadeblue: "#C2E2FF",
 
       // State Colors.
       info: "#3DA1FD",
@@ -224,6 +225,7 @@ module.exports = {
       sm: "2px",
       DEFAULT: "4px",
       lg: "8px",
+      xl: "16px",
       full: "50%",
     },
 

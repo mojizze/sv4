@@ -36,6 +36,18 @@
         class="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer"
         @click="$emit('toggle-password-visibility')"
       />
+      <div
+        v-if="isVerifiable"
+        :class="[
+          'absolute right-5 top-1/2 -translate-y-1/2 transform rounded-xl text-sm',
+          {
+            'bg-green1/30 px-3 py-1 text-green1': isVerified,
+            ' bg-error/30 px-3 py-1 text-error': !isVerified,
+          },
+        ]"
+      >
+        {{ isVerifiedLabel }}
+      </div>
     </div>
     <div
       v-if="errorText"
@@ -55,7 +67,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import Icon from "./Icon.vue";
 
 const props = defineProps({
@@ -133,10 +145,24 @@ const props = defineProps({
     default: false,
   },
 
+  isVerifiable: {
+    type: Boolean,
+    default: false,
+  },
+
+  isVerified: {
+    type: Boolean,
+    default: false,
+  },
+
   successText: {
     type: String,
     default: "",
   },
+});
+
+const isVerifiedLabel = computed(() => {
+  return props.isVerified ? "Verified" : "Unverified";
 });
 defineEmits(["update:modelValue", "toggle-password-visibility"]);
 

@@ -47,7 +47,6 @@ const route = useRoute();
 
 onMounted(() => {
   const currentRoute = route.path.split("/");
-  console.log(currentRoute);
   selected.value = currentRoute[1].toLowerCase();
 });
 </script>

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import DashboardRoutes from "../modules/Dashboard/route";
 import TeamsRoutes from "../modules/Teams/route";
+import SettingsRoutes from "../modules/Settings/route";
 import PaymentsRoutes from "../modules/Payments/route";
 import AuthenticationRoute from "../modules/Authentication/route";
 import StatementsRoute from "../modules/Statements/route";
@@ -12,6 +13,7 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     ...DashboardRoutes,
+    ...SettingsRoutes,
     ...TeamsRoutes,
     ...PaymentsRoutes,
     ...AuthenticationRoute,

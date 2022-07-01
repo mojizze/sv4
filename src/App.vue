@@ -1,9 +1,6 @@
 <template>
-  <AuthenticatedLayout v-if="store.access_token">
-    <template #content>
-      <RouterView />
-    </template>
-  </AuthenticatedLayout>
+  <AuthenticatedLayout v-if="store.access_token" />
+
   <RouterView v-else />
 </template>
 

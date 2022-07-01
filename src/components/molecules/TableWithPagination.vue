@@ -1,8 +1,9 @@
 <template>
   <div class="flex h-full flex-1 flex-col">
     <slot name="tableSection" />
-
-    <Pagination :options="OPTIONS" />
+    <div class="px-10">
+      <Pagination :options="OPTIONS" />
+    </div>
   </div>
 </template>
 
@@ -22,7 +23,7 @@ const OPTIONS = new Array(124)
   }
 
   & .el-table__cell {
-    @apply py-5 px-7;
+    @apply py-3 px-7;
   }
 
   & th.el-table__cell {
@@ -50,7 +51,7 @@ const OPTIONS = new Array(124)
   }
 
   & .el-table__header tr th {
-    @apply border-y border-gray6 text-gray2;
+    @apply border-b border-gray6 text-gray2;
   }
 }
 </style>
