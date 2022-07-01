@@ -27,18 +27,56 @@
       <Icon name="filter" class="lg:hidden" />
     </div>
     <div class="flex-1">
-      <Table
-        class="mt-6 hidden h-full overflow-auto md:table"
-        :data="statementStore.statements"
-        :columns="columns"
-        :loading="false"
-      >
-        <template #empty>
-          <TableEmptyState />
+      <TableWithPagination>
+        <template #tableSection>
+          <div class="mt-6 h-full text-black1">
+            <el-table :data="statements" style="width: 100%">
+              <el-table-column prop="date" label="Date" />
+              <el-table-column prop="description" label="Description" />
+              <el-table-column
+                prop="transaction_type"
+                label="Transaction Type"
+              />
+              <el-table-column prop="account" label="Account" width="300px">
+                <template #default="scope">
+                  <ul class="flex w-full justify-start">
+                    <li class="cursor-pointer">
+                      <div class="flex items-center justify-start">
+                        <Icon :name="scope.row.account.icon" />
+                        <div class="ml-2">
+                          <p class="text-sm text-black1">
+                            {{ scope.row.account.bank }}
+                          </p>
+                          <p class="text-2xs text-gray2">
+                            {{ scope.row.account.account }}
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </template>
+              </el-table-column>
+              <el-table-column prop="amount" label="Amount">
+                <template #default="scope">
+                  {{ $priceFormat(scope.row.amount) }}
+                </template>
+              </el-table-column>
+              <el-table-column align="right" width="150px">
+                <template #default>
+                  <Button ghost icon="outlineEclipses" />
+                </template>
+              </el-table-column>
+
+              <template #empty>
+                <TableEmptyState
+                  sub-title="Add a payment category to see record"
+                />
+              </template>
+            </el-table>
+          </div>
         </template>
-      </Table>
+      </TableWithPagination>
     </div>
-    <Pagination class="hidden bg-white md:flex" />
   </div>
 </template>
 
@@ -46,21 +84,25 @@
 import TextField from "@/components/atoms/TextField.vue";
 import Icon from "@/components/atoms/Icon.vue";
 import Button from "@/components/atoms/Button.vue";
-import Pagination from "@/components/atoms/Pagination.vue";
-import Table from "@/components/atoms/Table.vue";
+import TableWithPagination from "@/components/molecules/TableWithPagination.vue";
 import TableEmptyState from "@/components/molecules/TableEmptyState.vue";
 import Calendar from "@/components/molecules/Calendar.vue";
-import { useStatementStore } from "@/modules/Statements/store";
-import { ref } from "vue";
+// import { useStatementStore } from "@/modules/Statements/store";
 import SelectField from "../../../components/atoms/SelectField.vue";
 
-const columns = ref([
-  { label: "Date", prop: "date", width: "150" },
-  { label: "Name", prop: "name" },
-  { label: "Memo", prop: "memo" },
-  { label: "Source", prop: "source" },
-  { label: "Amount", prop: "amount" },
-]);
+const statements = [
+  {
+    date: "11/07/2021",
+    description: "Data Allowance",
+    transaction_type: "Debit",
+    account: {
+      bank: "ALAT by Wema",
+      account: "1023117865",
+      icon: "wema",
+    },
+    amount: 12050.15,
+  },
+];
 
-const statementStore = useStatementStore();
+// statementStore = useStatementStore();
 </script>

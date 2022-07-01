@@ -1,0 +1,25 @@
+variables:
+  PROJECT_NAME: Softpay Frontend
+  ​
+DEPLOY_FOLDER: /apps/softpay-frontend
+  ​
+stages:
+  - deploy
+  ​
+Deploy(Dev):
+  stage: deploy
+  tags:
+    - dev
+  script:
+    - echo "Install dependences"
+    - yarn install
+    - yarn build
+    - echo "Copying files......."
+    - mkdir -p $DEPLOY_FOLDER
+    - cd dist
+    - cp -R * $DEPLOY_FOLDER
+    - echo "Done......"
+  environment:
+    name: dev
+  only:
+    - develop

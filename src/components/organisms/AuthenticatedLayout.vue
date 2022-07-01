@@ -1,6 +1,6 @@
 <template>
   <TourGuide />
-  <div class="relative flex h-screen w-full flex-col overflow-hidden">
+  <div class="relative flex h-screen w-full flex-col overflow-hidden py-2 pr-2">
     <div
       class="ml-4 flex h-15 w-full items-center justify-start bg-white lg:hidden"
     >

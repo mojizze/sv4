@@ -31,7 +31,7 @@ const OPTIONS = new Array(124)
   }
 
   & td.el-table__cell {
-    @apply border-0;
+    @apply border-0 text-black1;
   }
 
   & .el-table__inner-wrapper {
