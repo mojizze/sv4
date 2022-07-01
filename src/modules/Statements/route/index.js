@@ -1,4 +1,4 @@
-// import auth from "@/middlewares/auth.js";
+import auth from "@/middlewares/auth.js";
 
 const routes = [
   {
@@ -7,7 +7,7 @@ const routes = [
     component: () => import("../views/index.vue"),
     meta: {
       name: "Statements",
-      // middleware: [auth],
+      middleware: [auth],
     },
   },
 ];

@@ -13,6 +13,7 @@ import vClickOutside from "click-outside-vue3";
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
 import "v-onboarding/dist/style.css";
+import Plugins from "./plugins";
 
 const app = createApp(App);
 
@@ -25,6 +26,7 @@ app.use(Vue3Transitions);
 app.use(vClickOutside);
 app.use(VCalendar, {});
 app.use(ElementPlus);
+app.use(Plugins);
 
 const options = {
   hideProgressBar: true,

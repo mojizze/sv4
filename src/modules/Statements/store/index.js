@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import * as Service from "../services";
 
 export const useStatementStore = defineStore({
   id: "StatementStore",
@@ -13,5 +14,17 @@ export const useStatementStore = defineStore({
     };
   },
 
-  actions: {},
+  actions: {
+    async fetchStatements() {
+      const params = {
+        searchBy: this.searchBy,
+        startDate: this.startDate,
+        endDate: this.endDate,
+        limit: this.limit,
+        page: this.page,
+      };
+
+      this.statements = Service.index(params);
+    },
+  },
 });
