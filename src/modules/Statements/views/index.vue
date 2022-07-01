@@ -1,7 +1,11 @@
 <template>
   <PageContentLayout>
     <template #content>
-      <FloatingButton />
+      <FloatingButton @btn:clicked="displayDetail = true" />
+      <StatementDetail
+        :model-value="displayDetail"
+        @visible:update="() => (displayDetail = false)"
+      />
       <div class="flex items-center justify-start lg:justify-start">
         <TextField
           class="mr-4 w-10/12 sm:w-11/12 lg:w-2/12"
@@ -85,6 +89,11 @@ import Calendar from "@/components/molecules/Calendar.vue";
 // import { useStatementStore } from "@/modules/Statements/store";
 import SelectField from "../../../components/atoms/SelectField.vue";
 import PageContentLayout from "../../../components/organisms/PageContentLayout.vue";
+import StatementDetail from "../components/StatementDetail.vue";
+import { ref } from "vue";
+
+const displayDetail = ref(false);
+
 const statements = [
   {
     date: "11/07/2021",
