@@ -3,7 +3,6 @@
     modal-class="bg-black1/50"
     v-model="visible"
     title="I am the title"
-    size="100%"
   >
     <span>Hi, there!</span>
   </el-drawer>
