@@ -1,5 +1,5 @@
 <template>
-  <div class="flex h-full flex-1 flex-col">
+  <div class="flex min-h-0 flex-1 flex-col">
     <slot name="tableSection" />
     <div class="px-10">
       <Pagination :options="OPTIONS" />
@@ -16,7 +16,7 @@ const OPTIONS = new Array(124)
 
 <style lang="scss">
 .el-table {
-  @apply flex h-full flex-1;
+  @apply flex flex-1;
 
   &__empty-text {
     line-height: normal !important;
