@@ -38,23 +38,23 @@
 
       <SideNavigation class="hidden lg:flex" />
 
-      <FadeInOut entry="left" exit="left" :duration="500">
-        <div
-          class="flex h-full min-h-0 w-full flex-col space-y-5 overflow-hidden bg-[#F1FAF9] py-6 pr-5 pl-6 lg:flex-1"
-        >
-          <TopNavigation
-            @displayMenu="visible = true"
-            :page="$route.meta.name"
-          />
+      <div
+        class="flex h-full min-h-0 w-full flex-col space-y-5 overflow-hidden bg-[#F1FAF9] py-6 pr-5 pl-6 lg:flex-1"
+      >
+        <TopNavigation @displayMenu="visible = true" :page="$route.meta.name" />
 
-          <slot name="content" />
-        </div>
-      </FadeInOut>
+        <RouterView v-slot="{ Component }">
+          <FadeInOut entry="center" exit="center" :duration="300" mode="out-in">
+            <component :is="Component" />
+          </FadeInOut>
+        </RouterView>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { RouterView } from "vue-router";
 import SideNavigation from "@/components/molecules/SideNavigation.vue";
 import TopNavigation from "@/components/molecules/TopNavigation.vue";
 import { ref, computed } from "vue";

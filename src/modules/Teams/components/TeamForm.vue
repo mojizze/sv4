@@ -1,5 +1,5 @@
 <template>
-  <div class="space-y-5">
+  <div class="space-y-5" v-if="mounted">
     <div class="grid-cols-2 gap-5 lg:grid">
       <TextField
         v-model="form.firstName"
@@ -61,7 +61,7 @@ import useVuelidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
 import TextField from "@components/atoms/TextField.vue";
 import Button from "@components/atoms/Button.vue";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
 const ROLE_OPTIONS = [
   { label: "Owner", value: "owner" },
@@ -77,6 +77,12 @@ const individualRules = {
   lastName: { required },
 };
 const individualValidation = useVuelidate(individualRules, form);
+
+const mounted = ref(false);
+
+onMounted(() => {
+  mounted.value = true;
+});
 </script>
 
 <style lang="scss" scoped></style>

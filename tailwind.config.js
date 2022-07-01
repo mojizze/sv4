@@ -225,6 +225,7 @@ module.exports = {
       sm: "2px",
       DEFAULT: "4px",
       lg: "8px",
+      xl: "16px",
       full: "50%",
     },
 

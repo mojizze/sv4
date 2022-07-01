@@ -11,7 +11,7 @@
     <Modal :show="show" @close="show = false">
       <template #title>
         <div class="space-y-5 text-center">
-          <el-avatar :size="74">
+          <el-avatar :size="86">
             <Icon name="user" />
           </el-avatar>
           <div class="text-lg font-semibold text-black1">Invite Teammate</div>
@@ -39,6 +39,7 @@ import TeamForm from "../components/TeamForm.vue";
 import { ref } from "vue";
 
 const show = ref(false);
+
 const teamMates = [
   {
     email: "maureen.gardner@msn.com",
