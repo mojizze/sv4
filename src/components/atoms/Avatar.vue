@@ -7,7 +7,8 @@
   />
   <span
     v-else
-    class="inline-flex h-7.5 w-7.5 items-center justify-center rounded-full bg-teal1"
+    class="inline-flex h-7.5 w-7.5 items-center justify-center rounded-full"
+    :class="[size === 'small' ? 'h-7.5 w-7.5' : 'h-10 w-10', background]"
   >
     <span class="text-sm font-normal leading-none text-black1">{{
       initials
@@ -26,6 +27,17 @@ const props = defineProps({
   name: {
     type: String,
     default: "",
+  },
+  size: {
+    type: String,
+    default: "small",
+    validator(value) {
+      return ["small", "normal"].includes(value);
+    },
+  },
+  background: {
+    type: String,
+    default: "bg-teal1",
   },
 });
 

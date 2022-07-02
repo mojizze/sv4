@@ -216,6 +216,7 @@ module.exports = {
 
       // teal
       teal1: "#F1F7FA",
+      teal2: "#F1FAF9",
     },
 
     spacing,

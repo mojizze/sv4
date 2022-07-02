@@ -1,8 +1,8 @@
 <template>
   <PageContentLayout>
     <template #content>
-      <FloatingButton @btn:clicked="displayDetail = true" />
       <StatementDetail
+        :statement="selectedStatement"
         :model-value="displayDetail"
         @visible:update="() => (displayDetail = false)"
       />
@@ -40,7 +40,7 @@
                   <ul class="flex w-full justify-start">
                     <li class="cursor-pointer">
                       <div class="flex items-center justify-start">
-                        <Icon :name="scope.row.account.icon" />
+                        <Icon :name="scope.row.account.icon" class="h-6 w-6" />
                         <div class="ml-2">
                           <p class="text-sm text-black1">
                             {{ scope.row.account.bank }}
@@ -60,8 +60,12 @@
                 </template>
               </el-table-column>
               <el-table-column align="right" width="150px">
-                <template #default>
-                  <Button ghost icon="outlineEclipses" />
+                <template #default="scope">
+                  <Button
+                    ghost
+                    icon="outlineEclipses"
+                    @click="setSelectedStatement(scope.row)"
+                  />
                 </template>
               </el-table-column>
 
@@ -80,7 +84,6 @@
 
 <script setup>
 import TextField from "@/components/atoms/TextField.vue";
-import FloatingButton from "@/components/atoms/FloatingButton.vue";
 import Button from "@/components/atoms/Button.vue";
 import Icon from "@/components/atoms/Icon.vue";
 import TableWithPagination from "@/components/molecules/TableWithPagination.vue";
@@ -93,6 +96,7 @@ import StatementDetail from "../components/StatementDetail.vue";
 import { ref } from "vue";
 
 const displayDetail = ref(false);
+const selectedStatement = ref({});
 
 const statements = [
   {
@@ -105,8 +109,26 @@ const statements = [
       icon: "wema",
     },
     amount: 12050.15,
+    type: "single",
+  },
+  {
+    date: "11/07/2021",
+    description: "Data Allowance",
+    transaction_type: "Credit",
+    account: {
+      bank: "Guaranty Trust Bank",
+      account: "1023117865",
+      icon: "gtb",
+    },
+    amount: 12050.15,
+    type: "bulk",
   },
 ];
+
+function setSelectedStatement(value) {
+  selectedStatement.value = value;
+  displayDetail.value = true;
+}
 
 // statementStore = useStatementStore();
 </script>
