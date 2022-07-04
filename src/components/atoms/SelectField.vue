@@ -1,5 +1,6 @@
 <template>
   <div>
+    <label class="text-xs" v-if="label">{{ label }}</label>
     <Listbox :horizontal="true" v-slot="{ open }" v-model="selectedValue">
       <div class="relative mt-1">
         <ListboxButton
@@ -148,6 +149,11 @@ const props = defineProps({
   labelPrefix: {
     type: String,
     default: "",
+  },
+
+  label: {
+    type: String,
+    default: null,
   },
 });
 

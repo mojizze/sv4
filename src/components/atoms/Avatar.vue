@@ -10,7 +10,7 @@
     class="inline-flex h-7.5 w-7.5 items-center justify-center rounded-full"
     :class="[size === 'small' ? 'h-7.5 w-7.5' : 'h-10 w-10', background]"
   >
-    <span class="text-sm font-normal leading-none text-black1">{{
+    <span class="text-xs font-normal leading-none text-black1">{{
       initials
     }}</span>
   </span>
@@ -42,7 +42,13 @@ const props = defineProps({
 });
 
 const initials = computed(() => {
-  const name = props.name.split(" ");
-  return `${name[0][0]}${name[1][0]}`;
+  const name = props.name.trim().split(" ");
+  if (name[0] && name[1]) {
+    return `${name[0][0]}${name[1][0]}`;
+  } else if (name[0]) {
+    return `${name[0][0]}${name[0][1]}`;
+  } else {
+    return "N/A";
+  }
 });
 </script>

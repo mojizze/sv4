@@ -58,16 +58,6 @@
                   "
                 />
               </div>
-              <TextField
-                :class="{ hidden: accountType === 'individual' }"
-                v-model="form.name"
-                label="Business Name"
-                placeholderText="E.g Global Motors Inc"
-                :error-text="
-                  corporateValidation.name.$errors[0] &&
-                  corporateValidation.name.$errors[0].$message
-                "
-              />
 
               <TextField
                 :class="{ hidden: accountType === 'individual' }"

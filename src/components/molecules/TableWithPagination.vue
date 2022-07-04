@@ -1,7 +1,7 @@
 <template>
   <div class="flex min-h-0 flex-1 flex-col">
     <slot name="tableSection" />
-    <div class="px-10">
+    <div class="mt-5 px-10">
       <Pagination :options="OPTIONS" />
     </div>
   </div>
@@ -51,7 +51,7 @@ const OPTIONS = new Array(124)
   }
 
   & .el-table__header tr th {
-    @apply border-b border-gray6 text-gray2;
+    @apply border-b border-t border-gray6 text-gray2;
   }
 }
 </style>

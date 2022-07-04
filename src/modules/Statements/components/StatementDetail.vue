@@ -1,7 +1,6 @@
 <template>
   <el-drawer
-    modal-class="bg-black1/50"
-    custom-class="!bg-teal2"
+    :custom-class="customClasses"
     :with-header="false"
     v-model="visible"
   >
@@ -132,6 +131,11 @@ const props = defineProps({
   statement: {
     type: Object,
     required: true,
+  },
+
+  customClasses: {
+    type: String,
+    default: "!bg-teal2",
   },
 });
 

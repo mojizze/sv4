@@ -24,7 +24,7 @@ export const useStatementStore = defineStore({
         page: this.page,
       };
 
-      this.statements = Service.index(params);
+      this.statements = await Service.index(params);
     },
   },
 });

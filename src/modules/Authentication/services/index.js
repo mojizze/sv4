@@ -6,7 +6,7 @@ import { HTTP } from "@/api";
  * @returns {Promise<AxiosResponse<any>>}
  */
 export function register(payload) {
-  return HTTP.post("register/", payload);
+  return HTTP.post("register", payload);
 }
 
 /**

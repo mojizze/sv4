@@ -69,3 +69,11 @@ body,
 .el-select .el-input--large {
   @apply h-12;
 }
+
+.el-loading-mask {
+  z-index: 10
+}
+
+.el-overlay {
+  @apply !bg-black1/50
+}

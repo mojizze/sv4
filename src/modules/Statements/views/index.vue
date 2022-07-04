@@ -6,7 +6,7 @@
         :model-value="displayDetail"
         @visible:update="() => (displayDetail = false)"
       />
-      <div class="flex items-center justify-start lg:justify-start">
+      <div class="flex items-center justify-start p-6 lg:justify-start">
         <TextField
           class="mr-4 w-10/12 sm:w-11/12 lg:w-2/12"
           placeholderText="Search..."
@@ -25,7 +25,7 @@
         <Icon name="filter" class="lg:hidden" />
       </div>
 
-      <div class="flex min-h-0 flex-1 flex-col">
+      <div class="flex min-h-0 flex-1 flex-col pb-6">
         <TableWithPagination>
           <template #tableSection>
             <el-table class="mt-6" :data="statements" style="width: 100%">

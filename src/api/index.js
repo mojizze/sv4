@@ -1,5 +1,6 @@
 import axios from "axios";
 import { close, start } from "@/helpers/NProgress";
+import { useToast } from "vue-toastification";
 
 const apiBaseUrl = import.meta.env.VITE_BASE_API_URL;
 
@@ -10,6 +11,8 @@ const apiBaseUrl = import.meta.env.VITE_BASE_API_URL;
 const baseConfig = {
   baseURL: apiBaseUrl,
 };
+
+const toast = useToast();
 
 /**
  * Creating the instance of Axios
@@ -37,6 +40,16 @@ const responseSuccessInterceptor = (response) => {
 
 const responseErrorInterceptor = (error) => {
   close();
+  if (
+    error.response.status === 401 &&
+    error.response.statusText === "Unauthorized"
+  ) {
+    // Logout user
+    localStorage.removeItem("AuthenticationStore");
+    location.reload;
+
+    toast.error("Your session has expired.");
+  }
   return Promise.reject(error.response.data);
 };
 

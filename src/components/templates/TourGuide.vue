@@ -8,7 +8,7 @@
     <template #default="{ next, step, exit, isLast }">
       <VOnboardingStep>
         <div
-          class="w-[230px] bg-white shadow sm:rounded-lg"
+          class="z-20 w-[230px] bg-white shadow sm:rounded-lg"
           :class="[
             step.content.title === 'Make Payment'
               ? 'mt-2 ml-10'
