@@ -14,7 +14,7 @@
           type="text"
         />
       </div>
-      <div class="flex min-h-0 flex-1 flex-col pb-6">
+      <div class="hidden min-h-0 flex-1 flex-col pb-6 lg:flex">
         <TableWithPagination>
           <template #tableSection>
             <el-table

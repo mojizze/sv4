@@ -25,7 +25,7 @@
         <Icon name="filter" class="lg:hidden" />
       </div>
 
-      <div class="flex min-h-0 flex-1 flex-col pb-6">
+      <div class="hidden min-h-0 flex-1 flex-col pb-6 lg:flex">
         <TableWithPagination>
           <template #tableSection>
             <el-table class="mt-6" :data="statements" style="width: 100%">
@@ -35,7 +35,7 @@
                 prop="transaction_type"
                 label="Transaction Type"
               />
-              <el-table-column prop="account" label="Account" width="300px">
+              <el-table-column prop="account" label="Account">
                 <template #default="scope">
                   <ul class="flex w-full justify-start">
                     <li class="cursor-pointer">

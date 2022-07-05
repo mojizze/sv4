@@ -20,23 +20,18 @@
     </div>
 
     <div class="flex h-full flex-1 items-start justify-start overflow-hidden">
-      <div
-        v-if="visible"
-        :class="[
-          'fixed top-0 left-0 z-[99999] h-full w-full bg-black4/40 lg:hidden lg:w-fit',
-        ]"
-      >
-        <Transition
-          enter-active-class="transition ease-out duration-100"
-          enter-from-class="transform opacity-0 scale-95"
-          enter-to-class="transform opacity-100 scale-100"
-          leave-active-class="transition ease-in duration-75"
-          leave-from-class="transform opacity-100 scale-100"
-          leave-to-class="transform opacity-0 scale-95"
-        >
-          <SideNavigation @close="visible = false" />
-        </Transition>
-      </div>
+      <FadeInOut entry="center" exit="center" :duration="300" mode="out-in">
+        <div v-if="visible" class="absolute top-0 left-0 h-full w-full">
+          <div
+            @click="() => (visible = false)"
+            class="fixed top-0 left-0 z-[1000] h-full w-full bg-black4/40 lg:hidden lg:w-fit"
+          ></div>
+          <SideNavigation
+            class="fixed top-0 left-0 z-[1001] h-full w-full"
+            @close="visible = false"
+          />
+        </div>
+      </FadeInOut>
 
       <SideNavigation class="hidden lg:flex" />
 

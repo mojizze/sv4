@@ -46,7 +46,7 @@ const responseErrorInterceptor = (error) => {
   ) {
     // Logout user
     localStorage.removeItem("AuthenticationStore");
-    location.reload;
+    location.reload();
 
     toast.error("Your session has expired.");
   }
