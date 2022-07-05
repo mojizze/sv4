@@ -1,43 +1,31 @@
 <template>
-  <div class="flex min-h-0 flex-1 flex-col rounded-lg bg-white p-6">
-    <el-tabs class="sp-teams-tabs">
-      <el-tab-pane label="Teammates">
-        <TeamTable :data="teamMates" />
-      </el-tab-pane>
-      <el-tab-pane label="Pending Invite">
-        <TeamTable :data="pendingMates" />
-      </el-tab-pane>
-    </el-tabs>
-    <Modal :show="show" @close="show = false">
-      <template #title>
-        <div class="space-y-5 text-center">
-          <el-avatar :size="86">
-            <Icon name="user" />
-          </el-avatar>
-          <div class="text-lg font-semibold text-black1">Invite Teammate</div>
-        </div>
-      </template>
-      <template #content>
-        <TeamForm />
-      </template>
-    </Modal>
-    <Button
-      icon="add"
-      class="absolute bottom-[7%] right-[3%] z-[99] translate-x-1/2"
-      shape="circle"
-      @click="show = !show"
-    />
-  </div>
+  <PageContentLayout>
+    <template #content>
+      <CreateTeamMember
+        :model-value="show"
+        @visible:update="() => (show = false)"
+      />
+      <div class="hidden min-h-0 flex-1 flex-col py-6 lg:flex">
+        <FloatingButton @btn:clicked="() => (show = true)" />
+        <el-tabs class="sp-teams-tabs">
+          <el-tab-pane label="Teammates">
+            <TeamTable :data="teamMates" />
+          </el-tab-pane>
+          <el-tab-pane label="Pending Invite">
+            <TeamTable :data="pendingMates" />
+          </el-tab-pane>
+        </el-tabs>
+      </div>
+    </template>
+  </PageContentLayout>
 </template>
 
 <script setup>
-import Modal from "@components/atoms/Modal.vue";
-import Button from "@components/atoms/Button.vue";
-import Icon from "@components/atoms/Icon.vue";
 import TeamTable from "../components/TeamTable.vue";
-import TeamForm from "../components/TeamForm.vue";
 import { ref } from "vue";
-
+import FloatingButton from "@/components/atoms/FloatingButton.vue";
+import PageContentLayout from "@/components/organisms/PageContentLayout.vue";
+import CreateTeamMember from "../components/CreateTeamMember.vue";
 const show = ref(false);
 
 const teamMates = [

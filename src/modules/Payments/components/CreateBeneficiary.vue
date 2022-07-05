@@ -1,20 +1,12 @@
 <template>
   <FloatingPanel
-    :custom-class="customClasses"
     :model-value="visible"
-    @visible:update="$emit('@visible:update')"
+    @visible:update="$emit('visible:update')"
   >
     <template #content>
       <div
         class="relative flex w-full flex-col items-center justify-center justify-items-center space-y-5 p-10"
       >
-        <span
-          class="absolute right-0 top-0 mt-6 block cursor-pointer"
-          @click="visible = true"
-        >
-          <Icon name="close" />
-        </span>
-
         <div class="grid justify-items-center">
           <div
             class="flex h-14 w-14 items-center justify-center rounded-full bg-[#C2E2FF]"

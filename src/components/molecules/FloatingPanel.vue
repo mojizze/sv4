@@ -5,12 +5,19 @@
     v-model="visible"
     :size="size"
   >
+    <span
+      class="absolute right-6 top-7 z-10 block cursor-pointer"
+      @click="$emit('visible:update')"
+    >
+      <Icon name="close" />
+    </span>
     <slot name="content"></slot>
   </el-drawer>
 </template>
 
 <script setup>
 import { computed } from "vue";
+import Icon from "@/components/atoms/Icon.vue";
 
 const props = defineProps({
   modelValue: {
@@ -19,7 +26,7 @@ const props = defineProps({
   },
   customClasses: {
     type: String,
-    default: "!bg-white",
+    default: "!bg-white relative",
   },
 });
 

@@ -1,19 +1,13 @@
 <template>
   <FloatingPanel
     :custom-class="customClasses"
-    :with-header="false"
-    v-model="visible"
+    @visible:update="$emit('visible:update')"
+    :model-value="visible"
   >
     <template #content>
       <div
         class="relative flex w-full flex-col items-center justify-center justify-items-center space-y-5 p-2"
       >
-        <span
-          class="absolute right-0 top-0 mt-6 block cursor-pointer"
-          @click="visible = true"
-        >
-          <Icon name="close" />
-        </span>
         <span
           v-if="statement.type === 'single'"
           class="block w-full text-center font-bold text-black1"
