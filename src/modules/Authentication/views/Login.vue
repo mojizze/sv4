@@ -137,7 +137,7 @@ const submit = async () => {
       await authenticationStore.login(formData.value);
       await authenticationStore.fetchUserProfile();
       toast.success("Login Successful");
-      await push("/dashboard");
+      await push("/");
     }
     loading.value = false;
   } catch (e) {

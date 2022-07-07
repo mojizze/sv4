@@ -1,5 +1,6 @@
 <template>
-  <div class="w-fit">
+  <div class="">
+    <label v-if="label" class="text-xs">{{ label }}</label>
     <DatePicker
       title-position="left"
       v-model="date"
@@ -10,11 +11,13 @@
           class="z-20 flex cursor-pointer items-center justify-start rounded border border-gray5 px-4 py-3 text-sm"
           @click.stop="dateSelected($event, togglePopover)"
         >
-          <span class="pointer-events-none z-10 mr-2 block text-gray1/60"
+          <span
+            v-if="!label"
+            class="pointer-events-none z-10 mr-2 block w-full text-gray1/60"
             >{{ displayText }}:
           </span>
           <div
-            class="pointer-events-none z-10 flex items-center justify-start text-gray1/60"
+            class="pointer-events-none z-10 flex w-full items-center justify-between text-gray1/60"
           >
             <span class="mr-2.5">{{ date.toLocaleDateString() }}</span>
             <Icon name="calendar-gray" />
@@ -40,6 +43,11 @@ const props = defineProps({
   displayText: {
     type: String,
     default: "Start Date",
+  },
+
+  label: {
+    type: String,
+    default: null,
   },
 });
 

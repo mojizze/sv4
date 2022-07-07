@@ -2,7 +2,7 @@ import auth from "@/middlewares/auth.js";
 
 const routes = [
   {
-    path: "/dashboard",
+    path: "/",
     name: "dashboard",
     component: () => import("../views/index.vue"),
     meta: {

@@ -28,10 +28,6 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-  customClasses: {
-    type: String,
-    default: "!bg-white",
-  },
 });
 
 const emit = defineEmits(["visible:update"]);

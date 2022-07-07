@@ -41,7 +41,7 @@
         <TopNavigation @displayMenu="visible = true" :page="$route.meta.name" />
 
         <RouterView v-slot="{ Component }">
-          <FadeInOut entry="center" exit="center" :duration="300" mode="out-in">
+          <FadeInOut entry="center" exit="center" :duration="100" mode="out-in">
             <component :is="Component" />
           </FadeInOut>
         </RouterView>

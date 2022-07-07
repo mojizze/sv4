@@ -14,8 +14,8 @@
         placeholderText="Search..."
         type="text"
       />
-      <Calendar class="mr-4 hidden lg:block" />
-      <Calendar class="mr-4 hidden lg:block" />
+      <Calendar class="mr-4 hidden w-fit lg:block" />
+      <Calendar class="mr-4 hidden w-fit lg:block" />
       <SelectField
         :options="[]"
         display-property="name"

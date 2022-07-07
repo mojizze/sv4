@@ -1,12 +1,12 @@
 <template>
   <FloatingPanel
-    :custom-class="customClasses"
+    custom-class="!bg-teal2"
     @visible:update="$emit('visible:update')"
     :model-value="visible"
   >
     <template #content>
       <div
-        class="relative flex w-full flex-col items-center justify-center justify-items-center space-y-5 p-2"
+        class="relative mt-24 flex w-full flex-col items-center justify-center justify-items-center space-y-5 p-2"
       >
         <span
           v-if="statement.type === 'single'"
@@ -128,11 +128,6 @@ const props = defineProps({
   statement: {
     type: Object,
     required: true,
-  },
-
-  customClasses: {
-    type: String,
-    default: "!bg-teal2",
   },
 });
 

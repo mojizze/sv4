@@ -117,9 +117,7 @@ const steps = [
   },
 ];
 
-const options = {
-  disableOverlay: true,
-};
+const options = {};
 
 const wrapper = ref(null);
 const { start } = useVOnboarding(wrapper);

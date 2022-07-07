@@ -28,6 +28,10 @@ const props = defineProps({
     type: String,
     default: "!bg-white relative",
   },
+  size: {
+    type: [String, Number],
+    default: null,
+  },
 });
 
 const emit = defineEmits(["visible:update"]);
@@ -43,6 +47,10 @@ const visible = computed({
 
 const size = computed(() => {
   if (window.innerWidth >= 1024) {
+    if (props.size) {
+      return props.size;
+    }
+
     return 439;
   } else if (window.innerWidth >= 768 && window.innerWidth <= 1024) {
     return "50%";

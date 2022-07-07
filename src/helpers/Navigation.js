@@ -1,7 +1,7 @@
 export const MenuDetails = [
   {
     name: "Dashboard",
-    link: "/dashboard",
+    link: "/",
     children: null,
     icon: "home",
   },

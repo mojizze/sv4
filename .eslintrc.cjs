@@ -22,14 +22,14 @@ module.exports = {
       "error",
       {
         ignores: [
-          'Button',
-          'Icon',
-          'Menu',
-          'Avatar',
-          'Tab',
-          'Backdrop',
-          'Modal',
-          'Badges',
+          "Button",
+          "Icon",
+          "Menu",
+          "Avatar",
+          "Tab",
+          "Backdrop",
+          "Modal",
+          "Badges",
           "index",
           "Card",
           "Pagination",
@@ -37,15 +37,13 @@ module.exports = {
         ],
       },
     ],
-    'tailwindcss/classnames-order': "off",
-    'tailwindcss/no-custom-classname': [
-      'warn',
+    "tailwindcss/classnames-order": "off",
+    "tailwindcss/no-custom-classname": [
+      "warn",
       {
-        whitelist: [
-          'sp\\-([0-z]+(\\-[0-z]+)*)',
-        ]
-      }
-    ]
+        whitelist: ["sp\\-([0-z]+(\\-[0-z]+)*)"],
+      },
+    ],
   },
   overrides: [
     {

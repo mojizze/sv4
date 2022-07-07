@@ -4,21 +4,20 @@
 
 @layer base {
   @font-face {
-    font-family: 'Basier Square';
-    src: url('../fonts/SourceSansPro-Regular.ttf');
+    font-family: "Basier Square";
+    src: url("../fonts/SourceSansPro-Regular.ttf");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
   }
 }
 
-
 html,
 body,
 #app,
 #root {
   @apply relative mx-auto min-h-screen w-full;
-  @apply text-gray1 font-normal;
+  @apply font-normal text-gray1;
   scroll-behavior: smooth;
 }
 
@@ -71,9 +70,9 @@ body,
 }
 
 .el-loading-mask {
-  z-index: 10
+  z-index: 10;
 }
 
 .el-overlay {
-  @apply !bg-black1/50
+  @apply !bg-black1/50;
 }

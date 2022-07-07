@@ -76,5 +76,5 @@ export function fetchUserProfile() {
  * @returns {Promise<AxiosResponse<any>>}
  */
 export function completeTour() {
-  return HTTP.get("/users/tour-completed");
+  return HTTP.patch("/users/tour-completed");
 }

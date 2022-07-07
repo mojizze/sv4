@@ -1,7 +1,7 @@
 <template>
   <label class="block">
     <div
-      class="flex h-8.75 w-fit items-center justify-start rounded py-2.5 px-3"
+      class="sp-checkbox flex h-8.75 w-fit items-center justify-start rounded py-2.5 px-3"
       :class="{
         'bg-gray6 text-black3': !isChecked,
         'bg-blue text-white': isChecked,
@@ -115,8 +115,8 @@ function onInput(event) {
   --form-control-disabled: #959495;
 }
 
-input[type="checkbox"],
-input[type="radio"] {
+.sp-checkbox input[type="checkbox"],
+.sp-checkbox input[type="radio"] {
   -webkit-appearance: none;
   appearance: none;
   background-color: #fff;
@@ -128,8 +128,8 @@ input[type="radio"] {
   place-content: center;
 }
 
-input[type="checkbox"]::before,
-input[type="radio"]::before {
+.sp-checkbox input[type="checkbox"]::before,
+.sp-checkbox input[type="radio"]::before {
   content: "";
   width: 0.65em;
   height: 0.65em;
@@ -140,12 +140,12 @@ input[type="radio"]::before {
   box-shadow: inset 1em 1em var(--form-control-color);
 }
 
-input[type="checkbox"]:checked::before,
-input[type="radio"]:checked::before {
+.sp-checkbox input[type="checkbox"]:checked::before,
+.sp-checkbox input[type="radio"]:checked::before {
   transform: scale(1);
 }
 
-input[type="checkbox"]:disabled {
+.sp-checkbox input[type="checkbox"]:disabled {
   --form-control-color: var(--form-control-disabled);
   color: var(--form-control-disabled);
   cursor: not-allowed;
