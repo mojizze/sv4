@@ -10,7 +10,7 @@ import NotFound from "@/components/templates/NotFound.vue";
 import { close, start } from "@/helpers/NProgress";
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes: [
     ...DashboardRoutes,
     ...SettingsRoutes,
