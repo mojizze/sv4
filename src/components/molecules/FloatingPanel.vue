@@ -9,7 +9,7 @@
       class="absolute right-6 top-7 z-10 block cursor-pointer"
       @click="$emit('visible:update')"
     >
-      <Icon name="close" />
+      <Icon name="close" class="h-6 w-6" />
     </span>
     <slot name="content"></slot>
   </el-drawer>

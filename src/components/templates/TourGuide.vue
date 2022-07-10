@@ -72,7 +72,7 @@ import {
   VOnboardingStep,
   useVOnboarding,
 } from "v-onboarding";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, getCurrentInstance } from "vue";
 import { useAuthenticationStore } from "@/modules/Authentication/store";
 const steps = [
   {
@@ -128,11 +128,11 @@ async function finishTour() {
   await store.fetchUserProfile();
 }
 
-onMounted(() => {
-  const data = JSON.parse(localStorage.getItem("AuthenticationStore"));
-
-  if (window.innerWidth >= 1024 && !data?.user?.tourCompleted) {
+onMounted(function () {
+  const app = getCurrentInstance();
+  app.appContext.config.globalProperties.$emitter.on("start-tour", () => {
+    console.log("gOT HERE");
     start();
-  }
+  });
 });
 </script>

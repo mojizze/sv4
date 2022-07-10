@@ -25,7 +25,7 @@
       >
       <svg
         v-if="loading"
-        class="h-6 w-6 animate-spin fill-blue text-gray4 dark:text-gray2"
+        class="h-6 w-6 animate-spin fill-blue text-white"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

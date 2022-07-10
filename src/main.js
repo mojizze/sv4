@@ -14,14 +14,15 @@ import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
 import "v-onboarding/dist/style.css";
 import Plugins from "./plugins";
+import mitt from "mitt";
 
 const app = createApp(App);
+app.use(router);
 
 const pinia = createPinia();
 app.use(pinia);
 pinia.use(piniaPluginPersistedstate);
 app.use(PiniaVuePlugin);
-app.use(router);
 app.use(Vue3Transitions);
 app.use(vClickOutside);
 app.use(VCalendar, {});
@@ -36,5 +37,7 @@ const options = {
   timeout: 10000,
 };
 
+const emitter = mitt();
 app.use(Toast, options);
+app.config.globalProperties.$emitter = emitter;
 app.mount("#app");

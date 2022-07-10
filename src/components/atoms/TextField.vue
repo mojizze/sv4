@@ -25,10 +25,12 @@
           },
           borderRadius,
           border,
+          disable ? 'cursor-not-allowed' : '',
         ]"
         :placeholder="placeholderText"
         @focus="focus = true"
         @blur="focus = false"
+        :disabled="disable"
       />
       <Icon
         v-if="suffixIcon"
@@ -146,6 +148,11 @@ const props = defineProps({
   },
 
   isVerifiable: {
+    type: Boolean,
+    default: false,
+  },
+
+  disable: {
     type: Boolean,
     default: false,
   },

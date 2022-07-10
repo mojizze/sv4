@@ -102,15 +102,15 @@ import Header from "../components/Header.vue";
 import Button from "../../../components/atoms/Button.vue";
 import TextField from "../../../components/atoms/TextField.vue";
 import CheckBox from "../../../components/atoms/CheckBox.vue";
-import { ref } from "vue";
+import { ref, getCurrentInstance } from "vue";
 import { useAuthenticationStore } from "@/modules/Authentication/store";
 import { email, required, numeric } from "@vuelidate/validators";
 import useVuelidate from "@vuelidate/core";
 import { useToast } from "vue-toastification";
 import { useRouter } from "vue-router";
+
 const toast = useToast();
 const { push } = useRouter();
-
 const showPhoneNumber = ref(false);
 const showPassword = ref(false);
 const authenticationStore = useAuthenticationStore();
@@ -128,6 +128,7 @@ const rules = {
 };
 
 const v$ = useVuelidate(rules, formData);
+const app = getCurrentInstance();
 
 const submit = async () => {
   loading.value = true;
@@ -136,6 +137,10 @@ const submit = async () => {
     if (result) {
       await authenticationStore.login(formData.value);
       await authenticationStore.fetchUserProfile();
+      const user = authenticationStore.user;
+      if (window.innerWidth >= 1024 && !user.tourCompleted) {
+        app.appContext.config.globalProperties.$emitter.emit("start-tour");
+      }
       toast.success("Login Successful");
       await push("/");
     }

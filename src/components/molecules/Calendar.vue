@@ -13,7 +13,7 @@
         >
           <span
             v-if="!label"
-            class="pointer-events-none z-10 mr-2 block w-full text-gray1/60"
+            class="pointer-events-none z-10 mr-2 hidden w-full text-gray1/60 xl:block"
             >{{ displayText }}:
           </span>
           <div

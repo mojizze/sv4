@@ -13,6 +13,17 @@ export const useBeneficiaryStore = defineStore({
     };
   },
 
+  getters: {
+    selectBeneficiaries: (state) => {
+      return state.beneficiaries.map((beneficiary) => {
+        return {
+          name: `${beneficiary.firstName} ${beneficiary.lastName}`,
+          value: beneficiary.id,
+        };
+      });
+    },
+  },
+
   actions: {
     async fetchAllBeneficiaries() {
       const params = {

@@ -1,10 +1,21 @@
 <template>
   <div>
     <label class="text-xs" v-if="label">{{ label }}</label>
-    <Listbox :horizontal="true" v-slot="{ open }" v-model="selectedValue">
+    <Listbox
+      :disabled="disable"
+      :horizontal="true"
+      v-slot="{ open }"
+      v-model="selectedValue"
+      class=""
+    >
       <div class="relative mt-1">
         <ListboxButton
-          class="relative flex h-12 w-full cursor-default items-center justify-start rounded border border-gray5 bg-white py-2 pr-10 pl-3 text-left text-xs text-black1 focus:outline-none"
+          :class="[
+            disable
+              ? 'cursor-not-allowed bg-[#F9F9F9]'
+              : 'cursor-default bg-white',
+          ]"
+          class="relative flex h-12 w-full items-center justify-start rounded border border-gray5 py-2 pr-10 pl-3 text-left text-xs text-black1 focus:outline-none"
         >
           <span
             v-if="labelPrefix.length > 0"
@@ -12,7 +23,7 @@
             >{{ labelPrefix }}</span
           >
           <span v-if="selectedValue" class="inline-block truncate">{{
-            selectedValue[displayProperty]
+            displayProperty ? selectedValue[displayProperty] : selectedValue
           }}</span>
           <span v-else class="inline-block truncate" v-html="placeholder" />
           <span
@@ -33,7 +44,7 @@
           leave-from-class="opacity-100"
           leave-to-class="opacity-0"
         >
-          <div>
+          <div v-if="!disable">
             <ListboxOptions
               class="absolute z-10 mt-1 w-full rounded border border-teal1 bg-white pb-1 text-base shadow-md focus:outline-none sm:text-sm"
             >
@@ -49,28 +60,35 @@
                 <ListboxOption
                   v-slot="{ active, selected }"
                   v-for="option in options"
-                  :key="option[valueProperty]"
+                  :key="valueProperty ? option[valueProperty] : option"
                   :value="option"
                   as="template"
                 >
                   <li
                     :class="[
                       active ? 'bg-teal1' : 'text-black',
+                      selected ? 'bg-blue' : '',
                       'relative cursor-pointer select-none py-2 pl-10 pr-4',
                     ]"
                   >
                     <span
                       :class="[
-                        selected ? 'font-medium' : 'font-normal',
+                        selected ? 'font-medium text-white' : 'font-normal',
                         'block truncate',
                       ]"
-                      >{{ option[displayProperty] }}</span
+                      >{{
+                        displayProperty ? option[displayProperty] : option
+                      }}</span
                     >
                     <span
                       v-if="selected"
                       class="absolute inset-y-0 left-0 flex items-center pl-3 text-deepblue"
                     >
-                      <CheckIcon class="h-5 w-5" aria-hidden="true" />
+                      <CheckIcon
+                        class="h-5 w-5"
+                        :class="[selected ? 'text-white' : '']"
+                        aria-hidden="true"
+                      />
                     </span>
                   </li>
                 </ListboxOption>
@@ -108,17 +126,17 @@ import {
 import { CheckIcon } from "@heroicons/vue/solid";
 import TextField from "@/components/atoms/TextField.vue";
 import Icon from "./Icon.vue";
-import { find } from "lodash";
+import { find, indexOf } from "lodash";
 
 const props = defineProps({
   displayProperty: {
     type: String,
-    default: "id",
+    default: null,
   },
 
   valueProperty: {
     type: String,
-    default: "id",
+    default: null,
   },
 
   placeholder: {
@@ -155,6 +173,11 @@ const props = defineProps({
     type: String,
     default: null,
   },
+
+  disable: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const emit = defineEmits(["update:modelValue"]);
@@ -163,10 +186,19 @@ const query = ref("");
 
 const selectedValue = computed({
   get() {
+    if (!props.valueProperty) {
+      return props.options[indexOf(props.options, props.modelValue)];
+    }
     return find(props.options, { [props.valueProperty]: props.modelValue });
   },
   set(value) {
-    emit("update:modelValue", value[props.valueProperty]);
+    if (value === selectedValue.value) {
+      console.log("hello world");
+      emit("update:modelValue", null);
+      return;
+    }
+    const option = props.valueProperty ? value[props.valueProperty] : value;
+    emit("update:modelValue", option);
   },
 });
 </script>

@@ -83,20 +83,16 @@
               <span class="text-black1">{{ $priceFormat(50.15) }}</span>
             </div>
             <span class="my-4 block font-bold text-black">Recipient</span>
-            <div class="flex items-center justify-between text-sm">
-              <div class="flex flex-col text-black1">
-                <span class="block">Layor Salami</span>
-                <span class="block text-xs">0937162583 Access Bank</span>
-              </div>
-              <span class="text-black1">{{ $priceFormat(1000345) }}</span>
-            </div>
-            <div class="flex items-center justify-between text-sm">
-              <div class="flex flex-col text-black1">
-                <span class="block">Layor Salami</span>
-                <span class="block text-xs">0937162583 Access Bank</span>
-              </div>
-              <span class="text-black1">{{ $priceFormat(1000345) }}</span>
-            </div>
+            <RecipientDisplay
+              name="Layor Salami"
+              bank="0937162583 Access Bank"
+              amount="1000345"
+            />
+            <RecipientDisplay
+              name="Layor Salami"
+              bank="0937162583 Access Bank"
+              amount="1000345"
+            />
             <div class="flex items-center justify-between text-sm">
               <span class="text-gray3">Transaction ID</span>
               <span class="text-black1">80458RE35556dt23444</span>
@@ -119,6 +115,7 @@ import Icon from "@/components/atoms/Icon.vue";
 import Avatar from "@/components/atoms/Avatar.vue";
 import Button from "@/components/atoms/Button.vue";
 import FloatingPanel from "@/components/molecules/FloatingPanel.vue";
+import RecipientDisplay from "@/components/templates/RecipientDisplay.vue";
 const props = defineProps({
   modelValue: {
     type: Boolean,

@@ -28,7 +28,7 @@
       <div class="hidden min-h-0 flex-1 flex-col pb-6 lg:flex">
         <TableWithPagination>
           <template #tableSection>
-            <el-table class="mt-6" :data="statements" style="width: 100%">
+            <el-table :data="statements" style="width: 100%">
               <el-table-column prop="date" label="Date" />
               <el-table-column prop="description" label="Description" />
               <el-table-column
@@ -42,10 +42,16 @@
                       <div class="flex items-center justify-start">
                         <Icon :name="scope.row.account.icon" class="h-6 w-6" />
                         <div class="ml-2">
-                          <p class="text-sm text-black1">
+                          <p
+                            :title="scope.row.account.bank"
+                            class="truncate text-sm text-black1"
+                          >
                             {{ scope.row.account.bank }}
                           </p>
-                          <p class="text-2xs text-gray2">
+                          <p
+                            :title="scope.row.account.account"
+                            class="truncate text-2xs text-gray2"
+                          >
                             {{ scope.row.account.account }}
                           </p>
                         </div>
