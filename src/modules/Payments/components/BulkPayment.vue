@@ -14,11 +14,13 @@
       name="Layor Salami"
       bank="0937162583 Access Bank"
       amount="1000345"
+      :is-bold="true"
     />
     <RecipientDisplay
       name="Layor Salami"
       bank="0937162583 Access Bank"
       amount="1000345"
+      :is-bold="true"
     />
   </div>
 

@@ -15,12 +15,14 @@ export const useBeneficiaryStore = defineStore({
 
   getters: {
     selectBeneficiaries: (state) => {
-      return state.beneficiaries.map((beneficiary) => {
-        return {
-          name: `${beneficiary.firstName} ${beneficiary.lastName}`,
-          value: beneficiary.id,
-        };
-      });
+      return state.beneficiaries
+        .map((beneficiary) => {
+          return {
+            name: `${beneficiary.firstName} ${beneficiary.lastName}`,
+            value: beneficiary.id,
+          };
+        })
+        .filter((item) => item.name.trim().length > 0);
     },
   },
 

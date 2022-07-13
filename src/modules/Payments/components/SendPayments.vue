@@ -1,10 +1,11 @@
 <template>
   <FloatingPanel
     :model-value="visible"
+    tablet-size="75%"
     @visible:update="$emit('visible:update')"
   >
     <template #content>
-      <div class="mt-10 mb-20 flex justify-start p-2 lg:mt-20">
+      <div class="mt-10 flex justify-start p-2 lg:mt-20">
         <ul
           class="h-22.5 w-2/6 cursor-pointer border-l border-gray5 text-gray2"
         >

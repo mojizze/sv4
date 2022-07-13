@@ -7,3 +7,11 @@ export function states() {
 export function industries() {
   return HTTP.get("businesses/form-data/industries");
 }
+
+export function fetchAllBanks(params) {
+  return HTTP.get("banks", { params });
+}
+
+export function fetchPaginatedBanks() {
+  return HTTP.get("banks");
+}

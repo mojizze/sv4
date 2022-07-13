@@ -5,7 +5,7 @@
     <Icon
       name="close"
       @click="$emit('close')"
-      class="absolute top-7.5 right-2 cursor-pointer lg:hidden"
+      class="absolute top-7.5 right-2 h-6 w-6 cursor-pointer lg:hidden"
     />
     <div class="flex-1 space-y-16">
       <section>

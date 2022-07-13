@@ -6,6 +6,13 @@ export const useCommonStore = defineStore({
   state: () => ({
     states: [],
     industries: [],
+    bank: {
+      banks: [],
+      bank: null,
+      limit: 5,
+      page: 1,
+      searchBy: null,
+    },
   }),
   getters: {
     allIndustries: (state) =>
@@ -34,14 +41,19 @@ export const useCommonStore = defineStore({
       this.industries = industries;
     },
 
-    optionsFilter(search) {
+    async optionsFilter(search) {
       if (search.length === 0) {
-        this.fetchIndustries();
+        await this.fetchIndustries();
         return;
       }
       this.industries = this.industries.filter((industry) => {
         return industry.toLowerCase().includes(search.toLowerCase());
       });
+    },
+
+    async fetchPaginatedBanks() {
+      const { items } = await Service.fetchPaginatedBanks();
+      this.bank.banks = items;
     },
   },
 });

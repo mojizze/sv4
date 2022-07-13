@@ -1,25 +1,25 @@
 <template>
   <div class="mt-6 flex max-h-screen w-full flex-1 flex-col overflow-auto">
     <div
-      class="grid h-full gap-6 md:grid-cols-2 lg:grid-cols-6 lg:grid-rows-12"
+      class="grid h-full gap-6 md:grid-cols-2 xl:grid-cols-6 xl:grid-rows-12"
     >
       <BankAccounts
-        class="col-span-2 row-auto lg:col-span-4 lg:row-start-1 lg:row-end-5"
+        class="col-span-2 row-auto xl:col-span-4 xl:row-start-1 xl:row-end-5"
       />
       <PaymentHistory
-        class="col-span-2 row-auto lg:col-span-4 lg:row-start-5 lg:row-end-10"
+        class="col-span-2 row-auto xl:col-span-4 xl:row-start-5 xl:row-end-10"
       />
       <RecentTransaction
-        class="col-span-2 row-auto md:col-span-1 lg:col-start-5 lg:col-end-7 lg:row-start-1 lg:row-end-8"
+        class="col-span-2 row-auto md:col-span-1 xl:col-start-5 xl:col-end-7 xl:row-start-1 xl:row-end-8"
       />
       <FrequentBeneficiaries
-        class="col-span-2 row-auto md:col-span-1 lg:col-start-5 lg:col-end-7 lg:row-start-8 lg:row-end-13"
+        class="col-span-2 row-auto md:col-span-1 xl:col-start-5 xl:col-end-7 xl:row-start-8 xl:row-end-13"
       />
       <RequiresAttention
-        class="col-span-2 row-auto md:col-span-1 lg:col-start-1 lg:col-end-3 lg:row-start-10 lg:row-end-13"
+        class="col-span-2 row-auto md:col-span-1 xl:col-start-1 xl:col-end-3 xl:row-start-10 xl:row-end-13"
       />
       <UpcomingPayment
-        class="col-span-2 row-auto md:col-span-1 lg:col-start-3 lg:col-end-5 lg:row-start-10 lg:row-end-13"
+        class="col-span-2 row-auto md:col-span-1 xl:col-start-3 xl:col-end-5 xl:row-start-10 xl:row-end-13"
       />
     </div>
   </div>

@@ -32,6 +32,11 @@ const props = defineProps({
     type: [String, Number],
     default: null,
   },
+
+  tabletSize: {
+    type: [String, Number],
+    default: null,
+  },
 });
 
 const emit = defineEmits(["visible:update"]);
@@ -53,6 +58,9 @@ const size = computed(() => {
 
     return 439;
   } else if (window.innerWidth >= 768 && window.innerWidth <= 1024) {
+    if (props.tabletSize) {
+      return props.tabletSize;
+    }
     return "50%";
   } else {
     return "100%";

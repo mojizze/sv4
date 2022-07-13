@@ -10,11 +10,11 @@
 
   <SelectField
     class="w-full"
-    :options="banks"
+    :options="commonStore.bank.banks"
     :disable="!!form.bank_name"
     placeholder="Select Bank"
     display-property="name"
-    value-property="value"
+    value-property="id"
     v-model="form.bank_name"
     label="Bank Name"
   />
@@ -28,9 +28,9 @@
   />
 
   <TextField
-    v-model="form.account_number"
+    v-model="form.account_name"
     label="Account Name"
-    :disable="!!form.account_number"
+    :disable="!!form.account_name"
     placeholderText="Enter Account Name"
   />
 
@@ -75,15 +75,17 @@
 </template>
 
 <script setup>
+/* eslint-disable vue/no-mutating-props */
 import SelectField from "../../../components/atoms/SelectField.vue";
 import TextField from "../../../components/atoms/TextField.vue";
 import CheckField from "../../../components/atoms/CheckField.vue";
 import CheckBox from "../../../components/atoms/CheckBox.vue";
 import RecurringPayments from "../components/RecurringPayments.vue";
 import { useBeneficiaryStore } from "@/modules/Payments/store/beneficiary";
+import { useCommonStore } from "@/modules/Common/store";
 import { ref, onMounted, watch } from "vue";
 
-defineProps({
+const props = defineProps({
   form: {
     type: Object,
     required: true,
@@ -93,21 +95,24 @@ defineProps({
 const isRecurring = ref(false);
 const placeHolder = ref("Loading...");
 const store = useBeneficiaryStore();
+const commonStore = useCommonStore();
 const beneficiary = ref(null);
-const banks = [];
+const selectedBeneficiary = ref(null);
 
 onMounted(async () => {
   await store.fetchAllBeneficiaries();
+  await commonStore.fetchPaginatedBanks();
   placeHolder.value = "Select a beneficiary";
 });
 
 watch(beneficiary, (value) => {
   if (value) {
-    const item = store.beneficiaries.find(
+    selectedBeneficiary.value = store.beneficiaries.find(
       (item) => item.id === beneficiary.value
     );
 
-    console.log(item);
+    props.form.account_number = selectedBeneficiary.value.accountNumber;
+    props.form.bank_name = selectedBeneficiary.value.bankCode;
   }
 });
 </script>

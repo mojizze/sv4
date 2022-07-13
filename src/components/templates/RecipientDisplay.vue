@@ -4,7 +4,9 @@
       <span class="block">{{ name }}</span>
       <span class="mt-2 block text-xs">{{ bank }}</span>
     </div>
-    <span class="text-black1">{{ $priceFormat(amount) }}</span>
+    <span :class="[isBold ? 'font-bold' : 'font-normal']" class="text-black1">{{
+      $priceFormat(amount)
+    }}</span>
   </div>
 </template>
 
@@ -22,6 +24,11 @@ defineProps({
   amount: {
     type: String,
     default: null,
+  },
+
+  isBold: {
+    type: Boolean,
+    default: false,
   },
 });
 </script>

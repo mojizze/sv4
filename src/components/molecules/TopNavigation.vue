@@ -21,11 +21,20 @@
         class="mr-6"
         @click="() => (visible = true)"
       />
-      <Button size="tiny" class="mr-6 bg-white" icon="notification" />
-      <Button size="tiny" class="bg-white" icon="mode">
+      <Button size="tiny" class="mr-6 bg-white hover:text-white">
         <template #icon>
-          <div v-if="icon" class="grid place-items-center">
-            <Icon name="mode" :fill-stroke="'text-blue'" />
+          <div class="grid place-items-center">
+            <Icon
+              name="notification"
+              class="h-6 w-6 text-blue hover:text-white"
+            />
+          </div>
+        </template>
+      </Button>
+      <Button size="tiny" class="bg-white">
+        <template #icon>
+          <div class="grid place-items-center">
+            <Icon name="mode" class="h-6 w-6 text-blue hover:text-white" />
           </div>
         </template>
       </Button>
