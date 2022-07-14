@@ -6,8 +6,12 @@ export const useBeneficiaryStore = defineStore({
   state: () => {
     return {
       searchBy: null,
-      limit: 10,
-      page: 1,
+      pagination: {
+        itemsPerPage: 10,
+        currentPage: 1,
+        totalPages: 1,
+        totalItems: 1,
+      },
       beneficiaries: [],
       beneficiary: null,
     };
@@ -30,12 +34,13 @@ export const useBeneficiaryStore = defineStore({
     async fetchAllBeneficiaries() {
       const params = {
         searchBy: this.searchBy,
-        limit: this.limit,
-        page: this.page,
+        limit: this.pagination.itemsPerPage,
+        page: this.pagination.currentPage,
       };
 
       const { beneficiaries } = await Service.index(params);
-      this.beneficiaries = beneficiaries;
+      this.beneficiaries = beneficiaries.items;
+      this.pagination = beneficiaries.meta;
     },
 
     async fetchBeneficiary(id) {

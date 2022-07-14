@@ -2,7 +2,7 @@ import FileUpload from "./FileUpload.vue";
 
 export default {
   title: "Atoms/FileUpload",
-  components: FileUpload,
+  component: FileUpload,
 
   argTypes: {},
 };

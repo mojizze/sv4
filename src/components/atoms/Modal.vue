@@ -30,7 +30,7 @@
         >
           <Icon
             name="close"
-            class="absolute top-10 right-5 cursor-pointer"
+            class="absolute top-10 right-5 h-6 w-6 cursor-pointer"
             @click="emit('close')"
           />
           <DialogTitle>
@@ -53,7 +53,7 @@ import {
   TransitionRoot,
   DialogOverlay,
 } from "@headlessui/vue";
-import Icon from "@components/atoms/Icon.vue";
+import Icon from "@/components/atoms/Icon.vue";
 
 defineProps({
   show: {

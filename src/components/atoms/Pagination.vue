@@ -2,29 +2,32 @@
   <div class="flex justify-between py-2 text-sm">
     <div class="flex items-center space-x-10">
       <div class="flex items-center space-x-5">
-        <el-select v-model="pageNum" class="sp-pagination-select">
+        <el-select v-model="currentPage" class="sp-pagination-select">
           <el-option
-            v-for="item in OPTIONS"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
+            v-for="item in lastPage"
+            :key="item"
+            :label="item"
+            :value="item"
           />
         </el-select>
-        <div>of 10</div>
+        <div>of {{ lastPage }}</div>
       </div>
       <div
         class="flex h-full items-center justify-center divide-x divide-gray6 overflow-hidden rounded-lg border border-gray6"
       >
         <Button
+          @click="$emit('prev')"
           icon="arrowLeft"
           class="h-full px-4 disabled:cursor-not-allowed disabled:bg-gray5"
           ghost
+          :disabled="page === 1"
         />
         <Button
+          @click="$emit('next')"
           icon="arrowRight"
           class="h-full px-4 disabled:cursor-not-allowed disabled:bg-gray5"
           ghost
-          disabled
+          :disabled="page === lastPage"
         />
       </div>
     </div>
@@ -32,10 +35,10 @@
       <div>Entries per page</div>
       <el-select v-model="perPage" class="sp-pagination-select">
         <el-option
-          v-for="item in OPTIONS"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
+          v-for="item in limits"
+          :key="item"
+          :label="item"
+          :value="item"
         />
       </el-select>
     </div>
@@ -43,14 +46,48 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import Button from "./Button.vue";
 
-const pageNum = ref(1);
-const perPage = ref(1);
-const OPTIONS = new Array(124)
-  .fill()
-  .map((_, i) => ({ label: i + 1, value: i + 1 }));
+const props = defineProps({
+  page: {
+    type: Number,
+    default: 1,
+  },
+
+  lastPage: {
+    type: Number,
+    default: 1,
+  },
+
+  limit: {
+    type: Number,
+    default: 10,
+  },
+});
+
+const emit = defineEmits(["update:page"]);
+const limits = ref([10, 25, 50, 75, 100]);
+
+const currentPage = computed({
+  get() {
+    return props.page;
+  },
+
+  set(value) {
+    emit("update:page", value);
+  },
+});
+
+const perPage = computed({
+  get() {
+    return props.limit;
+  },
+
+  set(value) {
+    emit("update:limit", value);
+  },
+});
 </script>
 
 <style lang="scss">

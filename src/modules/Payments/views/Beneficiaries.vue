@@ -15,7 +15,7 @@
         />
       </div>
       <div class="hidden min-h-0 flex-1 flex-col pb-6 lg:flex">
-        <TableWithPagination>
+        <TableWithPagination :store="store.pagination" @fetch:data="fetchData">
           <template #tableSection>
             <el-table
               v-loading="loading"
@@ -79,12 +79,12 @@ import FloatingButton from "@/components/atoms/FloatingButton.vue";
 import { useBeneficiaryStore } from "@/modules/Payments/store/beneficiary.js";
 import { onMounted, ref } from "vue";
 import CreateBeneficiary from "@/modules/Payments/components/CreateBeneficiary.vue";
-const store = useBeneficiaryStore();
 
-const displayPanel = ref(false);
+const store = useBeneficiaryStore();
+let displayPanel = ref(false);
 const loading = ref(false);
 
-onMounted(async () => {
+const fetchData = async () => {
   try {
     loading.value = true;
     await store.fetchAllBeneficiaries();
@@ -92,5 +92,9 @@ onMounted(async () => {
   } catch (e) {
     loading.value = false;
   }
+};
+
+onMounted(async () => {
+  await fetchData();
 });
 </script>
