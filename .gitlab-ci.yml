@@ -10,7 +10,8 @@ Deploy(Dev):
   script:
     - echo "Install dependences"
     - yarn install
-    - yarn build
+    - echo "Deploying..."
+    - yarn build --mode development
     - echo "Copying files......."
     - mkdir -p $DEPLOY_FOLDER
     - cd dist
